@@ -280,3 +280,27 @@ hr {
     border-radius: 0 0 6px 6px !important;
     padding: 1rem !important;
 }
+
+/* Hide theme chooser in settings menu */
+button[kind="header"] {
+    pointer-events: none;
+}
+
+[data-testid="stMainMenu"] {
+    display: block !important;
+}
+
+/* Hide theme settings specifically */
+section[data-testid="stSidebar"] button[aria-label*="theme" i],
+section[data-testid="stSidebar"] button[aria-label*="Theme" i],
+button[aria-label*="theme" i],
+button[aria-label*="Theme" i] {
+    display: none !important;
+}
+
+/* Hide settings menu items related to theme */
+[role="menuitem"][data-testid*="theme"],
+[role="menuitem"] span:contains("Theme"),
+.settings button:contains("Theme") {
+    display: none !important;
+}

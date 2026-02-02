@@ -10,6 +10,16 @@ font = "sans serif"
 [client]
 # Disable theme selection in settings menu
 showSidebarNavigation = false
+toolbarMode = "minimal"
+
+[ui]
+# Hide theme chooser
+hideTopBar = false
 
 [browser]
 gatherUsageStats = false
+
+[server]
+# Prevent theme changes
+enableCORS = false
+enableXsrfProtection = true
