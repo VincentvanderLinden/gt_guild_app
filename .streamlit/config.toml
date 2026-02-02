@@ -1,0 +1,15 @@
+[theme]
+# Force dark mode
+base = "dark"
+primaryColor = "#4a9eff"
+backgroundColor = "#0e1117"
+secondaryBackgroundColor = "#262730"
+textColor = "#fafafa"
+font = "sans serif"
+
+[client]
+# Disable theme selection in settings menu
+showSidebarNavigation = false
+
+[browser]
+gatherUsageStats = false

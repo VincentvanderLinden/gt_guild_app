@@ -26,10 +26,4 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Streamlit
-.streamlit/
 
-# Project specific
-check_professions.py
-debug_sheet.py
-update_default_data.py
