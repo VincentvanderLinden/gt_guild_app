@@ -1,9 +1,10 @@
 """Reusable UI components for Streamlit."""
 import streamlit as st
-from typing import Dict, Any
+from typing import Dict, Any, Optional
+from datetime import datetime
 
 
-def render_sidebar_filters(professions_list, price_data, last_update):
+def render_sidebar_filters(professions_list, price_data, last_update, last_sheet_refresh: Optional[datetime] = None):
     """Render sidebar with filters and price info."""
     st.sidebar.title("⚙️ Filters")
     st.sidebar.space()
@@ -24,6 +25,21 @@ def render_sidebar_filters(professions_list, price_data, last_update):
         )
     else:
         st.sidebar.warning("⚠️ Could not load live prices")
+    
+    # Google Sheets refresh status
+    st.sidebar.divider()
+    if last_sheet_refresh:
+        # Format UTC time (already in UTC from app.py)
+        time_str = last_sheet_refresh.strftime("%b %d, %Y at %I:%M %p UTC")
+        st.sidebar.success(
+            f"📋 Google Sheets data\n\n"
+            f"Last refreshed: \n\n {time_str}\n\n*Auto-refreshes every 10 minutes*"
+        )
+    else:
+        st.sidebar.info(
+            f"📋 Google Sheets data\n\n"
+            f"Not yet synced\n\n*Will sync on next refresh*"
+        )
     
     return selected_professions, search_company, search_goods
 

@@ -9,10 +9,10 @@ import streamlit as st
 def fetch_material_prices() -> Tuple[Dict[str, Dict[str, float]], str]:
     """
     Fetch material prices from the Galactic Tycoons API.
-    Returns a tuple of (price_dict, timestamp_utc).
+    Returns a tuple of (price_dict, timestamp_string).
     Cached for 10 minutes.
     """
-    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+    timestamp = datetime.now(timezone.utc).strftime("%b %d, %Y at %I:%M %p UTC")
     
     try:
         response = requests.get(

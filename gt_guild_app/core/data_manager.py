@@ -3,6 +3,8 @@ import pandas as pd
 import json
 from pathlib import Path
 from typing import List, Dict, Any, Optional
+import sys
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from config import DATA_FILE, GAMEDATA_FILE
 
 
@@ -35,8 +37,8 @@ def feather_to_companies(df: pd.DataFrame) -> List[Dict[str, Any]]:
             'name': company_df['company_name'],
             'industry': company_df['industry'],
             'professions': professions,
-            'timezone': company_df['timezone'],
-            'local_time': company_df['local_time'],
+            'timezone': company_df.get('timezone', 'UTC +00:00'),
+            'local_time': company_df.get('local_time', 'N/A'),
             'goods': goods_df.to_dict('records')
         })
     return companies
@@ -59,8 +61,8 @@ def companies_to_feather(companies: List[Dict[str, Any]]) -> pd.DataFrame:
                 'company_name': company['name'],
                 'industry': company['industry'],
                 'professions': professions_str,
-                'timezone': company['timezone'],
-                'local_time': company['local_time'],
+                'timezone': company.get('timezone', 'UTC +00:00'),
+                'local_time': company.get('local_time', 'N/A'),
                 'Produced Goods': good.get('Produced Goods', ''),
                 'Guildees Pay:': good.get('Guildees Pay:', 0),
                 'Live EXC Price': good.get('Live EXC Price', 0),
@@ -99,6 +101,23 @@ def save_data(companies: List[Dict[str, Any]]) -> None:
 
 def prepare_goods_dataframe(goods: List[Dict[str, Any]]) -> pd.DataFrame:
     """Prepare goods DataFrame with proper data types."""
+    # Define expected dtypes to prevent FutureWarning
+    dtype_spec = {
+        'Produced Goods': 'str',
+        'Guildees Pay:': 'float64',
+        'Live EXC Price': 'int64',
+        'Live AVG Price': 'int64',
+        'Guild Max': 'int64',
+        'Guild Min': 'int64',
+        'Guild % Discount': 'int64',
+        'Guild Fixed Discount': 'int64'
+    }
+    
+    # Create DataFrame with explicit dtypes
+    if not goods:
+        # Return empty DataFrame with proper structure
+        return pd.DataFrame(columns=list(dtype_spec.keys())).astype(dtype_spec)
+    
     goods_df = pd.DataFrame(goods)
     
     # Integer columns
@@ -106,10 +125,14 @@ def prepare_goods_dataframe(goods: List[Dict[str, Any]]) -> pd.DataFrame:
                            'Guild Max', 'Guild Min', 'Guild % Discount', 'Guild Fixed Discount']
     for col in numeric_int_columns:
         if col in goods_df.columns:
-            goods_df[col] = pd.to_numeric(goods_df[col], errors='coerce').fillna(0).astype(int)
+            goods_df[col] = pd.to_numeric(goods_df[col], errors='coerce').fillna(0).astype('int64')
     
     # Float column (supports decimal rounding like 34.5)
     if 'Guildees Pay:' in goods_df.columns:
-        goods_df['Guildees Pay:'] = pd.to_numeric(goods_df['Guildees Pay:'], errors='coerce').fillna(0).astype(float)
+        goods_df['Guildees Pay:'] = pd.to_numeric(goods_df['Guildees Pay:'], errors='coerce').fillna(0).astype('float64')
+    
+    # String column
+    if 'Produced Goods' in goods_df.columns:
+        goods_df['Produced Goods'] = goods_df['Produced Goods'].astype('str')
     
     return goods_df

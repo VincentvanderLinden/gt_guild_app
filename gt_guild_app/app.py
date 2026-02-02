@@ -3,18 +3,21 @@ import streamlit as st
 import pandas as pd
 
 # Import local modules
-from config import APP_TITLE, APP_ICON, APP_SUBTITLE, CSS_FILE, PROFESSIONS
-from data_manager import (
+from config import APP_TITLE, APP_ICON, APP_SUBTITLE, CSS_FILE, PROFESSIONS, GOOGLE_SHEET_URL
+from core.data_manager import (
     load_game_materials, load_data, save_data, 
     prepare_goods_dataframe
 )
-from api_client import fetch_material_prices
-from price_calculator import update_live_prices, calculate_all_guildees_prices
-from validators import validate_goods
-from stats import calculate_unique_goods, calculate_average_discount, get_unique_professions
-from filters import apply_all_filters
-from ui_components import render_sidebar_filters, render_stats_row, get_column_config
-from api_handler import render_api_response, show_api_documentation
+from integrations.api_client import fetch_material_prices
+from business.price_calculator import update_live_prices, calculate_all_guildees_prices
+from core.validators import validate_goods
+from business.stats import calculate_unique_goods, calculate_average_discount, get_unique_professions
+from business.filters import apply_all_filters
+from ui.ui_components import render_sidebar_filters, render_stats_row, get_column_config
+from ui.api_handler import render_api_response, show_api_documentation
+from integrations.timezone_utils import update_company_local_times
+from integrations.google_sheets import import_from_google_sheet
+from datetime import datetime, timedelta, timezone
 
 
 def initialize_page():
@@ -37,12 +40,52 @@ def initialize_session_state():
     """Initialize session state variables."""
     if 'companies' not in st.session_state:
         st.session_state.companies = load_data()
+        # Update local times on load
+        if st.session_state.companies:
+            st.session_state.companies = update_company_local_times(st.session_state.companies)
     
     if 'materials' not in st.session_state:
         st.session_state.materials = load_game_materials()
+    
+    if 'last_sheet_refresh' not in st.session_state:
+        st.session_state.last_sheet_refresh = None
+    
+    if 'sheet_url' not in st.session_state:
+        st.session_state.sheet_url = GOOGLE_SHEET_URL
 
 
-def render_company_editor(company, idx, materials, price_data):
+def refresh_from_google_sheets():
+    """Refresh data from Google Sheets if 10 minutes have passed."""
+    now = datetime.now(timezone.utc)
+    
+    # Check if we need to refresh (10 minutes = 600 seconds)
+    if st.session_state.last_sheet_refresh is None or \
+       (now - st.session_state.last_sheet_refresh) > timedelta(minutes=10):
+        
+        try:
+            # Import from Google Sheets
+            companies = import_from_google_sheet(st.session_state.sheet_url)
+            
+            if companies:
+                # Update local times
+                companies = update_company_local_times(companies)
+                
+                # Save to feather file
+                save_data(companies)
+                
+                # Update session state
+                st.session_state.companies = companies
+                st.session_state.last_sheet_refresh = now
+                
+                return True
+        except Exception as e:
+            print(f"Error refreshing from Google Sheets: {e}")
+            return False
+    
+    return False
+
+
+def render_company_editor(company, idx, materials, price_data, all_professions_list):
     """Render the editor interface for a single company."""
     # Format professions display
     prof_display = ', '.join(company.get('professions', [])) if company.get('professions') else company['industry']
@@ -53,7 +96,7 @@ def render_company_editor(company, idx, materials, price_data):
         with col_prof:
             selected_profs = st.multiselect(
                 "Professions",
-                options=PROFESSIONS,
+                options=all_professions_list,
                 default=company.get('professions', []),
                 key=f"prof_{company['name']}_{idx}"
             )
@@ -167,12 +210,33 @@ def main():
             st.query_params.update({"api": "true"})
             st.rerun()
     
+    # Refresh from Google Sheets if needed
+    refresh_from_google_sheets()
+    
+    # Update local times (in case time has changed)
+    if st.session_state.companies:
+        st.session_state.companies = update_company_local_times(st.session_state.companies)
+    
     # Fetch live prices (cached for 10 minutes)
     price_data, last_update = fetch_material_prices()
     
+    # Collect all professions from companies
+    all_professions = set(PROFESSIONS)  # Start with the base list
+    for company in companies:
+        for prof in company.get('professions', []):
+            if prof and prof.strip():  # Only add non-empty professions
+                all_professions.add(prof.strip())
+    professions_list = sorted(list(all_professions))
+    
+    # Filter professions to ensure all defaults are in options
+    # Clean up company professions to match available options
+    for company in companies:
+        valid_profs = [p for p in company.get('professions', []) if p in professions_list]
+        company['professions'] = valid_profs
+    
     # Render sidebar and get filter values
     selected_professions, search_company, search_goods = render_sidebar_filters(
-        PROFESSIONS, price_data, last_update
+        professions_list, price_data, last_update, st.session_state.last_sheet_refresh
     )
     
     # Apply filters
@@ -196,7 +260,7 @@ def main():
     
     # Render company editors
     for idx, company in enumerate(filtered_companies):
-        render_company_editor(company, idx, materials, price_data)
+        render_company_editor(company, idx, materials, price_data, professions_list)
     
     # Footer
     st.info("💾 All changes are saved automatically")
