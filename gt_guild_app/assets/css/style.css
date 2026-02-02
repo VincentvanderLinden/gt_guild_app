@@ -1,0 +1,139 @@
+/* Import Titillium Web font */
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap');
+
+/* Apply font globally */
+* {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+/* Main background and theme */
+.stApp {
+    background-color: #222;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23292929'%3E%3Cpath d='m769 229 268 31.9M927 880 731 737l-211-77-211-122-269 61 255 165-168.5 115.5L40 599l-237-106 299-111-133-153L126.5 79.5-69-63'/%3E%3Cpath d='m-31 229 268 32 153 121 213 111-294.5 44.5-207-156M370 905l-75-141'/%3E%3Cpath d='m520 660 58 182 153-105 109-138-237-106-83 167-225 104 14-226 81-156 149-113 230-40L577.5 41.5 370 105 295-36 126.5 79.5 237 261 102 382 40 599-69 737l196 143'/%3E%3Cpath d='m520-140 58.5 182.5L731-63M603 493l-64-224-302-8 133-156m532 277L539 269M390 382H102'/%3E%3Cpath d='m-222 42 348.5 37.5L370 105l169 164 38.5-227.5L927 80 769 229l133 153-299 111 128 244M295-36l282.5 77.5M578 842l-283-78M40-201l87 281m-25 302-363-113'/%3E%3C/g%3E%3Cg fill='%23303030'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 400px 400px, 100% 100%, 100% 100%;
+    background-position: center, center, center;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+/* Topbar header styling */
+header[data-testid="stHeader"] {
+    background-color: #222 !important;
+}
+
+/* Reduce top padding */
+.block-container {
+    padding-top: 33px;
+}
+
+/* Headers */
+h1 {
+    color: #4a9eff;
+    font-weight: 700;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #1e3a5f;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+h2,
+h3 {
+    color: #6cb4ff;
+    font-weight: 600;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+/* Sidebar styling */
+[data-testid="stSidebar"] {
+    background-color: #222;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23292929'%3E%3Cpath d='m769 229 268 31.9M927 880 731 737l-211-77-211-122-269 61 255 165-168.5 115.5L40 599l-237-106 299-111-133-153L126.5 79.5-69-63'/%3E%3Cpath d='m-31 229 268 32 153 121 213 111-294.5 44.5-207-156M370 905l-75-141'/%3E%3Cpath d='m520 660 58 182 153-105 109-138-237-106-83 167-225 104 14-226 81-156 149-113 230-40L577.5 41.5 370 105 295-36 126.5 79.5 237 261 102 382 40 599-69 737l196 143'/%3E%3Cpath d='m520-140 58.5 182.5L731-63M603 493l-64-224-302-8 133-156m532 277L539 269M390 382H102'/%3E%3Cpath d='m-222 42 348.5 37.5L370 105l169 164 38.5-227.5L927 80 769 229l133 153-299 111 128 244M295-36l282.5 77.5M578 842l-283-78M40-201l87 281m-25 302-363-113'/%3E%3C/g%3E%3Cg fill='%23303030'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 400px 400px;
+    background-position: center;
+    border-right: 1px solid #2a3f5f;
+}
+
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 {
+    color: #4a9eff;
+}
+
+/* Align sidebar title with main title */
+[data-testid="stSidebar"] .stMarkdown h1,
+[data-testid="stSidebar"] .stMarkdown h2,
+[data-testid="stSidebar"] .stMarkdown h3 {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Align dividers */
+[data-testid="stSidebar"] hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Metrics */
+[data-testid="stMetricValue"] {
+    color: #4a9eff;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+[data-testid="stMetricLabel"] {
+    color: #8b9dc3;
+    font-weight: 600;
+}
+
+/* Tables and dataframes */
+.stDataFrame {
+    background-color: #1a1f2e;
+    border-radius: 8px;
+}
+
+/* Buttons */
+.stButton button {
+    background-color: #4a9eff;
+    color: white;
+    border-radius: 6px;
+    border: none;
+    padding: 0.5rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.stButton button:hover {
+    background-color: #6cb4ff;
+    box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
+}
+
+/* Input fields */
+.stTextInput input,
+.stSelectbox select,
+.stSlider {
+    background-color: #1a1f2e;
+    color: #e6e6e6;
+    border: 1px solid #2a3f5f;
+    border-radius: 6px;
+}
+
+/* Multiselect styling */
+.stMultiSelect [data-baseweb="tag"] {
+    background-color: #2a3f5f !important;
+    font-size: 0.85rem !important;
+    padding: 0.25rem 0.5rem !important;
+    margin: 0.15rem !important;
+}
+
+.stMultiSelect [data-baseweb="tag"] span {
+    color: #e6e6e6 !important;
+}
+
+/* Divider */
+hr {
+    border-color: #2a3f5f;
+    margin: 2rem 0;
+}
+
+/* Info boxes */
+.element-container {
+    color: #b8c5d6;
+}
