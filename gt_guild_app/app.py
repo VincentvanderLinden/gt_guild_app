@@ -22,8 +22,8 @@ DATA_FILE = Path(__file__).parent / "assets" / "data" / "guild_data.feather"
 DEFAULT_DATA_FILE = Path(__file__).parent / "assets" / "data" / "default_guild_data.feather"
 GAMEDATA_FILE = Path(__file__).parent / "assets" / "data" / "gamedata.json"
 
-# Available professions
-PROFESSIONS = [
+# Available professions (sorted alphabetically)
+PROFESSIONS = sorted([
     "Construction",
     "Manufacturing",
     "Agriculture",
@@ -38,7 +38,7 @@ PROFESSIONS = [
     "Transporting",
     "Jack-of-all-Trades",
     "Failing Hard"
-]
+])
 
 
 def load_game_materials():
@@ -131,6 +131,44 @@ def save_data(companies):
     df.to_feather(DATA_FILE)
 
 
+def calculate_guildees_pay(live_price, discount_percent):
+    """
+    Calculate guildees pay from live price and discount percentage.
+    Applies smart rounding based on price ranges.
+    """
+    import math
+    
+    # Apply discount
+    price = live_price * (1 - discount_percent / 100)
+    
+    # Apply rounding rules
+    if price < 50:
+        # Round to nearest 0.5
+        return math.ceil(price * 2) / 2
+    elif price < 100:
+        # Round to nearest 1
+        return math.ceil(price)
+    elif price < 1000:
+        # Round to nearest 10
+        return math.ceil(price / 10) * 10
+    elif price < 5000:
+        # Round to nearest 50
+        return math.ceil(price / 50) * 50
+    elif price < 10000:
+        # Round to nearest 100
+        return math.ceil(price / 100) * 100
+    elif price < 50000:
+        # Round to nearest 500
+        return math.ceil(price / 500) * 500
+    elif price < 100000:
+        # Round to nearest 1000
+        return math.ceil(price / 1000) * 1000
+    else:
+        # Round to nearest 1000 for larger amounts
+        return math.ceil(price / 1000) * 1000
+    df.to_feather(DATA_FILE)
+
+
 # Title
 st.title("🐔 TiT Guild App™")
 st.markdown("*View and manage items that players are selling*")
@@ -187,8 +225,8 @@ if search_goods:
 
 # Display stats
 total_goods = sum(len(c["goods"]) for c in filtered_companies)
-all_discounts = [g.get("Guild % Discount", 0) for c in filtered_companies for g in c["goods"] if g.get("Guild % Discount") is not None]
-avg_discount = sum(all_discounts) / len(all_discounts) if all_discounts else 0
+all_discounts = [g.get("Guild % Discount", 0) for c in filtered_companies for g in c["goods"] if g.get("Guild % Discount") is not None and not pd.isna(g.get("Guild % Discount"))]
+avg_discount = sum(all_discounts) / len(all_discounts) if all_discounts and len(all_discounts) > 0 else 0
 
 # Count unique professions
 all_professions_used = set()
@@ -247,14 +285,35 @@ for idx, company in enumerate(filtered_companies):
                     goods_df.at[idx, 'Live EXC Price'] = int(price_data[material_name]['currentPrice'])
                     goods_df.at[idx, 'Live AVG Price'] = int(price_data[material_name]['avgPrice'])
         
+        # Calculate Guildees Pay based on Live EXC Price and discount
+        for idx, row in goods_df.iterrows():
+            live_price = row.get('Live EXC Price', 0)
+            discount = row.get('Guild % Discount', 0)
+            guild_min = row.get('Guild Min', 0)
+            guild_max = row.get('Guild Max', 0)
+            
+            # Calculate base price with discount and rounding
+            calculated_price = calculate_guildees_pay(live_price, discount)
+            
+            # Apply bounds: if below min, use min; if above max, use max
+            if guild_min > 0 and calculated_price < guild_min:
+                calculated_price = guild_min
+            elif guild_max > 0 and calculated_price > guild_max:
+                calculated_price = guild_max
+            
+            goods_df.at[idx, 'Guildees Pay:'] = calculated_price
+        
+        # Add a special wrapper to the column name for CSS targeting
+        goods_df_display = goods_df.copy()
+        
         # Editable table for each company
         edited_goods = st.data_editor(
-            goods_df,
+            goods_df_display,
             hide_index=True,
             width="stretch",
             num_rows="dynamic",
             key=f"table_{company['name']}_{idx}",
-            disabled=["Guildees Pay:", "Live EXC Price", "Live AVG Price", "Guild Min"],
+            disabled=["Guildees Pay:", "Live EXC Price", "Live AVG Price"],
             column_config={
                 "Produced Goods": st.column_config.SelectboxColumn(
                     "Produced Goods",
@@ -262,7 +321,11 @@ for idx, company in enumerate(filtered_companies):
                     options=materials,
                     required=True
                 ),
-                "Guildees Pay:": st.column_config.NumberColumn("Guildees Pay", format="$%d"),
+                "Guildees Pay:": st.column_config.NumberColumn(
+                    "💰 Guildees Pay 💰", 
+                    format="✓ $%d",
+                    help="Auto-calculated price after discount and bounds"
+                ),
                 "Live EXC Price": st.column_config.NumberColumn("Live EXC Price", format="$%d"),
                 "Live AVG Price": st.column_config.NumberColumn("Live AVG Price", format="$%d"),
                 "Guild Max": st.column_config.NumberColumn("Guild Max", format="$%d"),
@@ -273,30 +336,33 @@ for idx, company in enumerate(filtered_companies):
         )
         
         # Update the company's goods in session state if changed
-        if not goods_df.equals(edited_goods):
+        if not goods_df_display.equals(edited_goods):
+            # Copy changes back to original goods_df
+            goods_df = edited_goods.copy()
+            
             # Check for empty Produced Goods
-            empty_goods = edited_goods[(edited_goods['Produced Goods'].isna()) | (edited_goods['Produced Goods'] == '')]
+            empty_goods = goods_df[(goods_df['Produced Goods'].isna()) | (goods_df['Produced Goods'] == '')]
             if not empty_goods.empty:
                 st.error(f"⚠️ {company['name']}: All Produced Goods fields must be filled!")
             else:
                 # Check for duplicate Produced Goods
-                goods_list = edited_goods['Produced Goods'].tolist()
+                goods_list = goods_df['Produced Goods'].tolist()
                 if len(goods_list) != len(set(goods_list)):
                     duplicates = [item for item in set(goods_list) if goods_list.count(item) > 1]
                     st.error(f"⚠️ {company['name']}: Duplicate goods found: {', '.join(duplicates)}")
                 else:
                     # Update prices from cached data before saving
                     if price_data:
-                        for idx, row in edited_goods.iterrows():
+                        for idx, row in goods_df.iterrows():
                             material_name = row.get('Produced Goods', '')
                             if material_name and material_name in price_data:
-                                edited_goods.at[idx, 'Live EXC Price'] = int(price_data[material_name]['currentPrice'])
-                                edited_goods.at[idx, 'Live AVG Price'] = int(price_data[material_name]['avgPrice'])
+                                goods_df.at[idx, 'Live EXC Price'] = int(price_data[material_name]['currentPrice'])
+                                goods_df.at[idx, 'Live AVG Price'] = int(price_data[material_name]['avgPrice'])
                     
                     # Find the company in the original list and update
                     for c in st.session_state.companies:
                         if c["name"] == company["name"]:
-                            c["goods"] = edited_goods.to_dict('records')
+                            c["goods"] = goods_df.to_dict('records')
                             save_data(st.session_state.companies)
                             st.rerun()  # Rerun to show updated prices immediately
                             break
