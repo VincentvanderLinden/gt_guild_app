@@ -19,7 +19,6 @@ with open(CSS_FILE) as f:
 
 # Data persistence
 DATA_FILE = Path(__file__).parent / "assets" / "data" / "guild_data.feather"
-DEFAULT_DATA_FILE = Path(__file__).parent / "assets" / "data" / "default_guild_data.feather"
 GAMEDATA_FILE = Path(__file__).parent / "assets" / "data" / "gamedata.json"
 
 # Available professions (sorted alphabetically)
@@ -56,7 +55,7 @@ def load_game_materials():
 
 def load_default_data():
     """Load default data from feather file"""
-    df = pd.read_feather(DEFAULT_DATA_FILE)
+    df = pd.read_feather(DATA_FILE)
     # Convert to nested structure
     companies = []
     for company_name in df['company_name'].unique():

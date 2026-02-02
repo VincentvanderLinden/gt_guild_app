@@ -230,10 +230,10 @@ data.extend([
 df = pd.DataFrame(data)
 
 # Save to feather
-output_path = Path('gt_guild_app/assets/data/default_guild_data.feather')
+output_path = Path('gt_guild_app/assets/data/guild_data.feather')
 df.to_feather(output_path)
 
-print(f"Created default_guild_data.feather with {len(df)} rows")
+print(f"Created guild_data.feather with {len(df)} rows")
 print(f"Companies: {df['company_name'].nunique()}")
 print(f"\nColumns: {df.columns.tolist()}")
 print(f"\nSample rows:")
