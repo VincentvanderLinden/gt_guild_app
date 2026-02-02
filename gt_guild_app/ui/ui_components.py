@@ -19,9 +19,11 @@ def render_sidebar_filters(professions_list, price_data, last_update, last_sheet
     # Price update status
     st.sidebar.divider()
     if price_data:
-        st.sidebar.info(
-            f"📊 Live prices: {len(price_data)} materials\n\n"
-            f"Last updated: \n\n {last_update}\n\n*Updates every 10 minutes*"
+        st.sidebar.caption(
+            f"📊 **Live prices:** {len(price_data)} materials  \n"
+            f"*Last updated:*  \n"
+            f"*{last_update}*  \n"
+            f"*Updates every 10 minutes*"
         )
     else:
         st.sidebar.warning("⚠️ Could not load live prices")
@@ -31,14 +33,17 @@ def render_sidebar_filters(professions_list, price_data, last_update, last_sheet
     if last_sheet_refresh:
         # Format UTC time (already in UTC from app.py)
         time_str = last_sheet_refresh.strftime("%b %d, %Y at %I:%M %p UTC")
-        st.sidebar.success(
-            f"📋 Google Sheets data\n\n"
-            f"Last refreshed: \n\n {time_str}\n\n*Auto-refreshes every 10 minutes*"
+        st.sidebar.caption(
+            f"📋 **Google Sheets data**  \n"
+            f"*Last refreshed:*  \n"
+            f"*{time_str}*  \n"
+            f"*Auto-refreshes every 10 minutes*"
         )
     else:
-        st.sidebar.info(
-            f"📋 Google Sheets data\n\n"
-            f"Not yet synced\n\n*Will sync on next refresh*"
+        st.sidebar.caption(
+            f"📋 **Google Sheets data**  \n"
+            f"*Not yet synced*  \n"
+            f"*Will sync on next refresh*"
         )
     
     return selected_professions, search_company, search_goods

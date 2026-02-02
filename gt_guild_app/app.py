@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 
 # Import local modules
-from config import APP_TITLE, APP_ICON, APP_SUBTITLE, CSS_FILE, PROFESSIONS, GOOGLE_SHEET_URL
+from config import APP_TITLE, APP_ICON, APP_SUBTITLE, CSS_FILE, PROFESSIONS, GOOGLE_SHEET_URL, TIMEZONE_OPTIONS, TIMEZONE_OPTIONS
 from core.data_manager import (
     load_game_materials, load_data, save_data, 
     prepare_goods_dataframe
@@ -15,7 +15,7 @@ from business.stats import calculate_unique_goods, calculate_average_discount, g
 from business.filters import apply_all_filters
 from ui.ui_components import render_sidebar_filters, render_stats_row, get_column_config
 from ui.api_handler import render_api_response, show_api_documentation
-from integrations.timezone_utils import update_company_local_times
+from integrations.timezone_utils import update_company_local_times, get_local_time, get_local_time
 from integrations.google_sheets import import_from_google_sheet
 from datetime import datetime, timedelta, timezone
 
@@ -85,14 +85,14 @@ def refresh_from_google_sheets():
     return False
 
 
-def render_company_editor(company, idx, materials, price_data, all_professions_list):
+def render_company_editor(company, idx, materials, price_data, all_professions_list, search_goods=""):
     """Render the editor interface for a single company."""
     # Format professions display
     prof_display = ', '.join(company.get('professions', [])) if company.get('professions') else company['industry']
     
     with st.expander(f"**{company['name']}** - {prof_display} | {company['timezone']} ({company['local_time']})", expanded=True):
-        # Profession selector
-        col_prof, col_spacer = st.columns([3, 1])
+        # Profession and Timezone selectors
+        col_prof, col_tz = st.columns([3, 3])
         with col_prof:
             selected_profs = st.multiselect(
                 "Professions",
@@ -109,14 +109,57 @@ def render_company_editor(company, idx, materials, price_data, all_professions_l
                         save_data(st.session_state.companies)
                         break
         
+        with col_tz:
+            # Extract just the UTC offset from current timezone for matching
+            current_tz = company.get('timezone', 'UTC +00:00')
+            # Find matching option or default to current value
+            try:
+                current_idx = next((i for i, opt in enumerate(TIMEZONE_OPTIONS) if current_tz.split('(')[0].strip() in opt), None)
+                if current_idx is None:
+                    # If current timezone not in list, add it as first option
+                    timezone_opts = [current_tz] + TIMEZONE_OPTIONS
+                    current_idx = 0
+                else:
+                    timezone_opts = TIMEZONE_OPTIONS
+            except:
+                timezone_opts = TIMEZONE_OPTIONS
+                current_idx = 12  # Default to UTC +00:00
+            
+            selected_tz = st.selectbox(
+                "Timezone",
+                options=timezone_opts,
+                index=current_idx,
+                key=f"tz_{company['name']}_{idx}"
+            )
+            
+            # Extract just UTC offset part (e.g., "UTC +01:00" from "UTC +01:00 (Paris, Berlin)")
+            tz_offset = selected_tz.split('(')[0].strip()
+            
+            # Update timezone if changed
+            if tz_offset != current_tz:
+                for c in st.session_state.companies:
+                    if c["name"] == company["name"]:
+                        c["timezone"] = tz_offset
+                        # Update local time immediately
+                        c['local_time'] = get_local_time(tz_offset)
+                        save_data(st.session_state.companies)
+                        break
+        
         # Prepare goods dataframe
         goods_df = prepare_goods_dataframe(company["goods"])
+        
+        # Filter goods by search term if provided
+        if search_goods:
+            goods_df = goods_df[goods_df['Produced Goods'].str.contains(search_goods, case=False, na=False)]
         
         # Update live prices
         goods_df = update_live_prices(goods_df, price_data)
         
         # Calculate Guildees Pay
         goods_df = calculate_all_guildees_prices(goods_df)
+        
+        # Reset index to ensure it's a range index for data editor
+        goods_df = goods_df.reset_index(drop=True)
         
         # Render data editor
         edited_goods = st.data_editor(
@@ -260,7 +303,7 @@ def main():
     
     # Render company editors
     for idx, company in enumerate(filtered_companies):
-        render_company_editor(company, idx, materials, price_data, professions_list)
+        render_company_editor(company, idx, materials, price_data, professions_list, search_goods)
     
     # Footer
     st.info("💾 All changes are saved automatically")
