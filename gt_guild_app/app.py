@@ -224,7 +224,12 @@ if search_goods:
     ]
 
 # Display stats
-total_goods = sum(len(c["goods"]) for c in filtered_companies)
+unique_goods = set()
+for c in filtered_companies:
+    for g in c["goods"]:
+        unique_goods.add(g.get("Produced Goods", ""))
+total_unique_goods = len(unique_goods - {""})  # Exclude empty strings
+
 all_discounts = [g.get("Guild % Discount", 0) for c in filtered_companies for g in c["goods"] if g.get("Guild % Discount") is not None and not pd.isna(g.get("Guild % Discount"))]
 avg_discount = sum(all_discounts) / len(all_discounts) if all_discounts and len(all_discounts) > 0 else 0
 
@@ -237,7 +242,7 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.metric("Total Companies", len(filtered_companies))
 with col2:
-    st.metric("Total Products", total_goods)
+    st.metric("Total Goods", total_unique_goods)
 with col3:
     st.metric("Professions", len(all_professions_used))
 with col4:
@@ -270,12 +275,17 @@ for idx, company in enumerate(filtered_companies):
         # Create dataframe for this company's goods
         goods_df = pd.DataFrame(company["goods"])
         
-        # Ensure all numeric columns are properly typed and convert to integers
-        numeric_columns = ['Guildees Pay:', 'Live EXC Price', 'Live AVG Price', 
-                          'Guild Max', 'Guild Min', 'Guild % Discount', 'Guild Fixed Discount']
-        for col in numeric_columns:
+        # Ensure all numeric columns are properly typed
+        # Guildees Pay can have decimals (e.g., 34.5), others are integers
+        numeric_int_columns = ['Live EXC Price', 'Live AVG Price', 
+                               'Guild Max', 'Guild Min', 'Guild % Discount', 'Guild Fixed Discount']
+        for col in numeric_int_columns:
             if col in goods_df.columns:
                 goods_df[col] = pd.to_numeric(goods_df[col], errors='coerce').fillna(0).astype(int)
+        
+        # Guildees Pay should be float to support decimal rounding (e.g., 34.5)
+        if 'Guildees Pay:' in goods_df.columns:
+            goods_df['Guildees Pay:'] = pd.to_numeric(goods_df['Guildees Pay:'], errors='coerce').fillna(0).astype(float)
         
         # Update live prices from API
         if price_data:
@@ -322,8 +332,8 @@ for idx, company in enumerate(filtered_companies):
                     required=True
                 ),
                 "Guildees Pay:": st.column_config.NumberColumn(
-                    "💰 Guildees Pay 💰", 
-                    format="✓ $%d",
+                    "Guildees Pay", 
+                    format="$%d",
                     help="Auto-calculated price after discount and bounds"
                 ),
                 "Live EXC Price": st.column_config.NumberColumn("Live EXC Price", format="$%d"),

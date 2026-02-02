@@ -108,14 +108,28 @@ h3 {
 [data-testid="stDataFrame"] [role="columnheader"][aria-colindex="3"],
 div[data-testid="column"] div[data-testid="stVerticalBlock"]:nth-child(2) {
     background-color: #2a4a6f !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+}
+
+[data-testid="stDataFrame"] [role="gridcell"][aria-colindex="3"] *,
+[data-testid="stDataFrame"] [role="columnheader"][aria-colindex="3"] * {
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
 }
 
 /* Alternative broader selectors for Guildees Pay */
 div.glideDataEditor div[role="gridcell"]:nth-of-type(3),
 div.glideDataEditor div[role="columnheader"]:nth-of-type(3) {
     background-color: #2a4a6f !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+}
+
+div.glideDataEditor div[role="gridcell"]:nth-of-type(3) *,
+div.glideDataEditor div[role="columnheader"]:nth-of-type(3) * {
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
 }
 
 /* Buttons */
