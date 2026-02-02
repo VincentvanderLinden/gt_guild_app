@@ -180,3 +180,36 @@ hr {
 .element-container {
     color: #b8c5d6;
 }
+
+/* Expander styling */
+.streamlit-expanderHeader {
+    background-color: #1a1f2e !important;
+    color: #e6e6e6 !important;
+    border: 1px solid #2a3f5f !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+}
+
+.streamlit-expanderHeader:hover {
+    background-color: #252d3d !important;
+    border-color: #4a9eff !important;
+}
+
+/* Ensure expander header text is visible */
+[data-testid="stExpander"] summary {
+    color: #e6e6e6 !important;
+    font-weight: 600 !important;
+}
+
+[data-testid="stExpander"] summary:hover {
+    color: #4a9eff !important;
+}
+
+/* Expander content */
+[data-testid="stExpander"] > div > div {
+    background-color: #1a1f2e !important;
+    border: 1px solid #2a3f5f !important;
+    border-top: none !important;
+    border-radius: 0 0 6px 6px !important;
+    padding: 1rem !important;
+}
