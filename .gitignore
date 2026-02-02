@@ -120,6 +120,3 @@ poetry.lock
 # OS
 .DS_Store
 Thumbs.db
-
-# Application specific
-gt_guild_app/assets/data/guild_data.feather
