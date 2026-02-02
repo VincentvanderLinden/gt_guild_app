@@ -1,7 +1,30 @@
 """API query handlers for URL parameter access."""
 import streamlit as st
 import json
+import pandas as pd
 from typing import List, Dict, Any, Optional
+
+
+def format_json_response(data: Dict[str, Any], status: str = "success") -> Dict[str, Any]:
+    """Format response with metadata for easier scraping."""
+    return {
+        "status": status,
+        "timestamp": pd.Timestamp.now(tz="UTC").isoformat(),
+        "data": data
+    }
+
+
+def render_json_response(data: Dict[str, Any]):
+    """Render JSON response with proper content type and formatting."""
+    # Set content type for JSON
+    st.set_page_config(page_title="API Response", page_icon="🔌")
+    
+    # Display formatted JSON with custom class for scraping
+    json_str = json.dumps(data, indent=2, ensure_ascii=False)
+    st.markdown(
+        f'<p class="look_here_flip" style="white-space: pre-wrap; font-family: monospace;">{json_str}</p>',
+        unsafe_allow_html=True
+    )
 
 
 def get_cheapest_price_for_good(companies: List[Dict[str, Any]], good_name: str) -> Optional[Dict[str, Any]]:
@@ -71,13 +94,24 @@ def render_api_response(query_params: Dict[str, Any], companies: List[Dict[str, 
         
         if result is None:
             if output_format == 'json':
-                st.code(json.dumps({'error': f'Good "{good_name}" not found'}, indent=2), language='json')
+                error_response = format_json_response(
+                    {"error": f"Good '{good_name}' not found"},
+                    status="error"
+                )
+                render_json_response(error_response)
             else:
                 st.error(f"❌ Good '{good_name}' not found in any company")
             return True
         
         if output_format == 'json':
-            st.code(json.dumps(result, indent=2), language='json')
+            response = format_json_response({
+                "query": {
+                    "type": "good",
+                    "good_name": good_name
+                },
+                "result": result
+            })
+            render_json_response(response)
         else:
             st.title(f"🔍 Cheapest Price for: {result['good_name']}")
             st.metric(
@@ -110,13 +144,24 @@ def render_api_response(query_params: Dict[str, Any], companies: List[Dict[str, 
         
         if result is None:
             if output_format == 'json':
-                st.code(json.dumps({'error': f'Company "{company_name}" not found'}, indent=2), language='json')
+                error_response = format_json_response(
+                    {"error": f"Company '{company_name}' not found"},
+                    status="error"
+                )
+                render_json_response(error_response)
             else:
                 st.error(f"❌ Company '{company_name}' not found")
             return True
         
         if output_format == 'json':
-            st.code(json.dumps(result, indent=2), language='json')
+            response = format_json_response({
+                "query": {
+                    "type": "company",
+                    "company_name": company_name
+                },
+                "result": result
+            })
+            render_json_response(response)
         else:
             st.title(f"🏢 {result['company_name']}")
             st.caption(f"{', '.join(result['professions'])} | {result['timezone']} ({result['local_time']})")
@@ -149,10 +194,17 @@ def render_api_response(query_params: Dict[str, Any], companies: List[Dict[str, 
                     if good_name:
                         all_goods.add(good_name)
             
-            result = {'goods': sorted(list(all_goods))}
+            result = {'goods': sorted(list(all_goods)), 'count': len(all_goods)}
             
             if output_format == 'json':
-                st.code(json.dumps(result, indent=2), language='json')
+                response = format_json_response({
+                    "query": {
+                        "type": "list",
+                        "list_type": "goods"
+                    },
+                    "result": result
+                })
+                render_json_response(response)
             else:
                 st.title("📦 All Available Goods")
                 st.write(f"Total: {len(result['goods'])} unique goods")
@@ -171,10 +223,17 @@ def render_api_response(query_params: Dict[str, Any], companies: List[Dict[str, 
                 for c in companies
             ]
             
-            result = {'companies': company_list}
+            result = {'companies': company_list, 'count': len(company_list)}
             
             if output_format == 'json':
-                st.code(json.dumps(result, indent=2), language='json')
+                response = format_json_response({
+                    "query": {
+                        "type": "list",
+                        "list_type": "companies"
+                    },
+                    "result": result
+                })
+                render_json_response(response)
             else:
                 st.title("🏢 All Companies")
                 df = pd.DataFrame(company_list)
