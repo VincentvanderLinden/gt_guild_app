@@ -187,7 +187,7 @@ if search_goods:
 
 # Display stats
 total_goods = sum(len(c["goods"]) for c in filtered_companies)
-all_discounts = [g["Guild % Discount"] for c in filtered_companies for g in c["goods"]]
+all_discounts = [g.get("Guild % Discount", 0) for c in filtered_companies for g in c["goods"] if g.get("Guild % Discount") is not None]
 avg_discount = sum(all_discounts) / len(all_discounts) if all_discounts else 0
 
 # Count unique professions
