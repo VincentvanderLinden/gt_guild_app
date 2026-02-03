@@ -23,6 +23,32 @@ from datetime import datetime, timedelta, timezone
 # Streamlit UI Functions
 # ============================================================================
 
+def export_json_if_needed():
+    """Export JSON with current prices after any data change."""
+    try:
+        from integrations.api_client import fetch_material_prices
+        from integrations.json_exporter import export_to_public_json
+        
+        price_data, _ = fetch_material_prices()
+        
+        if price_data and st.session_state.companies:
+            # Update all companies with current prices
+            companies_copy = []
+            for company in st.session_state.companies:
+                company_copy = company.copy()
+                goods_df = prepare_goods_dataframe(company["goods"])
+                goods_df = update_live_prices(goods_df, price_data)
+                goods_df = calculate_all_guildees_prices(goods_df)
+                company_copy["goods"] = goods_df.to_dict('records')
+                companies_copy.append(company_copy)
+            
+            # Export to public JSON
+            export_to_public_json(companies_copy)
+            print("✅ Exported JSON after data change")
+    except Exception as e:
+        print(f"Error exporting JSON: {e}")
+
+
 def initialize_page():
     """Configure Streamlit page settings."""
     st.set_page_config(
@@ -172,6 +198,7 @@ def render_company_editor(company, idx, materials, price_data, all_professions_l
                         # Update local time immediately
                         c['local_time'] = get_local_time(tz_offset)
                         save_data(st.session_state.companies)
+                        export_json_if_needed()
                         break
         
         # Prepare goods dataframe
@@ -231,6 +258,7 @@ def handle_goods_changes(company, edited_goods, price_data):
         if c["name"] == company["name"]:
             c["goods"] = edited_goods.to_dict('records')
             save_data(st.session_state.companies)
+            export_json_if_needed()
             st.rerun()
             break
 
