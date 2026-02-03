@@ -559,11 +559,6 @@ def main():
     st.info("💾 All changes are saved automatically")
     st.divider()
     st.write(f"**Showing {len(filtered_companies)} of {len(companies)} companies**")
-    
-    # Auto-refresh every 2 minutes to check for updates
-    import time
-    time.sleep(120)  # Wait 2 minutes
-    st.rerun()
 
 
 if __name__ == "__main__":

@@ -148,13 +148,13 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
             
             # Get goods info for this row
             good_name = df.iloc[idx, 12] if len(df.iloc[idx]) > 12 else ""  # Column M (0-indexed: 12)
-            planet_produced = df.iloc[idx, 13] if len(df.iloc[idx]) > 13 else ""  # Column N (0-indexed: 13)
             
-            # Skip if no good name
+            # Skip if no good name (must check before any other processing)
             if pd.isna(good_name) or not str(good_name).strip():
                 continue
             
             good_name = str(good_name).strip()
+            planet_produced = df.iloc[idx, 13] if len(df.iloc[idx]) > 13 else ""  # Column N (0-indexed: 13)
             
             # Parse planet produced, filter out placeholder
             if pd.notna(planet_produced):
