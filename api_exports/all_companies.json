@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T21:26:25.302883",
+  "last_updated": "2026-02-03T21:29:10.096992",
   "companies_count": 12,
   "data": [
     {
@@ -12,7 +12,7 @@
           "Electronics"
         ],
         "timezone": "Select Time Zone",
-        "local_time": "9:26 PM",
+        "local_time": "9:29 PM",
         "goods_count": 9,
         "goods": [
           {
@@ -126,7 +126,7 @@
           "Agriculture"
         ],
         "timezone": "Select Time Zone",
-        "local_time": "9:26 PM",
+        "local_time": "9:29 PM",
         "goods_count": 4,
         "goods": [
           {
@@ -184,7 +184,7 @@
           "Manufacturing"
         ],
         "timezone": "UTC +04:00",
-        "local_time": "1:26 AM",
+        "local_time": "1:29 AM",
         "goods_count": 13,
         "goods": [
           {
@@ -343,7 +343,7 @@
           "Chicken Farmer"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "10:26 PM",
+        "local_time": "10:29 PM",
         "goods_count": 8,
         "goods": [
           {
@@ -446,7 +446,7 @@
           "Food Production"
         ],
         "timezone": "UTC -07:00",
-        "local_time": "2:26 PM",
+        "local_time": "2:29 PM",
         "goods_count": 10,
         "goods": [
           {
@@ -571,7 +571,7 @@
           "Resource Extraction"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "10:26 PM",
+        "local_time": "10:29 PM",
         "goods_count": 15,
         "goods": [
           {
@@ -747,12 +747,10 @@
         "name": "Piecorp",
         "industry": "Metallurgy",
         "professions": [
-          "Metallurgy",
-          "Chicken Farmer",
-          "Truss God"
+          "Metallurgy"
         ],
         "timezone": "UTC -06:00",
-        "local_time": "3:26 PM",
+        "local_time": "3:29 PM",
         "goods_count": 9,
         "goods": [
           {
@@ -866,7 +864,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC -05:00",
-        "local_time": "4:26 PM",
+        "local_time": "4:29 PM",
         "goods_count": 3,
         "goods": [
           {
@@ -913,7 +911,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC -08:00",
-        "local_time": "1:26 PM",
+        "local_time": "1:29 PM",
         "goods_count": 4,
         "goods": [
           {
@@ -971,7 +969,7 @@
           "Science"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "9:26 PM",
+        "local_time": "9:29 PM",
         "goods_count": 2,
         "goods": [
           {
@@ -1010,7 +1008,7 @@
           "ConstRICtion"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "10:26 PM",
+        "local_time": "10:29 PM",
         "goods_count": 14,
         "goods": [
           {
@@ -1179,7 +1177,7 @@
           "Construction"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "10:26 PM",
+        "local_time": "10:29 PM",
         "goods_count": 1,
         "goods": [
           {
