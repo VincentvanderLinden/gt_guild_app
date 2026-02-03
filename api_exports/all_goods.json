@@ -1,7 +1,7 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T12:05:10.925988",
-  "goods_count": 63,
+  "last_updated": "2026-02-03T12:08:06.284983",
+  "goods_count": 62,
   "data": [
     {
       "good": "Advanced Research Data",
@@ -66,7 +66,7 @@
           "good": "Ale",
           "planet_produced": "",
           "guildees_pay": 70.0,
-          "live_exc_price": 65,
+          "live_exc_price": 66,
           "live_avg_price": 73,
           "guild_max": 95,
           "guild_min": 70,
@@ -92,7 +92,7 @@
           "good": "Aluminium",
           "planet_produced": "Aetheria 8",
           "guildees_pay": 490.0,
-          "live_exc_price": 490,
+          "live_exc_price": 485,
           "live_avg_price": 468,
           "guild_max": 0,
           "guild_min": 0,
@@ -321,7 +321,7 @@
     },
     {
       "good": "Composite Shielding",
-      "cheapest_price": 3500.0,
+      "cheapest_price": 3550.0,
       "cheapest_company": "Technically Federated Reserves",
       "cheapest_planet": "Reverie 4",
       "listings_count": 2,
@@ -330,8 +330,8 @@
           "company": "Technically Federated Reserves",
           "good": "Composite Shielding",
           "planet_produced": "Reverie 4",
-          "guildees_pay": 3500.0,
-          "live_exc_price": 4650,
+          "guildees_pay": 3550.0,
+          "live_exc_price": 4700,
           "live_avg_price": 4545,
           "guild_max": 4000,
           "guild_min": 0,
@@ -350,7 +350,7 @@
           "good": "Composite Shielding",
           "planet_produced": "Tidal 5",
           "guildees_pay": 4323.0,
-          "live_exc_price": 4650,
+          "live_exc_price": 4700,
           "live_avg_price": 4545,
           "guild_max": 4323,
           "guild_min": 4000,
@@ -792,7 +792,7 @@
           "good": "Furniture",
           "planet_produced": "Kentaurus 2",
           "guildees_pay": 260.0,
-          "live_exc_price": 270,
+          "live_exc_price": 265,
           "live_avg_price": 266,
           "guild_max": 0,
           "guild_min": 0,
@@ -807,7 +807,7 @@
     },
     {
       "good": "Glass",
-      "cheapest_price": 68.0,
+      "cheapest_price": 67.0,
       "cheapest_company": "Drunkenduo's Ruthless Divident",
       "cheapest_planet": "Aetheria 8",
       "listings_count": 1,
@@ -816,8 +816,8 @@
           "company": "Drunkenduo's Ruthless Divident",
           "good": "Glass",
           "planet_produced": "Aetheria 8",
-          "guildees_pay": 68.0,
-          "live_exc_price": 79,
+          "guildees_pay": 67.0,
+          "live_exc_price": 78,
           "live_avg_price": 77,
           "guild_max": 75,
           "guild_min": 55,
@@ -908,32 +908,6 @@
             "Transporting",
             "Chemistry",
             "ConstRICtion"
-          ]
-        }
-      ]
-    },
-    {
-      "good": "Honeycaps",
-      "cheapest_price": 80.0,
-      "cheapest_company": "Flip Co",
-      "cheapest_planet": "None",
-      "listings_count": 1,
-      "listings": [
-        {
-          "company": "Flip Co",
-          "good": "Honeycaps",
-          "planet_produced": "None",
-          "guildees_pay": 80.0,
-          "live_exc_price": 55,
-          "live_avg_price": 58,
-          "guild_max": 60,
-          "guild_min": 80,
-          "discount_percent": 10,
-          "discount_fixed": 0,
-          "timezone": "UTC -07:00",
-          "professions": [
-            "Agriculture",
-            "Food Production"
           ]
         }
       ]
@@ -1218,7 +1192,7 @@
     },
     {
       "good": "Office Supplies",
-      "cheapest_price": 67.0,
+      "cheapest_price": 66.0,
       "cheapest_company": "Caboose Inc.",
       "cheapest_planet": "Kentaurus 2",
       "listings_count": 1,
@@ -1227,8 +1201,8 @@
           "company": "Caboose Inc.",
           "good": "Office Supplies",
           "planet_produced": "Kentaurus 2",
-          "guildees_pay": 67.0,
-          "live_exc_price": 70,
+          "guildees_pay": 66.0,
+          "live_exc_price": 69,
           "live_avg_price": 69,
           "guild_max": 0,
           "guild_min": 0,
@@ -1604,7 +1578,7 @@
     },
     {
       "good": "Tools",
-      "cheapest_price": 74.0,
+      "cheapest_price": 73.0,
       "cheapest_company": "Caboose Inc.",
       "cheapest_planet": "Kentaurus 2",
       "listings_count": 1,
@@ -1613,8 +1587,8 @@
           "company": "Caboose Inc.",
           "good": "Tools",
           "planet_produced": "Kentaurus 2",
-          "guildees_pay": 74.0,
-          "live_exc_price": 77,
+          "guildees_pay": 73.0,
+          "live_exc_price": 76,
           "live_avg_price": 74,
           "guild_max": 0,
           "guild_min": 0,
@@ -1682,7 +1656,7 @@
     },
     {
       "good": "Water",
-      "cheapest_price": 22.0,
+      "cheapest_price": 23.0,
       "cheapest_company": "Drunkenduo's Ruthless Divident",
       "cheapest_planet": "Achelois 5",
       "listings_count": 1,
@@ -1691,8 +1665,8 @@
           "company": "Drunkenduo's Ruthless Divident",
           "good": "Water",
           "planet_produced": "Achelois 5",
-          "guildees_pay": 22.0,
-          "live_exc_price": 23,
+          "guildees_pay": 23.0,
+          "live_exc_price": 24,
           "live_avg_price": 22,
           "guild_max": 30,
           "guild_min": 20,
@@ -1719,7 +1693,7 @@
           "good": "Welding Kit",
           "planet_produced": "Kentaurus 2",
           "guildees_pay": 390.0,
-          "live_exc_price": 410,
+          "live_exc_price": 405,
           "live_avg_price": 409,
           "guild_max": 0,
           "guild_min": 0,
