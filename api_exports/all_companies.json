@@ -1,7 +1,7 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T19:39:19.370368",
-  "companies_count": 11,
+  "last_updated": "2026-02-03T19:39:57.971119",
+  "companies_count": 12,
   "data": [
     {
       "company": {
@@ -344,7 +344,7 @@
         ],
         "timezone": "UTC +01:00",
         "local_time": "8:39 PM",
-        "goods_count": 9,
+        "goods_count": 8,
         "goods": [
           {
             "good": "Composite Truss",
@@ -432,17 +432,6 @@
             "guild_max": 500,
             "guild_min": 350,
             "discount_percent": 10,
-            "discount_fixed": 0
-          },
-          {
-            "good": "Water",
-            "planet_produced": "Achelois 5",
-            "guildees_pay": 22.0,
-            "live_exc_price": 23,
-            "live_avg_price": 22,
-            "guild_max": 30,
-            "guild_min": 20,
-            "discount_percent": 5,
             "discount_fixed": 0
           }
         ]
@@ -1141,6 +1130,31 @@
             "guild_max": 0,
             "guild_min": 0,
             "discount_percent": 10,
+            "discount_fixed": 0
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "VEB Hochbau Walter Ulbricht",
+        "industry": "Select Profession(s)",
+        "professions": [
+          "Select Profession(s)"
+        ],
+        "timezone": "Select Time Zone",
+        "local_time": "7:39 PM",
+        "goods_count": 1,
+        "goods": [
+          {
+            "good": "Select Item",
+            "planet_produced": "",
+            "guildees_pay": 0.0,
+            "live_exc_price": 0,
+            "live_avg_price": 0,
+            "guild_max": 0,
+            "guild_min": 0,
+            "discount_percent": 0,
             "discount_fixed": 0
           }
         ]
