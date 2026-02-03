@@ -1,37 +1,11 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T12:32:05.844521",
+  "last_updated": "2026-02-03T12:33:54.760812",
   "goods_count": 63,
   "data": [
     {
-      "good": "AI Training Data",
-      "cheapest_price": 5400.0,
-      "cheapest_company": "Flip Co",
-      "cheapest_planet": "None",
-      "listings_count": 1,
-      "listings": [
-        {
-          "company": "Flip Co",
-          "good": "AI Training Data",
-          "planet_produced": "None",
-          "guildees_pay": 5400.0,
-          "live_exc_price": 5400,
-          "live_avg_price": 5409,
-          "guild_max": 0,
-          "guild_min": 0,
-          "discount_percent": 0,
-          "discount_fixed": 0,
-          "timezone": "UTC -07:00",
-          "professions": [
-            "Agriculture",
-            "Food Production"
-          ]
-        }
-      ]
-    },
-    {
       "good": "Advanced Research Data",
-      "cheapest_price": 5800.0,
+      "cheapest_price": 5400.0,
       "cheapest_company": "Stellara",
       "cheapest_planet": "Astera 3",
       "listings_count": 1,
@@ -40,12 +14,12 @@
           "company": "Stellara",
           "good": "Advanced Research Data",
           "planet_produced": "Astera 3",
-          "guildees_pay": 5800.0,
+          "guildees_pay": 5400.0,
           "live_exc_price": 5800,
           "live_avg_price": 5630,
           "guild_max": 0,
           "guild_min": 5300,
-          "discount_percent": 0,
+          "discount_percent": 8,
           "discount_fixed": 0,
           "timezone": "UTC +00:00",
           "professions": [
@@ -939,6 +913,32 @@
       ]
     },
     {
+      "good": "Honeycaps",
+      "cheapest_price": 35.0,
+      "cheapest_company": "Flip Co",
+      "cheapest_planet": "",
+      "listings_count": 1,
+      "listings": [
+        {
+          "company": "Flip Co",
+          "good": "Honeycaps",
+          "planet_produced": "",
+          "guildees_pay": 35.0,
+          "live_exc_price": 55,
+          "live_avg_price": 58,
+          "guild_max": 40,
+          "guild_min": 35,
+          "discount_percent": 50,
+          "discount_fixed": 0,
+          "timezone": "UTC -07:00",
+          "professions": [
+            "Agriculture",
+            "Food Production"
+          ]
+        }
+      ]
+    },
+    {
       "good": "Kevlar",
       "cheapest_price": 400.0,
       "cheapest_company": "Caboose Inc.",
@@ -1472,7 +1472,7 @@
     },
     {
       "good": "Research Data",
-      "cheapest_price": 1200.0,
+      "cheapest_price": 1100.0,
       "cheapest_company": "Stellara",
       "cheapest_planet": "Astera 3",
       "listings_count": 1,
@@ -1481,12 +1481,12 @@
           "company": "Stellara",
           "good": "Research Data",
           "planet_produced": "Astera 3",
-          "guildees_pay": 1200.0,
+          "guildees_pay": 1100.0,
           "live_exc_price": 1200,
           "live_avg_price": 1197,
           "guild_max": 0,
           "guild_min": 1050,
-          "discount_percent": 0,
+          "discount_percent": 10,
           "discount_fixed": 0,
           "timezone": "UTC +00:00",
           "professions": [
