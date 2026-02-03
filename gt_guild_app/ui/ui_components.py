@@ -4,7 +4,7 @@ from typing import Dict, Any, Optional
 from datetime import datetime
 
 
-def render_sidebar_filters(professions_list, price_data, last_update, last_sheet_refresh: Optional[datetime] = None):
+def render_sidebar_filters(professions_list, price_data, last_update, last_sheet_refresh: Optional[datetime] = None, last_github_push: Optional[datetime] = None):
     """Render sidebar with filters and price info."""
     st.sidebar.title("⚙️ Filters")
     st.sidebar.space()
@@ -46,7 +46,25 @@ def render_sidebar_filters(professions_list, price_data, last_update, last_sheet
             f"*Will sync on next refresh*"
         )
     
-    return selected_professions, search_company, search_goods
+    # GitHub push status and button
+    st.sidebar.divider()
+    if last_github_push:
+        time_str = last_github_push.strftime("%b %d, %Y at %I:%M %p UTC")
+        st.sidebar.caption(
+            f"🚀 **GitHub Data**  \n"
+            f"*Last pushed:*  \n"
+            f"*{time_str}*  \n"
+            f"*Auto-pushes every 2 minutes*"
+        )
+    else:
+        st.sidebar.caption(
+            f"🚀 **GitHub Data**  \n"
+            f"*Not yet pushed*"
+        )
+    
+    push_button = st.sidebar.button("📤 Push to GitHub Now", use_container_width=True, type="primary")
+    
+    return selected_professions, search_company, search_goods, push_button
 
 
 def render_stats_row(total_companies: int, total_goods: int, 
