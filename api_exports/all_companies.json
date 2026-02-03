@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T16:14:49.719120",
+  "last_updated": "2026-02-03T16:18:48.737900",
   "companies_count": 10,
   "data": [
     {
@@ -12,7 +12,7 @@
           "Electronics"
         ],
         "timezone": "Select Time Zone",
-        "local_time": "4:14 PM",
+        "local_time": "4:18 PM",
         "goods_count": 9,
         "goods": [
           {
@@ -126,7 +126,7 @@
           "Agriculture"
         ],
         "timezone": "Select Time Zone",
-        "local_time": "4:14 PM",
+        "local_time": "4:18 PM",
         "goods_count": 4,
         "goods": [
           {
@@ -184,7 +184,7 @@
           "Manufacturing"
         ],
         "timezone": "UTC +04:00",
-        "local_time": "8:14 PM",
+        "local_time": "8:18 PM",
         "goods_count": 13,
         "goods": [
           {
@@ -343,7 +343,7 @@
           "Chicken Farmer"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "5:14 PM",
+        "local_time": "5:18 PM",
         "goods_count": 9,
         "goods": [
           {
@@ -457,7 +457,7 @@
           "Food Production"
         ],
         "timezone": "UTC -07:00",
-        "local_time": "9:14 AM",
+        "local_time": "9:18 AM",
         "goods_count": 10,
         "goods": [
           {
@@ -582,7 +582,7 @@
           "Resource Extraction"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "5:14 PM",
+        "local_time": "5:18 PM",
         "goods_count": 15,
         "goods": [
           {
@@ -762,7 +762,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC -05:00",
-        "local_time": "11:14 AM",
+        "local_time": "11:18 AM",
         "goods_count": 3,
         "goods": [
           {
@@ -809,7 +809,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC -08:00",
-        "local_time": "8:14 AM",
+        "local_time": "8:18 AM",
         "goods_count": 4,
         "goods": [
           {
@@ -867,7 +867,7 @@
           "Science"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "4:14 PM",
+        "local_time": "4:18 PM",
         "goods_count": 2,
         "goods": [
           {
@@ -906,7 +906,7 @@
           "ConstRICtion"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "5:14 PM",
+        "local_time": "5:18 PM",
         "goods_count": 12,
         "goods": [
           {
