@@ -246,7 +246,7 @@ def main():
         curl http://localhost:8503/api/good/Steel
         ```
         
-        Full documentation available in [API.md](https://github.com/yourusername/gt_guild_app/blob/main/API.md)
+        See API.md file in the project root for full documentation.
         """)
     
     # Refresh from Google Sheets if needed
