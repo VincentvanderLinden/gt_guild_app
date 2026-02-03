@@ -72,6 +72,7 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
       * R: Guild Max
       * S: Guild Min
       * T: Guild % Discount
+      * U: Guild Fixed Discount
     
     Returns list of company dictionaries.
     """
@@ -177,6 +178,7 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
             guild_max = parse_price(df.iloc[idx, 17])  # Column R (0-indexed: 17)
             guild_min = parse_price(df.iloc[idx, 18])  # Column S (0-indexed: 18)
             guild_discount = parse_price(df.iloc[idx, 19])  # Column T (0-indexed: 19)
+            guild_fixed_discount = parse_price(df.iloc[idx, 20]) if len(df.iloc[idx]) > 20 else 0  # Column U (0-indexed: 20)
             
             # Initialize company entry if not exists
             if company_name not in companies_dict:
@@ -199,7 +201,7 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
                 'Guild Max': int(guild_max),
                 'Guild Min': int(guild_min),
                 'Guild % Discount': int(guild_discount),
-                'Guild Fixed Discount': 0
+                'Guild Fixed Discount': int(guild_fixed_discount)
             })
         
         except Exception as e:

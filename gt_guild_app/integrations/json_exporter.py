@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 def export_to_public_json(companies: List[Dict[str, Any]], export_dir: str = "api_exports"):
-    """Export comprehensive goods data to a single JSON file with cheapest prices and all listings."""
+    """Export comprehensive data to JSON files: all_goods.json and all_companies.json."""
     export_path = Path(export_dir)
     export_path.mkdir(parents=True, exist_ok=True)
     
@@ -51,7 +51,7 @@ def export_to_public_json(companies: List[Dict[str, Any]], export_dir: str = "ap
             'listings': listings
         })
     
-    # Export single comprehensive file
+    # Export all_goods.json (organized by goods)
     with open(export_path / "all_goods.json", "w") as f:
         json.dump({
             "status": "success",
@@ -61,3 +61,46 @@ def export_to_public_json(companies: List[Dict[str, Any]], export_dir: str = "ap
         }, f, indent=2)
     
     print(f"✅ Exported {len(all_goods_output)} goods to {export_path / 'all_goods.json'}")
+    
+    # Build all_companies.json (organized by companies)
+    all_companies_output = []
+    for company in companies:
+        if not company.get('goods'):
+            continue
+        
+        # Sort company's goods by name
+        company_goods = sorted(company['goods'], key=lambda x: x.get('Produced Goods', ''))
+        
+        all_companies_output.append({
+            'company': company['name'],
+            'industry': company.get('industry', ''),
+            'professions': company.get('professions', []),
+            'timezone': company.get('timezone', 'UTC +00:00'),
+            'local_time': company.get('local_time', 'N/A'),
+            'goods_count': len(company_goods),
+            'goods': [{
+                'good': good.get('Produced Goods', ''),
+                'planet_produced': good.get('Planet Produced', ''),
+                'guildees_pay': good.get('Guildees Pay:', 0),
+                'live_exc_price': good.get('Live EXC Price', 0),
+                'live_avg_price': good.get('Live AVG Price', 0),
+                'guild_max': good.get('Guild Max', 0),
+                'guild_min': good.get('Guild Min', 0),
+                'discount_percent': good.get('Guild % Discount', 0),
+                'discount_fixed': good.get('Guild Fixed Discount', 0)
+            } for good in company_goods]
+        })
+    
+    # Sort companies by name
+    all_companies_output.sort(key=lambda x: x['company'])
+    
+    # Export all_companies.json (organized by companies)
+    with open(export_path / "all_companies.json", "w") as f:
+        json.dump({
+            "status": "success",
+            "last_updated": datetime.now().isoformat(),
+            "companies_count": len(all_companies_output),
+            "data": all_companies_output
+        }, f, indent=2)
+    
+    print(f"✅ Exported {len(all_companies_output)} companies to {export_path / 'all_companies.json'}")

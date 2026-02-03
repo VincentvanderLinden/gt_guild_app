@@ -58,12 +58,17 @@ def calculate_all_guildees_prices(goods_df: pd.DataFrame) -> pd.DataFrame:
     """Calculate Guildees Pay for all goods based on live prices and discounts."""
     for idx, row in goods_df.iterrows():
         live_price = row.get('Live EXC Price', 0)
-        discount = row.get('Guild % Discount', 0)
+        discount_percent = row.get('Guild % Discount', 0)
+        fixed_discount = row.get('Guild Fixed Discount', 0)
         guild_min = row.get('Guild Min', 0)
         guild_max = row.get('Guild Max', 0)
         
-        # Calculate base price with discount and rounding
-        calculated_price = calculate_guildees_pay(live_price, discount)
+        # If fixed discount is set, use it instead of percentage
+        if fixed_discount > 0:
+            calculated_price = live_price - fixed_discount
+        else:
+            # Calculate base price with percentage discount and rounding
+            calculated_price = calculate_guildees_pay(live_price, discount_percent)
         
         # Apply bounds
         final_price = apply_price_bounds(calculated_price, guild_min, guild_max)

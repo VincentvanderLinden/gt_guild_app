@@ -70,28 +70,39 @@ def push_to_github_now(force=False):
     
     try:
         # Try GitHub API first (works remotely with token in secrets)
-        json_path = Path(__file__).parent.parent / "api_exports" / "all_goods.json"
-        success = push_to_github(
-            file_path=str(json_path),
+        repo_root = Path(__file__).parent.parent
+        all_goods_path = repo_root / "api_exports" / "all_goods.json"
+        all_companies_path = repo_root / "api_exports" / "all_companies.json"
+        
+        # Push both files via GitHub API
+        success_goods = push_to_github(
+            file_path=str(all_goods_path),
             repo_owner="VincentvanderLinden",
             repo_name="gt_guild_app",
             commit_message=f"Auto-update guild data - {now.strftime('%Y-%m-%d %H:%M')}"
         )
         
+        success_companies = push_to_github(
+            file_path=str(all_companies_path),
+            repo_owner="VincentvanderLinden",
+            repo_name="gt_guild_app",
+            commit_message=f"Auto-update guild data - {now.strftime('%Y-%m-%d %H:%M')}"
+        )
+        
+        success = success_goods and success_companies
+        
         # Fallback to git command (works locally)
         if not success:
             try:
-                repo_root = Path(__file__).parent.parent
-                
-                # Add the JSON file
+                # Add both JSON files
                 subprocess.run(
-                    ["git", "add", "api_exports/all_goods.json"],
+                    ["git", "add", "api_exports/all_goods.json", "api_exports/all_companies.json"],
                     cwd=repo_root,
                     capture_output=True,
                     timeout=5
                 )
                 
-                # Commit it
+                # Commit them
                 result = subprocess.run(
                     ["git", "commit", "-m", f"Auto-update guild data - {now.strftime('%Y-%m-%d %H:%M')}"],
                     cwd=repo_root,
@@ -406,32 +417,46 @@ def main():
         st.info("""
         **JSON Data Available via GitHub:**
         
-        All guild data is exported to a public JSON file that updates automatically:
+        Guild data is exported to public JSON files that update automatically:
         
+        **By Good (find cheapest prices):**
         ```
         https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_goods.json
         ```
         
+        **By Company (see all offers per company):**
+        ```
+        https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_companies.json
+        ```
+        
         **Data Structure:**
-        Each good includes:
-        - Good name
-        - Cheapest price and company
-        - Planet produced
-        - All listings sorted by price
+        - `all_goods.json`: Each good includes cheapest price, company, planet, and all listings sorted by price
+        - `all_companies.json`: Each company includes professions, timezone, and all their goods with prices
         
         **JavaScript Example:**
         ```javascript
+        // Get all goods
         fetch('https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_goods.json')
             .then(r => r.json())
-            .then(data => console.log(data.data));  // Array of goods
+            .then(data => console.log(data.data));
+        
+        // Get all companies
+        fetch('https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_companies.json')
+            .then(r => r.json())
+            .then(data => console.log(data.data));
         ```
         
         **Python Example:**
         ```python
         import requests
-        url = "https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_goods.json"
-        data = requests.get(url).json()
-        goods = data["data"]
+        
+        # Get all goods
+        goods_url = "https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_goods.json"
+        goods = requests.get(goods_url).json()["data"]
+        
+        # Get all companies
+        companies_url = "https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_companies.json"
+        companies = requests.get(companies_url).json()["data"]
         ```
         
         Data updates automatically every 10 minutes when prices refresh.

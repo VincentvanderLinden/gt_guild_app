@@ -32,6 +32,7 @@ The import script expects the following structure:
 - **Column R:** Guild Max (with or without $ signs)
 - **Column S:** Guild Min (with or without $ signs)
 - **Column T:** Guild % Discount (with or without % signs)
+- **Column U:** Guild Fixed Discount (with or without $ signs)
 
 ### Multiple Professions:
 
