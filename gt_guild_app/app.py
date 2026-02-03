@@ -451,6 +451,16 @@ def main():
     
     # Add API info banner
     with st.expander("🔌 REST API Access Available", expanded=False):
+        # Check if API is available
+        try:
+            from streamlit.starlette import App as StarletteApp
+            api_available = True
+            api_status = "✅ API endpoints are active"
+        except ImportError:
+            api_available = False
+            api_status = f"⚠️ API not available (Streamlit {st.__version__} - requires 1.53+)"
+        
+        st.caption(api_status)
         st.markdown("""
         Access guild data programmatically via REST API endpoints:
         
@@ -578,9 +588,15 @@ try:
             Route("/api/all", api_all_data),
         ],
     )
-except ImportError:
+    print(f"✅ Starlette API routes registered successfully")
+except ImportError as e:
     # Streamlit version doesn't support Starlette integration
-    pass
+    print(f"⚠️ Streamlit Starlette not available: {e}")
+    print(f"⚠️ Streamlit version: {st.__version__}")
+    app = None
+except Exception as e:
+    print(f"❌ Error creating Starlette app: {e}")
+    app = None
 
 
 if __name__ == "__main__":
