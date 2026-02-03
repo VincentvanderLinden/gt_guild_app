@@ -28,6 +28,7 @@ def export_json_if_needed():
     try:
         from integrations.api_client import fetch_material_prices
         from integrations.json_exporter import export_to_public_json
+        from integrations.github_uploader import push_to_github
         import subprocess
         from pathlib import Path
         
@@ -48,31 +49,41 @@ def export_json_if_needed():
             export_to_public_json(companies_copy)
             print("✅ Exported JSON after data change")
             
-            # Auto-commit and push to GitHub
-            try:
-                repo_root = Path(__file__).parent.parent
-                subprocess.run(
-                    ["git", "add", "api_exports/all_goods.json"],
-                    cwd=repo_root,
-                    capture_output=True,
-                    timeout=5
-                )
-                result = subprocess.run(
-                    ["git", "commit", "-m", f"Auto-update guild data - {datetime.now().strftime('%Y-%m-%d %H:%M')}"],
-                    cwd=repo_root,
-                    capture_output=True,
-                    timeout=5
-                )
-                if result.returncode == 0:
+            # Try GitHub API first (works remotely with token in secrets)
+            json_path = Path(__file__).parent.parent / "api_exports" / "all_goods.json"
+            success = push_to_github(
+                file_path=str(json_path),
+                repo_owner="VincentvanderLinden",
+                repo_name="gt_guild_app",
+                commit_message=f"Auto-update guild data - {datetime.now().strftime('%Y-%m-%d %H:%M')}"
+            )
+            
+            # Fallback to git command (works locally)
+            if not success:
+                try:
+                    repo_root = Path(__file__).parent.parent
                     subprocess.run(
-                        ["git", "push"],
+                        ["git", "add", "api_exports/all_goods.json"],
                         cwd=repo_root,
                         capture_output=True,
-                        timeout=10
+                        timeout=5
                     )
-                    print("✅ Auto-pushed to GitHub")
-            except Exception as git_error:
-                print(f"Note: Could not auto-push to GitHub: {git_error}")
+                    result = subprocess.run(
+                        ["git", "commit", "-m", f"Auto-update guild data - {datetime.now().strftime('%Y-%m-%d %H:%M')}"],
+                        cwd=repo_root,
+                        capture_output=True,
+                        timeout=5
+                    )
+                    if result.returncode == 0:
+                        subprocess.run(
+                            ["git", "push"],
+                            cwd=repo_root,
+                            capture_output=True,
+                            timeout=10
+                        )
+                        print("✅ Auto-pushed to GitHub via git")
+                except Exception as git_error:
+                    print(f"Note: Could not auto-push to GitHub: {git_error}")
     except Exception as e:
         print(f"Error exporting JSON: {e}")
 
@@ -156,35 +167,45 @@ def refresh_from_google_sheets():
                         
                         # Export to public JSON
                         from integrations.json_exporter import export_to_public_json
+                        from integrations.github_uploader import push_to_github
                         export_to_public_json(companies_copy)
                         
-                        # Auto-commit and push to GitHub
-                        import subprocess
-                        from pathlib import Path
-                        try:
-                            repo_root = Path(__file__).parent.parent
-                            subprocess.run(
-                                ["git", "add", "api_exports/all_goods.json"],
-                                cwd=repo_root,
-                                capture_output=True,
-                                timeout=5
-                            )
-                            result = subprocess.run(
-                                ["git", "commit", "-m", f"Auto-update from Google Sheets - {now.strftime('%Y-%m-%d %H:%M')}"],
-                                cwd=repo_root,
-                                capture_output=True,
-                                timeout=5
-                            )
-                            if result.returncode == 0:
+                        # Try GitHub API first (works remotely with token in secrets)
+                        json_path = Path(__file__).parent.parent / "api_exports" / "all_goods.json"
+                        success = push_to_github(
+                            file_path=str(json_path),
+                            repo_owner="VincentvanderLinden",
+                            repo_name="gt_guild_app",
+                            commit_message=f"Auto-update from Google Sheets - {now.strftime('%Y-%m-%d %H:%M')}"
+                        )
+                        
+                        # Fallback to git command (works locally)
+                        if not success:
+                            import subprocess
+                            try:
+                                repo_root = Path(__file__).parent.parent
                                 subprocess.run(
-                                    ["git", "push"],
+                                    ["git", "add", "api_exports/all_goods.json"],
                                     cwd=repo_root,
                                     capture_output=True,
-                                    timeout=10
+                                    timeout=5
                                 )
-                                print("✅ Auto-pushed to GitHub from Google Sheets refresh")
-                        except Exception as git_error:
-                            print(f"Note: Could not auto-push to GitHub: {git_error}")
+                                result = subprocess.run(
+                                    ["git", "commit", "-m", f"Auto-update from Google Sheets - {now.strftime('%Y-%m-%d %H:%M')}"],
+                                    cwd=repo_root,
+                                    capture_output=True,
+                                    timeout=5
+                                )
+                                if result.returncode == 0:
+                                    subprocess.run(
+                                        ["git", "push"],
+                                        cwd=repo_root,
+                                        capture_output=True,
+                                        timeout=10
+                                    )
+                                    print("✅ Auto-pushed to GitHub from Google Sheets refresh via git")
+                            except Exception as git_error:
+                                print(f"Note: Could not auto-push to GitHub: {git_error}")
                 except Exception as e:
                     print(f"Error exporting JSON: {e}")
                 

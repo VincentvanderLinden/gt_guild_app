@@ -88,12 +88,32 @@ goods = data["data"]  # Array of all goods with listings
    GOOGLE_SHEET_URL = "your-google-sheets-export-url"
    ```
 
-4. **Run the application**
+4. **Configure GitHub Auto-Push** (Optional)
+   
+   To enable automatic JSON updates to GitHub:
+   
+   a. Create a GitHub Personal Access Token:
+      - Go to https://github.com/settings/tokens
+      - Click "Generate new token (classic)"
+      - Give it a name like "TiT Guild App"
+      - Check the `repo` scope (full control)
+      - Click "Generate token" and copy it
+   
+   b. Add to Streamlit secrets:
+      - **Local:** Create `.streamlit/secrets.toml` (copy from `.streamlit/secrets.toml.template`)
+      - **Streamlit Cloud:** Add to App Settings → Secrets
+      ```toml
+      GITHUB_TOKEN = "ghp_your_token_here"
+      ```
+   
+   Without this token, the app works locally using git commands but won't auto-push when hosted remotely.
+
+5. **Run the application**
    ```bash
    poetry run streamlit run gt_guild_app/app.py
    ```
 
-5. **Access the app**
+6. **Access the app**
    
    Open your browser to `http://localhost:8501`
 
