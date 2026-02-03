@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T20:22:15.966193",
+  "last_updated": "2026-02-03T20:22:19.017548",
   "companies_count": 12,
   "data": [
     {
@@ -1152,10 +1152,7 @@
       "company": {
         "name": "VEB Hochbau Walter Ulbricht",
         "industry": "Electronics",
-        "professions": [
-          "Electronics",
-          "Construction"
-        ],
+        "professions": [],
         "timezone": "UTC +01:00",
         "local_time": "9:22 PM",
         "goods_count": 1,
