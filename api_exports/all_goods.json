@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T19:39:19.365045",
+  "last_updated": "2026-02-03T19:39:57.967410",
   "goods_count": 68,
   "data": [
     {
@@ -1675,7 +1675,7 @@
       "cheapest_price": 0.0,
       "cheapest_company": "Flip Co",
       "cheapest_planet": "",
-      "listings_count": 3,
+      "listings_count": 4,
       "listings": [
         {
           "company": "Flip Co",
@@ -1726,6 +1726,22 @@
           "professions": [
             "Agriculture",
             "Food Production"
+          ]
+        },
+        {
+          "company": "VEB Hochbau Walter Ulbricht",
+          "good": "Select Item",
+          "planet_produced": "",
+          "guildees_pay": 0.0,
+          "live_exc_price": 0,
+          "live_avg_price": 0,
+          "guild_max": 0,
+          "guild_min": 0,
+          "discount_percent": 0,
+          "discount_fixed": 0,
+          "timezone": "Select Time Zone",
+          "professions": [
+            "Select Profession(s)"
           ]
         }
       ]
@@ -2008,29 +2024,11 @@
     },
     {
       "good": "Water",
-      "cheapest_price": 22.0,
-      "cheapest_company": "Drunkenduo's Ruthless Divident",
-      "cheapest_planet": "Achelois 5",
-      "listings_count": 2,
+      "cheapest_price": 23.0,
+      "cheapest_company": "Bane Inc.",
+      "cheapest_planet": "",
+      "listings_count": 1,
       "listings": [
-        {
-          "company": "Drunkenduo's Ruthless Divident",
-          "good": "Water",
-          "planet_produced": "Achelois 5",
-          "guildees_pay": 22.0,
-          "live_exc_price": 23,
-          "live_avg_price": 22,
-          "guild_max": 30,
-          "guild_min": 20,
-          "discount_percent": 5,
-          "discount_fixed": 0,
-          "timezone": "UTC +01:00",
-          "professions": [
-            "Metallurgy",
-            "Failing Hard",
-            "Chicken Farmer"
-          ]
-        },
         {
           "company": "Bane Inc.",
           "good": "Water",
