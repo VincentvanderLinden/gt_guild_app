@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T14:10:02.964069",
+  "last_updated": "2026-02-03T14:10:27.141924",
   "goods_count": 62,
   "data": [
     {
@@ -349,13 +349,13 @@
           "company": "MB Industries",
           "good": "Composite Shielding",
           "planet_produced": "Tidal 5",
-          "guildees_pay": 4300.0,
+          "guildees_pay": 4200.0,
           "live_exc_price": 4500,
           "live_avg_price": 4555,
           "guild_max": 4323,
           "guild_min": 4000,
           "discount_percent": 5,
-          "discount_fixed": 0,
+          "discount_fixed": 300,
           "timezone": "UTC +01:00",
           "professions": [
             "Chemistry",
@@ -1149,13 +1149,13 @@
           "company": "MB Industries",
           "good": "Nanoweave Shielding",
           "planet_produced": "Light 7",
-          "guildees_pay": 7410.0,
+          "guildees_pay": 7300.0,
           "live_exc_price": 7800,
           "live_avg_price": 7813,
           "guild_max": 7410,
           "guild_min": 7000,
           "discount_percent": 5,
-          "discount_fixed": 0,
+          "discount_fixed": 500,
           "timezone": "UTC +01:00",
           "professions": [
             "Chemistry",
