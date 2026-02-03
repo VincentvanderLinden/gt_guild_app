@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T14:13:39.123593",
+  "last_updated": "2026-02-03T14:16:52.287010",
   "companies_count": 8,
   "data": [
     {
@@ -11,7 +11,7 @@
           "Manufacturing"
         ],
         "timezone": "UTC +04:00",
-        "local_time": "6:13 PM",
+        "local_time": "6:16 PM",
         "goods_count": 13,
         "goods": [
           {
@@ -170,7 +170,7 @@
           "Chicken Farmer"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "3:13 PM",
+        "local_time": "3:16 PM",
         "goods_count": 9,
         "goods": [
           {
@@ -284,7 +284,7 @@
           "Food Production"
         ],
         "timezone": "UTC -07:00",
-        "local_time": "7:13 AM",
+        "local_time": "7:16 AM",
         "goods_count": 10,
         "goods": [
           {
@@ -409,7 +409,7 @@
           "Resource Extraction"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "3:13 PM",
+        "local_time": "3:16 PM",
         "goods_count": 15,
         "goods": [
           {
@@ -589,7 +589,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC -05:00",
-        "local_time": "9:13 AM",
+        "local_time": "9:16 AM",
         "goods_count": 3,
         "goods": [
           {
@@ -636,7 +636,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC -08:00",
-        "local_time": "6:13 AM",
+        "local_time": "6:16 AM",
         "goods_count": 4,
         "goods": [
           {
@@ -694,7 +694,7 @@
           "Science"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "2:13 PM",
+        "local_time": "2:16 PM",
         "goods_count": 2,
         "goods": [
           {
@@ -733,7 +733,7 @@
           "ConstRICtion"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "3:13 PM",
+        "local_time": "3:16 PM",
         "goods_count": 12,
         "goods": [
           {
