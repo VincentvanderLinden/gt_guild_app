@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T19:39:57.971119",
+  "last_updated": "2026-02-03T19:50:14.070177",
   "companies_count": 12,
   "data": [
     {
@@ -12,14 +12,14 @@
           "Electronics"
         ],
         "timezone": "Select Time Zone",
-        "local_time": "7:39 PM",
+        "local_time": "7:50 PM",
         "goods_count": 9,
         "goods": [
           {
             "good": "Construction Vehicle",
             "planet_produced": "",
-            "guildees_pay": 2300.0,
-            "live_exc_price": 2850,
+            "guildees_pay": 2350.0,
+            "live_exc_price": 2900,
             "live_avg_price": 2858,
             "guild_max": 2700,
             "guild_min": 0,
@@ -30,7 +30,7 @@
             "good": "Consumer Electronics",
             "planet_produced": "",
             "guildees_pay": 630.0,
-            "live_exc_price": 730,
+            "live_exc_price": 740,
             "live_avg_price": 748,
             "guild_max": 750,
             "guild_min": 600,
@@ -63,7 +63,7 @@
             "good": "Furniture",
             "planet_produced": "",
             "guildees_pay": 300.0,
-            "live_exc_price": 320,
+            "live_exc_price": 315,
             "live_avg_price": 268,
             "guild_max": 240,
             "guild_min": 300,
@@ -73,8 +73,8 @@
           {
             "good": "Tools",
             "planet_produced": "",
-            "guildees_pay": 62.0,
-            "live_exc_price": 77,
+            "guildees_pay": 63.0,
+            "live_exc_price": 78,
             "live_avg_price": 75,
             "guild_max": 75,
             "guild_min": 60,
@@ -85,7 +85,7 @@
             "good": "VR Headset",
             "planet_produced": "",
             "guildees_pay": 2400.0,
-            "live_exc_price": 2450,
+            "live_exc_price": 2400,
             "live_avg_price": 2771,
             "guild_max": 2500,
             "guild_min": 2400,
@@ -96,7 +96,7 @@
             "good": "Welding Kit",
             "planet_produced": "",
             "guildees_pay": 370.0,
-            "live_exc_price": 420,
+            "live_exc_price": 405,
             "live_avg_price": 409,
             "guild_max": 420,
             "guild_min": 370,
@@ -106,8 +106,8 @@
           {
             "good": "Workwear",
             "planet_produced": "",
-            "guildees_pay": 71.0,
-            "live_exc_price": 88,
+            "guildees_pay": 70.0,
+            "live_exc_price": 87,
             "live_avg_price": 82,
             "guild_max": 80,
             "guild_min": 60,
@@ -126,7 +126,7 @@
           "Agriculture"
         ],
         "timezone": "Select Time Zone",
-        "local_time": "7:39 PM",
+        "local_time": "7:50 PM",
         "goods_count": 4,
         "goods": [
           {
@@ -165,8 +165,8 @@
           {
             "good": "Water",
             "planet_produced": "",
-            "guildees_pay": 23.0,
-            "live_exc_price": 23,
+            "guildees_pay": 22.0,
+            "live_exc_price": 22,
             "live_avg_price": 22,
             "guild_max": 0,
             "guild_min": 0,
@@ -184,14 +184,14 @@
           "Manufacturing"
         ],
         "timezone": "UTC +04:00",
-        "local_time": "11:39 PM",
+        "local_time": "11:50 PM",
         "goods_count": 13,
         "goods": [
           {
             "good": "Combustion Engine",
             "planet_produced": "Kentaurus 2",
-            "guildees_pay": 830.0,
-            "live_exc_price": 870,
+            "guildees_pay": 840.0,
+            "live_exc_price": 880,
             "live_avg_price": 834,
             "guild_max": 0,
             "guild_min": 0,
@@ -212,8 +212,8 @@
           {
             "good": "Construction Vehicle",
             "planet_produced": "Kentaurus 2",
-            "guildees_pay": 2750.0,
-            "live_exc_price": 2850,
+            "guildees_pay": 2800.0,
+            "live_exc_price": 2900,
             "live_avg_price": 2858,
             "guild_max": 0,
             "guild_min": 0,
@@ -245,8 +245,8 @@
           {
             "good": "Furniture",
             "planet_produced": "Kentaurus 2",
-            "guildees_pay": 310.0,
-            "live_exc_price": 320,
+            "guildees_pay": 300.0,
+            "live_exc_price": 315,
             "live_avg_price": 268,
             "guild_max": 0,
             "guild_min": 0,
@@ -300,8 +300,8 @@
           {
             "good": "Tools",
             "planet_produced": "Kentaurus 2",
-            "guildees_pay": 74.0,
-            "live_exc_price": 77,
+            "guildees_pay": 75.0,
+            "live_exc_price": 78,
             "live_avg_price": 75,
             "guild_max": 0,
             "guild_min": 0,
@@ -311,8 +311,8 @@
           {
             "good": "Welding Kit",
             "planet_produced": "Kentaurus 2",
-            "guildees_pay": 400.0,
-            "live_exc_price": 420,
+            "guildees_pay": 390.0,
+            "live_exc_price": 405,
             "live_avg_price": 409,
             "guild_max": 0,
             "guild_min": 0,
@@ -322,8 +322,8 @@
           {
             "good": "Workwear",
             "planet_produced": "Kentaurus 2",
-            "guildees_pay": 84.0,
-            "live_exc_price": 88,
+            "guildees_pay": 83.0,
+            "live_exc_price": 87,
             "live_avg_price": 82,
             "guild_max": 0,
             "guild_min": 0,
@@ -343,7 +343,7 @@
           "Chicken Farmer"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "8:39 PM",
+        "local_time": "8:50 PM",
         "goods_count": 8,
         "goods": [
           {
@@ -382,8 +382,8 @@
           {
             "good": "Glass",
             "planet_produced": "Aetheria 8",
-            "guildees_pay": 68.0,
-            "live_exc_price": 79,
+            "guildees_pay": 67.0,
+            "live_exc_price": 78,
             "live_avg_price": 77,
             "guild_max": 75,
             "guild_min": 55,
@@ -416,7 +416,7 @@
             "good": "Titanium",
             "planet_produced": "Aetheria 2",
             "guildees_pay": 1700.0,
-            "live_exc_price": 2300,
+            "live_exc_price": 2250,
             "live_avg_price": 1944,
             "guild_max": 1700,
             "guild_min": 1400,
@@ -446,14 +446,14 @@
           "Food Production"
         ],
         "timezone": "UTC -07:00",
-        "local_time": "12:39 PM",
+        "local_time": "12:50 PM",
         "goods_count": 10,
         "goods": [
           {
             "good": "Ale",
             "planet_produced": "",
             "guildees_pay": 70.0,
-            "live_exc_price": 66,
+            "live_exc_price": 65,
             "live_avg_price": 72,
             "guild_max": 95,
             "guild_min": 70,
@@ -507,8 +507,8 @@
           {
             "good": "Rations",
             "planet_produced": "",
-            "guildees_pay": 34.0,
-            "live_exc_price": 40,
+            "guildees_pay": 35.0,
+            "live_exc_price": 41,
             "live_avg_price": 42,
             "guild_max": 35,
             "guild_min": 32,
@@ -571,7 +571,7 @@
           "Resource Extraction"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "8:39 PM",
+        "local_time": "8:50 PM",
         "goods_count": 15,
         "goods": [
           {
@@ -611,8 +611,8 @@
             "good": "Biopolyne",
             "planet_produced": "Light 7",
             "guildees_pay": 1140.0,
-            "live_exc_price": 1350,
-            "live_avg_price": 1184,
+            "live_exc_price": 1400,
+            "live_avg_price": 1185,
             "guild_max": 1140,
             "guild_min": 969,
             "discount_percent": 15,
@@ -654,8 +654,8 @@
           {
             "good": "Fission Fuel",
             "planet_produced": "Alioth 3",
-            "guildees_pay": 2150.0,
-            "live_exc_price": 2350,
+            "guildees_pay": 2200.0,
+            "live_exc_price": 2400,
             "live_avg_price": 2495,
             "guild_max": 2375,
             "guild_min": 1800,
@@ -700,7 +700,7 @@
             "planet_produced": "Light 7",
             "guildees_pay": 7000.0,
             "live_exc_price": 7400,
-            "live_avg_price": 7802,
+            "live_avg_price": 7801,
             "guild_max": 7410,
             "guild_min": 7000,
             "discount_percent": 5,
@@ -750,19 +750,19 @@
           "Metallurgy"
         ],
         "timezone": "UTC -06:00",
-        "local_time": "1:39 PM",
-        "goods_count": 8,
+        "local_time": "1:50 PM",
+        "goods_count": 9,
         "goods": [
           {
             "good": "Aluminium",
             "planet_produced": "Kentaurus 2",
-            "guildees_pay": 480.0,
+            "guildees_pay": 545.0,
             "live_exc_price": 560,
             "live_avg_price": 475,
             "guild_max": 0,
             "guild_min": 0,
-            "discount_percent": 15,
-            "discount_fixed": 0
+            "discount_percent": 8,
+            "discount_fixed": 15
           },
           {
             "good": "Copper",
@@ -789,12 +789,12 @@
           {
             "good": "Iron",
             "planet_produced": "Kentaurus 2",
-            "guildees_pay": 240.0,
-            "live_exc_price": 250,
+            "guildees_pay": 250.0,
+            "live_exc_price": 260,
             "live_avg_price": 261,
             "guild_max": 0,
             "guild_min": 0,
-            "discount_percent": 15,
+            "discount_percent": 8,
             "discount_fixed": 10
           },
           {
@@ -809,6 +809,17 @@
             "discount_fixed": 200
           },
           {
+            "good": "Silicon Wafer",
+            "planet_produced": "Aetheria 8",
+            "guildees_pay": 200.0,
+            "live_exc_price": 215,
+            "live_avg_price": 225,
+            "guild_max": 0,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 15
+          },
+          {
             "good": "Steel",
             "planet_produced": "Kentaurus 2",
             "guildees_pay": 830.0,
@@ -816,14 +827,14 @@
             "live_avg_price": 790,
             "guild_max": 0,
             "guild_min": 0,
-            "discount_percent": 10,
+            "discount_percent": 8,
             "discount_fixed": 20
           },
           {
             "good": "Titanium",
             "planet_produced": "Aetheria 8",
-            "guildees_pay": 2100.0,
-            "live_exc_price": 2300,
+            "guildees_pay": 2050.0,
+            "live_exc_price": 2250,
             "live_avg_price": 1944,
             "guild_max": 0,
             "guild_min": 0,
@@ -853,7 +864,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC -05:00",
-        "local_time": "2:39 PM",
+        "local_time": "2:50 PM",
         "goods_count": 3,
         "goods": [
           {
@@ -900,7 +911,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC -08:00",
-        "local_time": "11:39 AM",
+        "local_time": "11:50 AM",
         "goods_count": 4,
         "goods": [
           {
@@ -958,7 +969,7 @@
           "Science"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "7:39 PM",
+        "local_time": "7:50 PM",
         "goods_count": 2,
         "goods": [
           {
@@ -997,14 +1008,14 @@
           "ConstRICtion"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "8:39 PM",
+        "local_time": "8:50 PM",
         "goods_count": 12,
         "goods": [
           {
             "good": "Amenities",
             "planet_produced": "Kentaurus 2",
-            "guildees_pay": 1550.0,
-            "live_exc_price": 1700,
+            "guildees_pay": 1500.0,
+            "live_exc_price": 1650,
             "live_avg_price": 1705,
             "guild_max": 0,
             "guild_min": 0,
@@ -1047,8 +1058,8 @@
           {
             "good": "Construction Kit",
             "planet_produced": "Kentaurus 2",
-            "guildees_pay": 1150.0,
-            "live_exc_price": 1250,
+            "guildees_pay": 1200.0,
+            "live_exc_price": 1300,
             "live_avg_price": 1355,
             "guild_max": 0,
             "guild_min": 0,
@@ -1059,7 +1070,7 @@
             "good": "Flux",
             "planet_produced": "Iconia 3",
             "guildees_pay": 60.0,
-            "live_exc_price": 67,
+            "live_exc_price": 66,
             "live_avg_price": 67,
             "guild_max": 60,
             "guild_min": 0,
@@ -1081,7 +1092,7 @@
             "good": "Modern Prefab Kit",
             "planet_produced": "Kentaurus 2",
             "guildees_pay": 2700.0,
-            "live_exc_price": 3000,
+            "live_exc_price": 2950,
             "live_avg_price": 3050,
             "guild_max": 0,
             "guild_min": 0,
@@ -1093,7 +1104,7 @@
             "planet_produced": "Reverie 4",
             "guildees_pay": 5600.0,
             "live_exc_price": 7400,
-            "live_avg_price": 7802,
+            "live_avg_price": 7801,
             "guild_max": 6000,
             "guild_min": 0,
             "discount_percent": 25,
@@ -1102,8 +1113,8 @@
           {
             "good": "Prefab Kit",
             "planet_produced": "Kentaurus 2",
-            "guildees_pay": 1300.0,
-            "live_exc_price": 1400,
+            "guildees_pay": 1250.0,
+            "live_exc_price": 1350,
             "live_avg_price": 1519,
             "guild_max": 0,
             "guild_min": 0,
@@ -1138,23 +1149,24 @@
     {
       "company": {
         "name": "VEB Hochbau Walter Ulbricht",
-        "industry": "Select Profession(s)",
+        "industry": "Electronics",
         "professions": [
-          "Select Profession(s)"
+          "Electronics",
+          "Construction"
         ],
-        "timezone": "Select Time Zone",
-        "local_time": "7:39 PM",
+        "timezone": "UTC +01:00",
+        "local_time": "8:50 PM",
         "goods_count": 1,
         "goods": [
           {
-            "good": "Select Item",
-            "planet_produced": "",
-            "guildees_pay": 0.0,
-            "live_exc_price": 0,
-            "live_avg_price": 0,
-            "guild_max": 0,
-            "guild_min": 0,
-            "discount_percent": 0,
+            "good": "Prefab Kit",
+            "planet_produced": "Exchange Station",
+            "guildees_pay": 1300.0,
+            "live_exc_price": 1350,
+            "live_avg_price": 1519,
+            "guild_max": 1500,
+            "guild_min": 1300,
+            "discount_percent": 10,
             "discount_fixed": 0
           }
         ]
