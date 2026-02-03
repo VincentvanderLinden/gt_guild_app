@@ -6,6 +6,7 @@ BASE_DIR = Path(__file__).parent
 ASSETS_DIR = BASE_DIR / "assets"
 CSS_FILE = ASSETS_DIR / "css" / "style.css"
 DATA_FILE = ASSETS_DIR / "data" / "guild_data.feather"
+GOOGLE_SHEETS_DATA_FILE = ASSETS_DIR / "data" / "google_sheets_data.feather"
 GAMEDATA_FILE = ASSETS_DIR / "data" / "gamedata.json"
 
 # Available professions (sorted alphabetically)

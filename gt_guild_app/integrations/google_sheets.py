@@ -68,6 +68,7 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
       * B: Industry/Professions (can be comma-separated, e.g., "Agriculture, Food Production")
       * C: Timezone
       * M: Produced Goods (one per row)
+      * N: Planet Produced (ignores "Select Planet")
       * R: Guild Max
       * S: Guild Min
       * T: Guild % Discount
@@ -89,8 +90,6 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
     if header_row_idx is None:
         print("Could not find header row with 'Company Name' in column A")
         return None
-    
-    print(f"Found header at row {header_row_idx}, data starts at row {header_row_idx + 1}")
     
     # Group goods by company
     companies_dict = {}
@@ -148,12 +147,21 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
             
             # Get goods info for this row
             good_name = df.iloc[idx, 12] if len(df.iloc[idx]) > 12 else ""  # Column M (0-indexed: 12)
+            planet_produced = df.iloc[idx, 13] if len(df.iloc[idx]) > 13 else ""  # Column N (0-indexed: 13)
             
             # Skip if no good name
             if pd.isna(good_name) or not str(good_name).strip():
                 continue
             
             good_name = str(good_name).strip()
+            
+            # Parse planet produced, filter out placeholder
+            if pd.notna(planet_produced):
+                planet_produced = str(planet_produced).strip()
+                if planet_produced.lower() == 'select planet':
+                    planet_produced = ''
+            else:
+                planet_produced = ''
             
             # Get pricing info - remove $ signs and % signs
             def parse_price(val):
@@ -165,6 +173,7 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
                 except:
                     return 0
             
+            guildees_pay = parse_price(df.iloc[idx, 14])  # Column O (0-indexed: 14)
             guild_max = parse_price(df.iloc[idx, 17])  # Column R (0-indexed: 17)
             guild_min = parse_price(df.iloc[idx, 18])  # Column S (0-indexed: 18)
             guild_discount = parse_price(df.iloc[idx, 19])  # Column T (0-indexed: 19)
@@ -183,7 +192,8 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
             # Add this good to the company
             companies_dict[company_name]['goods'].append({
                 'Produced Goods': good_name,
-                'Guildees Pay:': 0,  # Will be calculated
+                'Planet Produced': planet_produced,
+                'Guildees Pay:': int(guildees_pay) if guildees_pay else 0,
                 'Live EXC Price': 0,  # Will be updated from API
                 'Live AVG Price': 0,  # Will be updated from API
                 'Guild Max': int(guild_max),

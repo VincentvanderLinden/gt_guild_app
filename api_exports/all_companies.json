@@ -1,0 +1,698 @@
+{
+  "status": "success",
+  "timestamp": "2026-02-02T19:41:09.107988+00:00",
+  "data": {
+    "companies": [
+      {
+        "name": "Flip Co",
+        "industry": "Agriculture",
+        "professions": [
+          "Agriculture",
+          "Food Production"
+        ],
+        "timezone": "UTC -07:00",
+        "local_time": "12:39 PM",
+        "goods": [
+          {
+            "Produced Goods": "Rations",
+            "Planet Produced": "",
+            "Guildees Pay:": 32,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 35,
+            "Guild Min": 32,
+            "Guild % Discount": 20,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Gourmet Rations",
+            "Planet Produced": "",
+            "Guildees Pay:": 200,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 300,
+            "Guild Min": 200,
+            "Guild % Discount": 15,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Vitaqua",
+            "Planet Produced": "",
+            "Guildees Pay:": 50,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 150,
+            "Guild Min": 50,
+            "Guild % Discount": 18,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Pie",
+            "Planet Produced": "",
+            "Guildees Pay:": 295,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 400,
+            "Guild Min": 295,
+            "Guild % Discount": 15,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Coffee",
+            "Planet Produced": "",
+            "Guildees Pay:": 125,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 200,
+            "Guild Min": 125,
+            "Guild % Discount": 15,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Ale",
+            "Planet Produced": "",
+            "Guildees Pay:": 70,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 95,
+            "Guild Min": 70,
+            "Guild % Discount": 15,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Quantum Research Data",
+            "Planet Produced": "",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 20,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Limestone",
+            "Planet Produced": "",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 0,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Cotton",
+            "Planet Produced": "",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 0,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Leather",
+            "Planet Produced": "",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 0,
+            "Guild Fixed Discount": 0
+          }
+        ]
+      },
+      {
+        "name": "Romero Enterprises",
+        "industry": "Food Production",
+        "professions": [
+          "Food Production",
+          "Metallurgy"
+        ],
+        "timezone": "UTC -05:00",
+        "local_time": "2:39 PM",
+        "goods": [
+          {
+            "Produced Goods": "Fine Rations",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Copper Wire",
+            "Planet Produced": "Aetheria 2",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 0,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Ale",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 70,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 70,
+            "Guild % Discount": 0,
+            "Guild Fixed Discount": 0
+          }
+        ]
+      },
+      {
+        "name": "Caboose Inc.",
+        "industry": "Manufacturing",
+        "professions": [
+          "Manufacturing"
+        ],
+        "timezone": "UTC +04:00",
+        "local_time": "11:39 PM",
+        "goods": [
+          {
+            "Produced Goods": "Tools",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Office Supplies",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Construction Tools",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Fabric",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Workwear",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Furniture",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Construction Vehicle",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Combustion Engine",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Kevlar",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Welding Kit",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Molecular Fusion Kit",
+            "Planet Produced": "Reverie 4",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Fission Reactor",
+            "Planet Produced": "Reverie 4",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Laboratory Suit",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 0,
+            "Guild Fixed Discount": 0
+          }
+        ]
+      },
+      {
+        "name": "Drunkenduo's Ruthless Divident",
+        "industry": "Metallurgy",
+        "professions": [
+          "Metallurgy",
+          "Failing Hard",
+          "Chicken Farmer"
+        ],
+        "timezone": "UTC +01:00",
+        "local_time": "8:39 PM",
+        "goods": [
+          {
+            "Produced Goods": "Truss",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 350,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 500,
+            "Guild Min": 350,
+            "Guild % Discount": 10,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Composite Truss",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 750,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 1250,
+            "Guild Min": 750,
+            "Guild % Discount": 10,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Glass",
+            "Planet Produced": "Aetheria 8",
+            "Guildees Pay:": 55,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 75,
+            "Guild Min": 55,
+            "Guild % Discount": 15,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Copper Wire",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 35,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 40,
+            "Guild Min": 35,
+            "Guild % Discount": 10,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Titanium",
+            "Planet Produced": "Aetheria 2",
+            "Guildees Pay:": 1400,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 1700,
+            "Guild Min": 1400,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Silicon Wafer",
+            "Planet Produced": "Aetheria 2",
+            "Guildees Pay:": 200,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 220,
+            "Guild Min": 200,
+            "Guild % Discount": 10,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Platinum",
+            "Planet Produced": "Aetheria 2",
+            "Guildees Pay:": 2100,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 2750,
+            "Guild Min": 2100,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Copper",
+            "Planet Produced": "Aetheria 8",
+            "Guildees Pay:": 650,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 850,
+            "Guild Min": 650,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Water",
+            "Planet Produced": "Achelois 5",
+            "Guildees Pay:": 20,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 30,
+            "Guild Min": 20,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          }
+        ]
+      },
+      {
+        "name": "MB Industries",
+        "industry": "Chemistry",
+        "professions": [
+          "Chemistry",
+          "Resource Extraction"
+        ],
+        "timezone": "UTC +01:00",
+        "local_time": "8:39 PM",
+        "goods": [
+          {
+            "Produced Goods": "Nanoweave Shielding",
+            "Planet Produced": "Light 7",
+            "Guildees Pay:": 7000,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 7505,
+            "Guild Min": 7000,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Biopolyne",
+            "Planet Produced": "Light 7",
+            "Guildees Pay:": 1009,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 1188,
+            "Guild Min": 1009,
+            "Guild % Discount": 15,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Composite Shielding",
+            "Planet Produced": "Tidal 5",
+            "Guildees Pay:": 4000,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 4275,
+            "Guild Min": 4000,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Graphene",
+            "Planet Produced": "Tidal 5",
+            "Guildees Pay:": 355,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 418,
+            "Guild Min": 355,
+            "Guild % Discount": 15,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Nanopolyne",
+            "Planet Produced": "Tidal 5",
+            "Guildees Pay:": 303,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 356,
+            "Guild Min": 303,
+            "Guild % Discount": 15,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Nanoweave",
+            "Planet Produced": "Tidal 5",
+            "Guildees Pay:": 581,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 684,
+            "Guild Min": 581,
+            "Guild % Discount": 15,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Reinforced Glass",
+            "Planet Produced": "Tidal 1",
+            "Guildees Pay:": 214,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 238,
+            "Guild Min": 214,
+            "Guild % Discount": 10,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Aerogel",
+            "Planet Produced": "Tidal 1",
+            "Guildees Pay:": 98,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 109,
+            "Guild Min": 98,
+            "Guild % Discount": 10,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Neoplast",
+            "Planet Produced": "Tidal 1",
+            "Guildees Pay:": 44,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 49,
+            "Guild Min": 44,
+            "Guild % Discount": 10,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Fertilizer",
+            "Planet Produced": "Aetheria 8",
+            "Guildees Pay:": 40,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 45,
+            "Guild Min": 40,
+            "Guild % Discount": 12,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Bio-Nutrient Blend",
+            "Planet Produced": "Aetheria 8",
+            "Guildees Pay:": 125,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 147,
+            "Guild Min": 125,
+            "Guild % Discount": 15,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Rejuvaline",
+            "Planet Produced": "Aetheria 8",
+            "Guildees Pay:": 573,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 675,
+            "Guild Min": 573,
+            "Guild % Discount": 15,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Battery",
+            "Planet Produced": "Aetheria 8",
+            "Guildees Pay:": 363,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 428,
+            "Guild Min": 363,
+            "Guild % Discount": 15,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Epoxy",
+            "Planet Produced": "Aetheria 8",
+            "Guildees Pay:": 61,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 71,
+            "Guild Min": 61,
+            "Guild % Discount": 15,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Fission Fuel",
+            "Planet Produced": "Alioth 3",
+            "Guildees Pay:": 1800,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 2375,
+            "Guild Min": 1800,
+            "Guild % Discount": 10,
+            "Guild Fixed Discount": 0
+          }
+        ]
+      },
+      {
+        "name": "Technically Federated Reserves",
+        "industry": "Jack-of-all-Trades",
+        "professions": [
+          "Jack-of-all-Trades",
+          "Transporting",
+          "Chemistry",
+          "ConstRICtion"
+        ],
+        "timezone": "UTC +01:00",
+        "local_time": "8:39 PM",
+        "goods": [
+          {
+            "Produced Goods": "Select Item",
+            "Planet Produced": "",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 0,
+            "Guild Fixed Discount": 0
+          }
+        ]
+      },
+      {
+        "name": "Skunk Industries",
+        "industry": "Metallurgy",
+        "professions": [
+          "Metallurgy"
+        ],
+        "timezone": "UTC -08:00",
+        "local_time": "11:39 AM",
+        "goods": [
+          {
+            "Produced Goods": "Composite Truss",
+            "Planet Produced": "Reverie 4",
+            "Guildees Pay:": 1300,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 1300,
+            "Guild % Discount": 15,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Steel",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 0,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Copper Wire",
+            "Planet Produced": "Reverie 4",
+            "Guildees Pay:": 55,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 55,
+            "Guild % Discount": 10,
+            "Guild Fixed Discount": 0
+          },
+          {
+            "Produced Goods": "Platinum",
+            "Planet Produced": "Kentaurus 2",
+            "Guildees Pay:": 0,
+            "Live EXC Price": 0,
+            "Live AVG Price": 0,
+            "Guild Max": 0,
+            "Guild Min": 0,
+            "Guild % Discount": 5,
+            "Guild Fixed Discount": 0
+          }
+        ]
+      }
+    ]
+  }
+}

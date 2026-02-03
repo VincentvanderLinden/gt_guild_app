@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import List, Dict, Any, Optional
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from config import DATA_FILE, GAMEDATA_FILE
+from config import DATA_FILE, GOOGLE_SHEETS_DATA_FILE, GAMEDATA_FILE
 
 
 def load_game_materials() -> List[str]:
@@ -19,13 +19,27 @@ def load_game_materials() -> List[str]:
         return []
 
 
+def load_game_planets() -> List[str]:
+    """Load planet names from game data file."""
+    try:
+        with open(GAMEDATA_FILE) as f:
+            gamedata = json.load(f)
+            # Extract individual planet names from all systems
+            planets = [planet['name'] for system in gamedata.get('systems', []) 
+                      if system.get('planets') 
+                      for planet in system['planets']]
+            return sorted(set(planets))
+    except Exception as e:
+        return []
+
+
 def feather_to_companies(df: pd.DataFrame) -> List[Dict[str, Any]]:
     """Convert flattened feather DataFrame to nested company structure."""
     companies = []
     for company_name in df['company_name'].unique():
         company_df = df[df['company_name'] == company_name].iloc[0]
         goods_df = df[df['company_name'] == company_name][[
-            'Produced Goods', 'Guildees Pay:', 'Live EXC Price', 'Live AVG Price',
+            'Produced Goods', 'Planet Produced', 'Guildees Pay:', 'Live EXC Price', 'Live AVG Price',
             'Guild Max', 'Guild Min', 'Guild % Discount', 'Guild Fixed Discount'
         ]]
         
@@ -49,7 +63,7 @@ def companies_to_feather(companies: List[Dict[str, Any]]) -> pd.DataFrame:
     # Define expected columns to ensure consistency
     expected_columns = [
         'company_name', 'industry', 'professions', 'timezone', 'local_time',
-        'Produced Goods', 'Guildees Pay:', 'Live EXC Price', 'Live AVG Price',
+        'Produced Goods', 'Planet Produced', 'Guildees Pay:', 'Live EXC Price', 'Live AVG Price',
         'Guild Max', 'Guild Min', 'Guild % Discount', 'Guild Fixed Discount'
     ]
     
@@ -64,6 +78,7 @@ def companies_to_feather(companies: List[Dict[str, Any]]) -> pd.DataFrame:
                 'timezone': company.get('timezone', 'UTC +00:00'),
                 'local_time': company.get('local_time', 'N/A'),
                 'Produced Goods': good.get('Produced Goods', ''),
+                'Planet Produced': good.get('Planet Produced', ''),
                 'Guildees Pay:': good.get('Guildees Pay:', 0),
                 'Live EXC Price': good.get('Live EXC Price', 0),
                 'Live AVG Price': good.get('Live AVG Price', 0),
@@ -99,11 +114,31 @@ def save_data(companies: List[Dict[str, Any]]) -> None:
     df.to_feather(DATA_FILE)
 
 
+def load_google_sheets_data() -> Optional[List[Dict[str, Any]]]:
+    """Load data from Google Sheets feather file for API access."""
+    if not GOOGLE_SHEETS_DATA_FILE.exists():
+        return None
+    
+    try:
+        df = pd.read_feather(GOOGLE_SHEETS_DATA_FILE)
+        return feather_to_companies(df)
+    except Exception:
+        return None
+
+
+def save_google_sheets_data(companies: List[Dict[str, Any]]) -> None:
+    """Save Google Sheets data to separate feather file for API access."""
+    df = companies_to_feather(companies)
+    GOOGLE_SHEETS_DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
+    df.to_feather(GOOGLE_SHEETS_DATA_FILE)
+
+
 def prepare_goods_dataframe(goods: List[Dict[str, Any]]) -> pd.DataFrame:
     """Prepare goods DataFrame with proper data types."""
     # Define expected dtypes to prevent FutureWarning
     dtype_spec = {
         'Produced Goods': 'str',
+        'Planet Produced': 'str',
         'Guildees Pay:': 'float64',
         'Live EXC Price': 'int64',
         'Live AVG Price': 'int64',
@@ -131,8 +166,10 @@ def prepare_goods_dataframe(goods: List[Dict[str, Any]]) -> pd.DataFrame:
     if 'Guildees Pay:' in goods_df.columns:
         goods_df['Guildees Pay:'] = pd.to_numeric(goods_df['Guildees Pay:'], errors='coerce').fillna(0).astype('float64')
     
-    # String column
+    # String columns
     if 'Produced Goods' in goods_df.columns:
         goods_df['Produced Goods'] = goods_df['Produced Goods'].astype('str')
+    if 'Planet Produced' in goods_df.columns:
+        goods_df['Planet Produced'] = goods_df['Planet Produced'].astype('str')
     
     return goods_df

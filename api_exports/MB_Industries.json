@@ -1,0 +1,181 @@
+{
+  "status": "success",
+  "timestamp": "2026-02-02T19:41:09.109328+00:00",
+  "data": {
+    "name": "MB Industries",
+    "industry": "Chemistry",
+    "professions": [
+      "Chemistry",
+      "Resource Extraction"
+    ],
+    "timezone": "UTC +01:00",
+    "local_time": "8:39 PM",
+    "goods": [
+      {
+        "Produced Goods": "Nanoweave Shielding",
+        "Planet Produced": "Light 7",
+        "Guildees Pay:": 7000,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 7505,
+        "Guild Min": 7000,
+        "Guild % Discount": 5,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Biopolyne",
+        "Planet Produced": "Light 7",
+        "Guildees Pay:": 1009,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 1188,
+        "Guild Min": 1009,
+        "Guild % Discount": 15,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Composite Shielding",
+        "Planet Produced": "Tidal 5",
+        "Guildees Pay:": 4000,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 4275,
+        "Guild Min": 4000,
+        "Guild % Discount": 5,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Graphene",
+        "Planet Produced": "Tidal 5",
+        "Guildees Pay:": 355,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 418,
+        "Guild Min": 355,
+        "Guild % Discount": 15,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Nanopolyne",
+        "Planet Produced": "Tidal 5",
+        "Guildees Pay:": 303,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 356,
+        "Guild Min": 303,
+        "Guild % Discount": 15,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Nanoweave",
+        "Planet Produced": "Tidal 5",
+        "Guildees Pay:": 581,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 684,
+        "Guild Min": 581,
+        "Guild % Discount": 15,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Reinforced Glass",
+        "Planet Produced": "Tidal 1",
+        "Guildees Pay:": 214,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 238,
+        "Guild Min": 214,
+        "Guild % Discount": 10,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Aerogel",
+        "Planet Produced": "Tidal 1",
+        "Guildees Pay:": 98,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 109,
+        "Guild Min": 98,
+        "Guild % Discount": 10,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Neoplast",
+        "Planet Produced": "Tidal 1",
+        "Guildees Pay:": 44,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 49,
+        "Guild Min": 44,
+        "Guild % Discount": 10,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Fertilizer",
+        "Planet Produced": "Aetheria 8",
+        "Guildees Pay:": 40,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 45,
+        "Guild Min": 40,
+        "Guild % Discount": 12,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Bio-Nutrient Blend",
+        "Planet Produced": "Aetheria 8",
+        "Guildees Pay:": 125,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 147,
+        "Guild Min": 125,
+        "Guild % Discount": 15,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Rejuvaline",
+        "Planet Produced": "Aetheria 8",
+        "Guildees Pay:": 573,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 675,
+        "Guild Min": 573,
+        "Guild % Discount": 15,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Battery",
+        "Planet Produced": "Aetheria 8",
+        "Guildees Pay:": 363,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 428,
+        "Guild Min": 363,
+        "Guild % Discount": 15,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Epoxy",
+        "Planet Produced": "Aetheria 8",
+        "Guildees Pay:": 61,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 71,
+        "Guild Min": 61,
+        "Guild % Discount": 15,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Fission Fuel",
+        "Planet Produced": "Alioth 3",
+        "Guildees Pay:": 1800,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 2375,
+        "Guild Min": 1800,
+        "Guild % Discount": 10,
+        "Guild Fixed Discount": 0
+      }
+    ]
+  }
+}

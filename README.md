@@ -27,13 +27,21 @@ A comprehensive web application for managing guild trading data in Galactic Tyco
 - **Timezone Selection**: 30+ timezone options with city names (UTC -12:00 to +14:00)
 - **Discount Configuration**: Set min/max prices and discount percentages
 
-### 🌐 API Access
-Programmatic access via URL parameters:
-- `?good=Steel&format=json` - Get cheapest price for a material
-- `?company=Flip%20Co&format=json` - Get all goods from a company
-- `?list=goods` - List all available goods
-- `?list=companies` - List all companies
-- `?api` - View full API documentation
+### 🌐 REST API Access
+Full REST API with JSON responses for programmatic data access:
+- `GET /api/health` - Health check endpoint
+- `GET /api/goods` - List all available goods
+- `GET /api/companies` - List all companies with summaries
+- `GET /api/good/{name}` - Get pricing details for a specific good (sorted by cheapest)
+- `GET /api/company/{name}` - Get full company details with all goods
+- `GET /api/all` - Get complete dataset
+
+**Example:**
+```bash
+curl http://localhost:8503/api/good/Steel
+```
+
+Full API documentation available in [API.md](API.md)
 
 ### 📈 Statistics Dashboard
 - **Total Companies**: Count of active companies

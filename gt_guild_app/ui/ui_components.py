@@ -64,7 +64,7 @@ def render_stats_row(total_companies: int, total_goods: int,
         st.metric("Avg Discount %", f"{avg_discount:.1f}%")
 
 
-def get_column_config(materials):
+def get_column_config(materials, planets):
     """Get column configuration for data editor."""
     return {
         "Produced Goods": st.column_config.SelectboxColumn(
@@ -72,6 +72,12 @@ def get_column_config(materials):
             width="medium",
             options=materials,
             required=True
+        ),
+        "Planet Produced": st.column_config.SelectboxColumn(
+            "Planet Produced",
+            width="small",
+            options=planets,
+            help="Planet where this good is produced"
         ),
         "Guildees Pay:": st.column_config.NumberColumn(
             "Guildees Pay", 

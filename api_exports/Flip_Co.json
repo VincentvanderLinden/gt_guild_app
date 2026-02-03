@@ -1,0 +1,126 @@
+{
+  "status": "success",
+  "timestamp": "2026-02-02T19:41:09.108777+00:00",
+  "data": {
+    "name": "Flip Co",
+    "industry": "Agriculture",
+    "professions": [
+      "Agriculture",
+      "Food Production"
+    ],
+    "timezone": "UTC -07:00",
+    "local_time": "12:39 PM",
+    "goods": [
+      {
+        "Produced Goods": "Rations",
+        "Planet Produced": "",
+        "Guildees Pay:": 32,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 35,
+        "Guild Min": 32,
+        "Guild % Discount": 20,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Gourmet Rations",
+        "Planet Produced": "",
+        "Guildees Pay:": 200,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 300,
+        "Guild Min": 200,
+        "Guild % Discount": 15,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Vitaqua",
+        "Planet Produced": "",
+        "Guildees Pay:": 50,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 150,
+        "Guild Min": 50,
+        "Guild % Discount": 18,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Pie",
+        "Planet Produced": "",
+        "Guildees Pay:": 295,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 400,
+        "Guild Min": 295,
+        "Guild % Discount": 15,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Coffee",
+        "Planet Produced": "",
+        "Guildees Pay:": 125,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 200,
+        "Guild Min": 125,
+        "Guild % Discount": 15,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Ale",
+        "Planet Produced": "",
+        "Guildees Pay:": 70,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 95,
+        "Guild Min": 70,
+        "Guild % Discount": 15,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Quantum Research Data",
+        "Planet Produced": "",
+        "Guildees Pay:": 0,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 0,
+        "Guild Min": 0,
+        "Guild % Discount": 20,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Limestone",
+        "Planet Produced": "",
+        "Guildees Pay:": 0,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 0,
+        "Guild Min": 0,
+        "Guild % Discount": 0,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Cotton",
+        "Planet Produced": "",
+        "Guildees Pay:": 0,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 0,
+        "Guild Min": 0,
+        "Guild % Discount": 0,
+        "Guild Fixed Discount": 0
+      },
+      {
+        "Produced Goods": "Leather",
+        "Planet Produced": "",
+        "Guildees Pay:": 0,
+        "Live EXC Price": 0,
+        "Live AVG Price": 0,
+        "Guild Max": 0,
+        "Guild Min": 0,
+        "Guild % Discount": 0,
+        "Guild Fixed Discount": 0
+      }
+    ]
+  }
+}

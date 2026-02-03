@@ -247,77 +247,229 @@ def render_api_response(query_params: Dict[str, Any], companies: List[Dict[str, 
 
 def show_api_documentation():
     """Show API documentation page."""
-    st.title("🔌 API Documentation")
-    st.markdown("Access guild pricing data via URL parameters.")
+    st.title("🔌 REST API Documentation")
+    st.markdown("Access guild pricing data via REST API endpoints for easy integration and scraping.")
+    
+    st.info("💡 **Run the app with**: `streamlit run gt_guild_app/main.py --server.port 8503`")
     
     st.divider()
     
-    st.header("Endpoints")
+    st.header("Available Endpoints")
     
-    st.subheader("1. Find Cheapest Price for a Good")
-    st.code("?good=<good_name>[&format=json]", language="bash")
-    st.markdown("**Example:**")
-    st.code("?good=Steel&format=json", language="bash")
-    st.markdown("Returns the cheapest guildee price across all companies for the specified good.")
-    
-    st.divider()
-    
-    st.subheader("2. Get Company Goods")
-    st.code("?company=<company_name>[&format=json]", language="bash")
-    st.markdown("**Example:**")
-    st.code("?company=Flip Co&format=json", language="bash")
-    st.markdown("Returns all goods sold by the specified company.")
+    # Health Check
+    st.subheader("1. Health Check")
+    st.code("GET /api/health", language="http")
+    st.markdown("Check if the API is running.")
+    with st.expander("📋 Response Example"):
+        st.json({
+            "status": "healthy",
+            "service": "TiT Guild App API"
+        })
     
     st.divider()
     
-    st.subheader("3. List All Goods")
-    st.code("?list=goods[&format=json]", language="bash")
-    st.markdown("Returns a list of all unique goods available.")
+    # List Goods
+    st.subheader("2. List All Goods")
+    st.code("GET /api/goods", language="http")
+    st.markdown("Get a list of all unique goods across all companies.")
+    with st.expander("📋 Response Example"):
+        st.json({
+            "status": "success",
+            "data": {
+                "goods": ["Adhesive", "Aluminum", "Steel", "..."],
+                "count": 150
+            }
+        })
     
     st.divider()
     
-    st.subheader("4. List All Companies")
-    st.code("?list=companies[&format=json]", language="bash")
-    st.markdown("Returns a list of all companies with their basic info.")
+    # List Companies
+    st.subheader("3. List All Companies")
+    st.code("GET /api/companies", language="http")
+    st.markdown("Get a summary of all companies.")
+    with st.expander("📋 Response Example"):
+        st.json({
+            "status": "success",
+            "data": {
+                "companies": [{
+                    "name": "Company Name",
+                    "industry": "Industry Type",
+                    "professions": ["Prof1", "Prof2"],
+                    "timezone": "UTC +00:00",
+                    "goods_count": 25
+                }],
+                "count": 10
+            }
+        })
     
     st.divider()
     
-    st.header("Response Formats")
+    # Good Details
+    st.subheader("4. Get Good Details")
+    st.code("GET /api/good/{good_name}", language="http")
+    st.markdown("Get pricing details for a specific good across all companies (sorted by cheapest).")
+    st.markdown("**Example:** `/api/good/Steel`")
+    with st.expander("📋 Response Example"):
+        st.json({
+            "status": "success",
+            "query": {"good": "Steel"},
+            "data": {
+                "results": [{
+                    "company": "Company Name",
+                    "good": "Steel",
+                    "planet_produced": "Kentaurus 2",
+                    "guildees_pay": 100,
+                    "live_exc_price": 120,
+                    "guild_max": 110,
+                    "discount_percent": 10,
+                    "timezone": "UTC +00:00"
+                }],
+                "count": 5,
+                "cheapest": {"company": "Best Co", "guildees_pay": 95}
+            }
+        })
+    
+    st.divider()
+    
+    # Company Details
+    st.subheader("5. Get Company Details")
+    st.code("GET /api/company/{company_name}", language="http")
+    st.markdown("Get full details for a specific company with all goods.")
+    st.markdown("**Example:** `/api/company/Flip Co`")
+    with st.expander("📋 Response Example"):
+        st.json({
+            "status": "success",
+            "query": {"company": "Flip Co"},
+            "data": {
+                "name": "Flip Co",
+                "industry": "Mining",
+                "professions": ["Miner"],
+                "timezone": "UTC +01:00",
+                "goods": [{"produced_goods": "Steel", "guildees_pay": 100}]
+            }
+        })
+    
+    st.divider()
+    
+    # All Data
+    st.subheader("6. Get All Data")
+    st.code("GET /api/all", language="http")
+    st.markdown("Get the complete dataset with all companies and their goods.")
+    st.warning("⚠️ Large response - use sparingly")
+    
+    st.divider()
+    
+    st.header("Usage Examples")
+    
+    tab1, tab2, tab3 = st.tabs(["Python", "cURL", "JavaScript"])
+    
+    with tab1:
+        st.code("""
+import requests
+
+# Get health status
+response = requests.get("http://localhost:8503/api/health")
+print(response.json())
+
+# Find cheapest steel
+response = requests.get("http://localhost:8503/api/good/Steel")
+data = response.json()
+if data['status'] == 'success':
+    cheapest = data['data']['cheapest']
+    print(f"Cheapest at {cheapest['company']}: {cheapest['guildees_pay']}")
+
+# Get all companies
+response = requests.get("http://localhost:8503/api/companies")
+companies = response.json()['data']['companies']
+for company in companies:
+    print(f"{company['name']} - {company['goods_count']} goods")
+        """.strip(), language="python")
+    
+    with tab2:
+        st.code("""
+# Health check
+curl http://localhost:8503/api/health
+
+# Get all goods
+curl http://localhost:8503/api/goods
+
+# Get steel pricing
+curl http://localhost:8503/api/good/Steel
+
+# Get company details (use %20 for spaces)
+curl http://localhost:8503/api/company/Flip%20Co
+
+# Get all data
+curl http://localhost:8503/api/all
+        """.strip(), language="bash")
+    
+    with tab3:
+        st.code("""
+// Fetch all companies
+fetch('http://localhost:8503/api/companies')
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === 'success') {
+      console.log(`Found ${data.data.count} companies`);
+      data.data.companies.forEach(company => {
+        console.log(`${company.name} - ${company.goods_count} goods`);
+      });
+    }
+  });
+
+// Find cheapest steel
+fetch('http://localhost:8503/api/good/Steel')
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === 'success') {
+      const cheapest = data.data.cheapest;
+      console.log(`Cheapest Steel: ${cheapest.company} at ${cheapest.guildees_pay}`);
+    }
+  });
+        """.strip(), language="javascript")
+    
+    st.divider()
+    
+    st.header("Error Handling")
     st.markdown("""
-    - **HTML (default)**: User-friendly display with tables and metrics
-    - **JSON**: Add `&format=json` to any query for JSON output
+    All endpoints return a consistent error format:
+    
+    ```json
+    {
+      "status": "error",
+      "message": "Error description"
+    }
+    ```
+    
+    **HTTP Status Codes:**
+    - `200`: Success
+    - `400`: Bad Request (missing parameters)
+    - `404`: Not Found (resource doesn't exist)
+    - `500`: Internal Server Error
     """)
     
     st.divider()
     
-    st.header("Examples")
+    st.header("Implementation Details")
+    st.markdown("""
+    The API is built using Streamlit 1.53+'s native Starlette integration:
     
-    base_url = st.query_params.get("_base_url", "your-app-url.streamlit.app")
+    ```python
+    from streamlit.starlette import App
+    from starlette.routing import Route
+    from starlette.responses import JSONResponse
     
-    col1, col2 = st.columns(2)
+    app = App(
+        "app.py",
+        routes=[
+            Route("/api/health", api_health),
+            Route("/api/goods", api_goods_list),
+            # ... more routes
+        ],
+    )
+    ```
     
-    with col1:
-        st.markdown("**HTML Responses:**")
-        st.code(f"""
-# Get cheapest Steel
-{base_url}?good=Steel
-
-# Get Flip Co's goods
-{base_url}?company=Flip Co
-
-# List all goods
-{base_url}?list=goods
-        """.strip(), language="bash")
+    This allows the same application to serve both the Streamlit UI and REST API endpoints.
+    """)
     
-    with col2:
-        st.markdown("**JSON Responses:**")
-        st.code(f"""
-# Get cheapest Steel (JSON)
-{base_url}?good=Steel&format=json
-
-# Get Flip Co's goods (JSON)
-{base_url}?company=Flip Co&format=json
-
-# List all goods (JSON)
-{base_url}?list=goods&format=json
-        """.strip(), language="bash")
+    st.success("📖 Full documentation available in [API.md](https://github.com/yourusername/gt_guild_app/blob/main/API.md)")

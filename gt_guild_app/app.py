@@ -5,8 +5,8 @@ import pandas as pd
 # Import local modules
 from config import APP_TITLE, APP_ICON, APP_SUBTITLE, CSS_FILE, PROFESSIONS, GOOGLE_SHEET_URL, TIMEZONE_OPTIONS, TIMEZONE_OPTIONS
 from core.data_manager import (
-    load_game_materials, load_data, save_data, 
-    prepare_goods_dataframe
+    load_game_materials, load_game_planets, load_data, save_data, 
+    save_google_sheets_data, prepare_goods_dataframe
 )
 from integrations.api_client import fetch_material_prices
 from business.price_calculator import update_live_prices, calculate_all_guildees_prices
@@ -14,7 +14,6 @@ from core.validators import validate_goods
 from business.stats import calculate_unique_goods, calculate_average_discount, get_unique_professions
 from business.filters import apply_all_filters
 from ui.ui_components import render_sidebar_filters, render_stats_row, get_column_config
-from ui.api_handler import render_api_response, show_api_documentation
 from integrations.timezone_utils import update_company_local_times, get_local_time, get_local_time
 from integrations.google_sheets import import_from_google_sheet
 from datetime import datetime, timedelta, timezone
@@ -47,6 +46,9 @@ def initialize_session_state():
     if 'materials' not in st.session_state:
         st.session_state.materials = load_game_materials()
     
+    if 'planets' not in st.session_state:
+        st.session_state.planets = load_game_planets()
+    
     if 'last_sheet_refresh' not in st.session_state:
         st.session_state.last_sheet_refresh = None
     
@@ -70,7 +72,8 @@ def refresh_from_google_sheets():
                 # Update local times
                 companies = update_company_local_times(companies)
                 
-                # Save to feather file
+                # Save to main data file only
+                # google_sheets_data will be saved when prices are calculated
                 save_data(companies)
                 
                 # Update session state
@@ -143,6 +146,7 @@ def render_company_editor(company, idx, materials, price_data, all_professions_l
                         # Update local time immediately
                         c['local_time'] = get_local_time(tz_offset)
                         save_data(st.session_state.companies)
+                        save_google_sheets_data(st.session_state.companies)
                         break
         
         # Prepare goods dataframe
@@ -169,7 +173,7 @@ def render_company_editor(company, idx, materials, price_data, all_professions_l
             num_rows="dynamic",
             key=f"table_{company['name']}_{idx}",
             disabled=["Guildees Pay:", "Live EXC Price", "Live AVG Price"],
-            column_config=get_column_config(materials)
+            column_config=get_column_config(materials, st.session_state.planets)
         )
         
         # Handle changes
@@ -202,6 +206,7 @@ def handle_goods_changes(company, edited_goods, price_data):
         if c["name"] == company["name"]:
             c["goods"] = edited_goods.to_dict('records')
             save_data(st.session_state.companies)
+            save_google_sheets_data(st.session_state.companies)
             st.rerun()
             break
 
@@ -216,21 +221,6 @@ def main():
     companies = st.session_state.companies
     materials = st.session_state.materials
     
-    # Check for API query parameters
-    query_params = st.query_params
-    
-    # Handle API documentation request
-    if 'api' in query_params or 'help' in query_params:
-        show_api_documentation()
-        return
-    
-    # Handle API query requests (before loading CSS to allow clean JSON output)
-    if query_params and any(key in query_params for key in ['good', 'company', 'list']):
-        # For API requests, we might want simpler styling
-        api_handled = render_api_response(query_params, companies)
-        if api_handled:
-            return  # Exit early for API responses
-    
     # Normal UI flow - load CSS
     load_custom_css()
     
@@ -239,19 +229,25 @@ def main():
     st.markdown(APP_SUBTITLE)
     
     # Add API info banner
-    with st.expander("🔌 API Access Available", expanded=False):
+    with st.expander("🔌 REST API Access Available", expanded=False):
         st.markdown("""
-        This app supports URL parameter queries for programmatic access!
+        Access guild data programmatically via REST API endpoints:
         
-        **Quick Examples:**
-        - `?good=Steel&format=json` - Get cheapest price for Steel
-        - `?company=Flip Co&format=json` - Get all goods from a company
-        - `?list=goods` - List all available goods
-        - `?api` - View full API documentation
+        **Available Endpoints:**
+        - `GET /api/health` - Health check
+        - `GET /api/goods` - List all goods
+        - `GET /api/companies` - List all companies
+        - `GET /api/good/{name}` - Get pricing for a specific good
+        - `GET /api/company/{name}` - Get company details
+        - `GET /api/all` - Get complete dataset
+        
+        **Example:**
+        ```bash
+        curl http://localhost:8503/api/good/Steel
+        ```
+        
+        Full documentation available in [API.md](https://github.com/yourusername/gt_guild_app/blob/main/API.md)
         """)
-        if st.button("📖 View Full API Documentation"):
-            st.query_params.update({"api": "true"})
-            st.rerun()
     
     # Refresh from Google Sheets if needed
     refresh_from_google_sheets()
@@ -281,6 +277,35 @@ def main():
     selected_professions, search_company, search_goods = render_sidebar_filters(
         professions_list, price_data, last_update, st.session_state.last_sheet_refresh
     )
+    
+    # Automatically update API data with current prices
+    if price_data and st.session_state.companies:
+        # Check if we need to update API data (track last update time)
+        if 'last_api_data_update' not in st.session_state:
+            st.session_state.last_api_data_update = None
+        
+        # Update if we haven't updated yet, or if prices were just refreshed
+        from datetime import datetime, timezone, timedelta
+        now = datetime.now(timezone.utc)
+        should_update = (
+            st.session_state.last_api_data_update is None or
+            (now - st.session_state.last_api_data_update) > timedelta(minutes=10)
+        )
+        
+        if should_update:
+            # Update all companies with current prices
+            companies_copy = []
+            for company in st.session_state.companies:
+                company_copy = company.copy()
+                goods_df = prepare_goods_dataframe(company["goods"])
+                goods_df = update_live_prices(goods_df, price_data)
+                goods_df = calculate_all_guildees_prices(goods_df)
+                company_copy["goods"] = goods_df.to_dict('records')
+                companies_copy.append(company_copy)
+            
+            # Save to API data file (not the main file to avoid affecting UI)
+            save_google_sheets_data(companies_copy)
+            st.session_state.last_api_data_update = now
     
     # Apply filters
     filtered_companies = apply_all_filters(
