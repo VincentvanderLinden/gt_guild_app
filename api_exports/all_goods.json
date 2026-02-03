@@ -1,7 +1,7 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T09:11:52.045533",
-  "goods_count": 63,
+  "last_updated": "2026-02-03T09:16:51.831064",
+  "goods_count": 62,
   "data": [
     {
       "good": "Advanced Research Data",
@@ -1010,31 +1010,6 @@
           "professions": [
             "Agriculture",
             "Food Production"
-          ]
-        }
-      ]
-    },
-    {
-      "good": "Milk",
-      "cheapest_price": 1000.0,
-      "cheapest_company": "Stellara",
-      "cheapest_planet": "",
-      "listings_count": 1,
-      "listings": [
-        {
-          "company": "Stellara",
-          "good": "Milk",
-          "planet_produced": "",
-          "guildees_pay": 1000.0,
-          "live_exc_price": 41,
-          "live_avg_price": 49,
-          "guild_max": 0,
-          "guild_min": 1000,
-          "discount_percent": 0,
-          "discount_fixed": 0,
-          "timezone": "UTC +00:00",
-          "professions": [
-            "Science"
           ]
         }
       ]
