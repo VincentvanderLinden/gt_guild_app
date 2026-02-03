@@ -72,27 +72,29 @@ def export_to_public_json(companies: List[Dict[str, Any]], export_dir: str = "ap
         company_goods = sorted(company['goods'], key=lambda x: x.get('Produced Goods', ''))
         
         all_companies_output.append({
-            'company': company['name'],
-            'industry': company.get('industry', ''),
-            'professions': company.get('professions', []),
-            'timezone': company.get('timezone', 'UTC +00:00'),
-            'local_time': company.get('local_time', 'N/A'),
-            'goods_count': len(company_goods),
-            'goods': [{
-                'good': good.get('Produced Goods', ''),
-                'planet_produced': good.get('Planet Produced', ''),
-                'guildees_pay': good.get('Guildees Pay:', 0),
-                'live_exc_price': good.get('Live EXC Price', 0),
-                'live_avg_price': good.get('Live AVG Price', 0),
-                'guild_max': good.get('Guild Max', 0),
-                'guild_min': good.get('Guild Min', 0),
-                'discount_percent': good.get('Guild % Discount', 0),
-                'discount_fixed': good.get('Guild Fixed Discount', 0)
-            } for good in company_goods]
+            'company': {
+                'name': company['name'],
+                'industry': company.get('industry', ''),
+                'professions': company.get('professions', []),
+                'timezone': company.get('timezone', 'UTC +00:00'),
+                'local_time': company.get('local_time', 'N/A'),
+                'goods_count': len(company_goods),
+                'goods': [{
+                    'good': good.get('Produced Goods', ''),
+                    'planet_produced': good.get('Planet Produced', ''),
+                    'guildees_pay': good.get('Guildees Pay:', 0),
+                    'live_exc_price': good.get('Live EXC Price', 0),
+                    'live_avg_price': good.get('Live AVG Price', 0),
+                    'guild_max': good.get('Guild Max', 0),
+                    'guild_min': good.get('Guild Min', 0),
+                    'discount_percent': good.get('Guild % Discount', 0),
+                    'discount_fixed': good.get('Guild Fixed Discount', 0)
+                } for good in company_goods]
+            }
         })
     
     # Sort companies by name
-    all_companies_output.sort(key=lambda x: x['company'])
+    all_companies_output.sort(key=lambda x: x['company']['name'])
     
     # Export all_companies.json (organized by companies)
     with open(export_path / "all_companies.json", "w") as f:
