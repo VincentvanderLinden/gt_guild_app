@@ -1,7 +1,7 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T12:25:10.379729",
-  "goods_count": 62,
+  "last_updated": "2026-02-03T12:25:25.784573",
+  "goods_count": 63,
   "data": [
     {
       "good": "Advanced Research Data",
@@ -849,6 +849,32 @@
           "guild_max": 300,
           "guild_min": 200,
           "discount_percent": 15,
+          "discount_fixed": 0,
+          "timezone": "UTC -07:00",
+          "professions": [
+            "Agriculture",
+            "Food Production"
+          ]
+        }
+      ]
+    },
+    {
+      "good": "Grain",
+      "cheapest_price": 10.0,
+      "cheapest_company": "Flip Co",
+      "cheapest_planet": "None",
+      "listings_count": 1,
+      "listings": [
+        {
+          "company": "Flip Co",
+          "good": "Grain",
+          "planet_produced": "None",
+          "guildees_pay": 10.0,
+          "live_exc_price": 10,
+          "live_avg_price": 11,
+          "guild_max": 0,
+          "guild_min": 0,
+          "discount_percent": 0,
           "discount_fixed": 0,
           "timezone": "UTC -07:00",
           "professions": [
