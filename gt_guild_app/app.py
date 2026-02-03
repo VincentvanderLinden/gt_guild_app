@@ -528,6 +528,9 @@ def main():
     # Result might be bool (old code) or tuple (new code), handle both
     if not isinstance(result, bool):
         success, _ = result
+        # If auto-push succeeded, refresh to update sidebar times
+        if success:
+            st.rerun()
     
     # Apply filters
     filtered_companies = apply_all_filters(
