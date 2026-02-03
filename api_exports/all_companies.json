@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T15:25:12.469089",
+  "last_updated": "2026-02-03T14:26:52.066394",
   "companies_count": 8,
   "data": [
     {
@@ -11,7 +11,7 @@
           "Manufacturing"
         ],
         "timezone": "UTC +04:00",
-        "local_time": "6:25 PM",
+        "local_time": "6:26 PM",
         "goods_count": 13,
         "goods": [
           {
@@ -29,7 +29,7 @@
             "good": "Construction Tools",
             "planet_produced": "Kentaurus 2",
             "guildees_pay": 170.0,
-            "live_exc_price": 170,
+            "live_exc_price": 175,
             "live_avg_price": 169,
             "guild_max": 0,
             "guild_min": 0,
@@ -73,7 +73,7 @@
             "good": "Furniture",
             "planet_produced": "Kentaurus 2",
             "guildees_pay": 250.0,
-            "live_exc_price": 255,
+            "live_exc_price": 260,
             "live_avg_price": 266,
             "guild_max": 0,
             "guild_min": 0,
@@ -129,7 +129,7 @@
             "planet_produced": "Kentaurus 2",
             "guildees_pay": 75.0,
             "live_exc_price": 78,
-            "live_avg_price": 75,
+            "live_avg_price": 74,
             "guild_max": 0,
             "guild_min": 0,
             "discount_percent": 5,
@@ -170,7 +170,7 @@
           "Chicken Farmer"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "3:25 PM",
+        "local_time": "3:26 PM",
         "goods_count": 9,
         "goods": [
           {
@@ -253,8 +253,8 @@
           {
             "good": "Truss",
             "planet_produced": "Kentaurus 2",
-            "guildees_pay": 440.0,
-            "live_exc_price": 485,
+            "guildees_pay": 430.0,
+            "live_exc_price": 475,
             "live_avg_price": 466,
             "guild_max": 500,
             "guild_min": 350,
@@ -284,7 +284,7 @@
           "Food Production"
         ],
         "timezone": "UTC -07:00",
-        "local_time": "7:25 AM",
+        "local_time": "7:26 AM",
         "goods_count": 10,
         "goods": [
           {
@@ -345,8 +345,8 @@
           {
             "good": "Limestone",
             "planet_produced": "",
-            "guildees_pay": 53.0,
-            "live_exc_price": 53,
+            "guildees_pay": 51.0,
+            "live_exc_price": 51,
             "live_avg_price": 55,
             "guild_max": 0,
             "guild_min": 0,
@@ -357,7 +357,7 @@
             "good": "Pie",
             "planet_produced": "",
             "guildees_pay": 320.0,
-            "live_exc_price": 370,
+            "live_exc_price": 365,
             "live_avg_price": 347,
             "guild_max": 400,
             "guild_min": 295,
@@ -409,7 +409,7 @@
           "Resource Extraction"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "3:25 PM",
+        "local_time": "3:26 PM",
         "goods_count": 15,
         "goods": [
           {
@@ -471,7 +471,7 @@
             "good": "Epoxy",
             "planet_produced": "Aetheria 8",
             "guildees_pay": 60.0,
-            "live_exc_price": 69,
+            "live_exc_price": 70,
             "live_avg_price": 73,
             "guild_max": 70,
             "guild_min": 60,
@@ -589,7 +589,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC -05:00",
-        "local_time": "9:25 AM",
+        "local_time": "9:26 AM",
         "goods_count": 3,
         "goods": [
           {
@@ -636,7 +636,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC -08:00",
-        "local_time": "6:25 AM",
+        "local_time": "6:26 AM",
         "goods_count": 4,
         "goods": [
           {
@@ -694,7 +694,7 @@
           "Science"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "2:25 PM",
+        "local_time": "2:26 PM",
         "goods_count": 2,
         "goods": [
           {
@@ -733,7 +733,7 @@
           "ConstRICtion"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "3:25 PM",
+        "local_time": "3:26 PM",
         "goods_count": 12,
         "goods": [
           {
@@ -860,8 +860,8 @@
           {
             "good": "Structural Elements",
             "planet_produced": "Kentaurus 2",
-            "guildees_pay": 2750.0,
-            "live_exc_price": 3050,
+            "guildees_pay": 2800.0,
+            "live_exc_price": 3100,
             "live_avg_price": 3364,
             "guild_max": 0,
             "guild_min": 0,
