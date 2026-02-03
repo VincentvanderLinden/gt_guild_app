@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T08:58:33.212979",
+  "last_updated": "2026-02-03T08:58:39.990298",
   "goods_count": 64,
   "data": [
     {
@@ -914,7 +914,7 @@
     },
     {
       "good": "Honeycaps",
-      "cheapest_price": 56.0,
+      "cheapest_price": 15.0,
       "cheapest_company": "Flip Co",
       "cheapest_planet": "None",
       "listings_count": 1,
@@ -923,10 +923,10 @@
           "company": "Flip Co",
           "good": "Honeycaps",
           "planet_produced": "None",
-          "guildees_pay": 56.0,
+          "guildees_pay": 15.0,
           "live_exc_price": 56,
           "live_avg_price": 58,
-          "guild_max": 0,
+          "guild_max": 15,
           "guild_min": 0,
           "discount_percent": 0,
           "discount_fixed": 0,
