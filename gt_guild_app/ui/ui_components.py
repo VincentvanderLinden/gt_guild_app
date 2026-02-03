@@ -69,10 +69,16 @@ def render_sidebar_filters(professions_list, price_data, last_update, last_sheet
             background-color: rgba(49, 51, 63, 0.2);
             color: #fafafa;
             border: 1px solid rgba(250, 250, 250, 0.2);
+            transition: all 0.1s ease;
         }
         div.stButton > button:hover {
             background-color: rgba(49, 51, 63, 0.4);
             border-color: rgba(250, 250, 250, 0.4);
+        }
+        div.stButton > button:active {
+            background-color: rgba(49, 51, 63, 0.6);
+            border-color: rgba(250, 250, 250, 0.6);
+            transform: translateY(1px);
         }
         </style>
     """, unsafe_allow_html=True)
