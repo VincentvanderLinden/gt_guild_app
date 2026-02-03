@@ -1,16 +1,27 @@
 # REST API Documentation
 
-The TiT Guild App now exposes REST API endpoints for easy data scraping and integration.
+The TiT Guild App exposes REST API endpoints for easy data scraping and integration.
 
 ## Running the Application
+
+**Local Development:**
 
 Start the application with API support:
 
 ```bash
-streamlit run gt_guild_app/main.py
+streamlit run gt_guild_app/app.py --server.port 8503
 ```
 
 The Streamlit UI will be available at `http://localhost:8503` and API endpoints at the same domain with `/api/*` paths.
+
+**Streamlit Cloud Note:**
+
+⚠️ The Starlette API integration may not be fully supported on Streamlit Cloud yet as it requires Streamlit 1.53+ features that are still being rolled out. If the API endpoints return "You need to enable JavaScript to run this app", this indicates the feature is not yet available in your deployment environment.
+
+For production API access on Streamlit Cloud, consider:
+- Running a separate FastAPI service
+- Using Streamlit's built-in caching and session state for data access
+- Deploying the API portion separately on a platform like Railway, Render, or Fly.io
 
 ## API Endpoints
 
