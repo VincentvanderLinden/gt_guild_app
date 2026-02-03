@@ -1,6 +1,10 @@
 {
   "status": "success",
+<<<<<<< HEAD
   "last_updated": "2026-02-03T12:34:58.255600",
+=======
+  "last_updated": "2026-02-03T11:37:00.328754",
+>>>>>>> c3301d6d3fa778ed999b02bdff92275edd295802
   "goods_count": 63,
   "data": [
     {
@@ -82,7 +86,7 @@
     },
     {
       "good": "Aluminium",
-      "cheapest_price": 500.0,
+      "cheapest_price": 490.0,
       "cheapest_company": "Romero Enterprises",
       "cheapest_planet": "Aetheria 8",
       "listings_count": 1,
@@ -91,8 +95,8 @@
           "company": "Romero Enterprises",
           "good": "Aluminium",
           "planet_produced": "Aetheria 8",
-          "guildees_pay": 500.0,
-          "live_exc_price": 495,
+          "guildees_pay": 490.0,
+          "live_exc_price": 490,
           "live_avg_price": 468,
           "guild_max": 0,
           "guild_min": 0,
@@ -950,7 +954,7 @@
           "good": "Kevlar",
           "planet_produced": "Kentaurus 2",
           "guildees_pay": 400.0,
-          "live_exc_price": 420,
+          "live_exc_price": 415,
           "live_avg_price": 373,
           "guild_max": 0,
           "guild_min": 0,
