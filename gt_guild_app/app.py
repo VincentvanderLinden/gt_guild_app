@@ -24,10 +24,12 @@ from datetime import datetime, timedelta, timezone
 # ============================================================================
 
 def export_json_if_needed():
-    """Export JSON with current prices after any data change."""
+    """Export JSON with current prices after any data change and push to GitHub."""
     try:
         from integrations.api_client import fetch_material_prices
         from integrations.json_exporter import export_to_public_json
+        import subprocess
+        from pathlib import Path
         
         price_data, _ = fetch_material_prices()
         
@@ -45,6 +47,32 @@ def export_json_if_needed():
             # Export to public JSON
             export_to_public_json(companies_copy)
             print("✅ Exported JSON after data change")
+            
+            # Auto-commit and push to GitHub
+            try:
+                repo_root = Path(__file__).parent.parent
+                subprocess.run(
+                    ["git", "add", "api_exports/all_goods.json"],
+                    cwd=repo_root,
+                    capture_output=True,
+                    timeout=5
+                )
+                result = subprocess.run(
+                    ["git", "commit", "-m", f"Auto-update guild data - {datetime.now().strftime('%Y-%m-%d %H:%M')}"],
+                    cwd=repo_root,
+                    capture_output=True,
+                    timeout=5
+                )
+                if result.returncode == 0:
+                    subprocess.run(
+                        ["git", "push"],
+                        cwd=repo_root,
+                        capture_output=True,
+                        timeout=10
+                    )
+                    print("✅ Auto-pushed to GitHub")
+            except Exception as git_error:
+                print(f"Note: Could not auto-push to GitHub: {git_error}")
     except Exception as e:
         print(f"Error exporting JSON: {e}")
 
@@ -129,6 +157,34 @@ def refresh_from_google_sheets():
                         # Export to public JSON
                         from integrations.json_exporter import export_to_public_json
                         export_to_public_json(companies_copy)
+                        
+                        # Auto-commit and push to GitHub
+                        import subprocess
+                        from pathlib import Path
+                        try:
+                            repo_root = Path(__file__).parent.parent
+                            subprocess.run(
+                                ["git", "add", "api_exports/all_goods.json"],
+                                cwd=repo_root,
+                                capture_output=True,
+                                timeout=5
+                            )
+                            result = subprocess.run(
+                                ["git", "commit", "-m", f"Auto-update from Google Sheets - {now.strftime('%Y-%m-%d %H:%M')}"],
+                                cwd=repo_root,
+                                capture_output=True,
+                                timeout=5
+                            )
+                            if result.returncode == 0:
+                                subprocess.run(
+                                    ["git", "push"],
+                                    cwd=repo_root,
+                                    capture_output=True,
+                                    timeout=10
+                                )
+                                print("✅ Auto-pushed to GitHub from Google Sheets refresh")
+                        except Exception as git_error:
+                            print(f"Note: Could not auto-push to GitHub: {git_error}")
                 except Exception as e:
                     print(f"Error exporting JSON: {e}")
                 
