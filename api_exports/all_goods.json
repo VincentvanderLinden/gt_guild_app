@@ -1,10 +1,6 @@
 {
   "status": "success",
-<<<<<<< HEAD
-  "last_updated": "2026-02-03T12:34:58.255600",
-=======
-  "last_updated": "2026-02-03T11:37:00.328754",
->>>>>>> c3301d6d3fa778ed999b02bdff92275edd295802
+  "last_updated": "2026-02-03T11:38:48.880329",
   "goods_count": 63,
   "data": [
     {
@@ -811,7 +807,7 @@
     },
     {
       "good": "Glass",
-      "cheapest_price": 68.0,
+      "cheapest_price": 67.0,
       "cheapest_company": "Drunkenduo's Ruthless Divident",
       "cheapest_planet": "Aetheria 8",
       "listings_count": 1,
@@ -820,8 +816,8 @@
           "company": "Drunkenduo's Ruthless Divident",
           "good": "Glass",
           "planet_produced": "Aetheria 8",
-          "guildees_pay": 68.0,
-          "live_exc_price": 79,
+          "guildees_pay": 67.0,
+          "live_exc_price": 78,
           "live_avg_price": 77,
           "guild_max": 75,
           "guild_min": 55,
