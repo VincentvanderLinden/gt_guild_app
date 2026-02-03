@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T12:34:58.255600",
+  "last_updated": "2026-02-03T11:36:52.075652",
   "goods_count": 63,
   "data": [
     {
@@ -82,7 +82,7 @@
     },
     {
       "good": "Aluminium",
-      "cheapest_price": 500.0,
+      "cheapest_price": 490.0,
       "cheapest_company": "Romero Enterprises",
       "cheapest_planet": "Aetheria 8",
       "listings_count": 1,
@@ -91,8 +91,8 @@
           "company": "Romero Enterprises",
           "good": "Aluminium",
           "planet_produced": "Aetheria 8",
-          "guildees_pay": 500.0,
-          "live_exc_price": 495,
+          "guildees_pay": 490.0,
+          "live_exc_price": 490,
           "live_avg_price": 468,
           "guild_max": 0,
           "guild_min": 0,
@@ -807,7 +807,7 @@
     },
     {
       "good": "Glass",
-      "cheapest_price": 68.0,
+      "cheapest_price": 67.0,
       "cheapest_company": "Drunkenduo's Ruthless Divident",
       "cheapest_planet": "Aetheria 8",
       "listings_count": 1,
@@ -816,8 +816,8 @@
           "company": "Drunkenduo's Ruthless Divident",
           "good": "Glass",
           "planet_produced": "Aetheria 8",
-          "guildees_pay": 68.0,
-          "live_exc_price": 79,
+          "guildees_pay": 67.0,
+          "live_exc_price": 78,
           "live_avg_price": 77,
           "guild_max": 75,
           "guild_min": 55,
@@ -950,7 +950,7 @@
           "good": "Kevlar",
           "planet_produced": "Kentaurus 2",
           "guildees_pay": 400.0,
-          "live_exc_price": 420,
+          "live_exc_price": 415,
           "live_avg_price": 373,
           "guild_max": 0,
           "guild_min": 0,
