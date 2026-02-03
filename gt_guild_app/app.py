@@ -1,8 +1,12 @@
 """Main application file for TiT Guild App."""
 import streamlit as st
+import warnings
+
+# Suppress FutureWarning from Streamlit's data_editor
+warnings.filterwarnings('ignore', category=FutureWarning, module='streamlit.elements.widgets.data_editor')
 
 # Import local modules
-from config import APP_TITLE, APP_ICON, APP_SUBTITLE, CSS_FILE, PROFESSIONS, GOOGLE_SHEET_URL, TIMEZONE_OPTIONS
+from config import APP_TITLE, APP_ICON, APP_SUBTITLE, CSS_FILE, PROFESSIONS, TIMEZONE_OPTIONS
 from core.data_manager import (
     load_game_materials, load_game_planets, load_data, save_data, 
     prepare_goods_dataframe
@@ -49,7 +53,7 @@ def export_json_if_needed():
 
 
 def push_to_github_now(force=False):
-    """Push JSON to GitHub if 2 minutes have passed or if forced."""
+    """Push JSON to GitHub if 2 minutes have passed or if forced. Returns (success, message)."""
     from pathlib import Path
     from integrations.github_uploader import push_to_github
     import subprocess
@@ -62,7 +66,7 @@ def push_to_github_now(force=False):
             time_since_push = (now - st.session_state.last_github_push).total_seconds()
             if time_since_push < 120:
                 print(f"⏱️ Skipping push, only {int(time_since_push)}s since last push")
-                return False
+                return False, f"Skipped (last push {int(time_since_push)}s ago)"
     
     try:
         # Try GitHub API first (works remotely with token in secrets)
@@ -78,37 +82,80 @@ def push_to_github_now(force=False):
         if not success:
             try:
                 repo_root = Path(__file__).parent.parent
+                
+                # Add the JSON file
                 subprocess.run(
                     ["git", "add", "api_exports/all_goods.json"],
                     cwd=repo_root,
                     capture_output=True,
                     timeout=5
                 )
+                
+                # Commit it
                 result = subprocess.run(
                     ["git", "commit", "-m", f"Auto-update guild data - {now.strftime('%Y-%m-%d %H:%M')}"],
                     cwd=repo_root,
                     capture_output=True,
                     timeout=5
                 )
+                
+                # Check if commit succeeded or there was nothing to commit
                 if result.returncode == 0:
-                    subprocess.run(
+                    # New commit created, try to push
+                    push_result = subprocess.run(
                         ["git", "push"],
                         cwd=repo_root,
                         capture_output=True,
                         timeout=10
                     )
-                    success = True
-                    print("✅ Pushed to GitHub via git")
+                    if push_result.returncode == 0:
+                        success = True
+                        print("✅ Pushed to GitHub via git")
+                    else:
+                        error_msg = push_result.stderr.decode() if push_result.stderr else push_result.stdout.decode()
+                        print(f"❌ Git push failed: {error_msg}")
+                        # Try to recover by fetching and retrying
+                        if b"rejected" in push_result.stderr or b"fetch first" in push_result.stderr:
+                            print("Attempting to fetch and merge...")
+                            subprocess.run(["git", "fetch"], cwd=repo_root, capture_output=True, timeout=10)
+                            subprocess.run(["git", "merge", "origin/main", "--no-edit"], cwd=repo_root, capture_output=True, timeout=10)
+                            retry_push = subprocess.run(["git", "push"], cwd=repo_root, capture_output=True, timeout=10)
+                            if retry_push.returncode == 0:
+                                success = True
+                                print("✅ Pushed to GitHub after merge")
+                            else:
+                                return False, "Push rejected after merge attempt"
+                        else:
+                            return False, f"Git push failed: {error_msg[:100]}"
+                elif result.returncode == 1 and b"nothing to commit" in result.stdout:
+                    # No changes, but try to push any unpushed commits
+                    push_result = subprocess.run(
+                        ["git", "push"],
+                        cwd=repo_root,
+                        capture_output=True,
+                        timeout=10
+                    )
+                    if push_result.returncode == 0:
+                        success = True
+                        print("✅ Pushed existing commits to GitHub")
+                    else:
+                        print("No new changes to push")
+                        return False, "No new changes to push"
+                else:
+                    error_msg = result.stderr.decode() if result.stderr else "Unknown error"
+                    print(f"❌ Git commit failed: {error_msg}")
+                    return False, f"Git commit failed: {error_msg[:100]}"
+                    
             except Exception as git_error:
                 print(f"Note: Could not auto-push to GitHub: {git_error}")
-                return False
+                return False, f"Exception: {str(git_error)[:100]}"
         
         if success:
             st.session_state.last_github_push = now
-            return True
+            return True, "Successfully pushed to GitHub"
     except Exception as e:
         print(f"Error pushing to GitHub: {e}")
-        return False
+        return False, f"Error: {str(e)[:100]}"
 
 
 def initialize_page():
@@ -148,7 +195,11 @@ def initialize_session_state():
         st.session_state.last_github_push = None
     
     if 'sheet_url' not in st.session_state:
-        st.session_state.sheet_url = GOOGLE_SHEET_URL
+        # Read Google Sheet URL from secrets
+        try:
+            st.session_state.sheet_url = st.secrets.get("GOOGLE_SHEET_URL", "")
+        except:
+            st.session_state.sheet_url = ""
 
 
 def refresh_from_google_sheets():
@@ -227,6 +278,7 @@ def render_company_editor(company, idx, materials, price_data, all_professions_l
                     if c["name"] == company["name"]:
                         c["professions"] = selected_profs
                         save_data(st.session_state.companies)
+                        export_json_if_needed()
                         break
         
         with col_tz:
@@ -282,11 +334,15 @@ def render_company_editor(company, idx, materials, price_data, all_professions_l
         # Reset index to ensure it's a range index for data editor
         goods_df = goods_df.reset_index(drop=True)
         
+        # Calculate height based on number of rows (35px per row + 38px header + 35px for empty row)
+        table_height = min(35 * len(goods_df) + 73, 800)
+        
         # Render data editor
         edited_goods = st.data_editor(
             goods_df,
             hide_index=True,
             width="stretch",
+            height=table_height,
             num_rows="dynamic",
             key=f"table_{company['name']}_{idx}",
             disabled=["Guildees Pay:", "Live EXC Price", "Live AVG Price"],
@@ -388,7 +444,28 @@ def main():
     if st.session_state.companies:
         st.session_state.companies = update_company_local_times(st.session_state.companies)
     
-    # Fetch live prices (cached for 10 minutes)
+    # Force refresh on first app load (once per session)
+    if 'initial_refresh_done' not in st.session_state:
+        st.session_state.initial_refresh_done = False
+    
+    if not st.session_state.initial_refresh_done:
+        # Force Google Sheets refresh on startup
+        st.session_state.last_sheet_refresh = None
+        refresh_from_google_sheets()
+        st.session_state.initial_refresh_done = True
+    
+    # Push to GitHub on app startup (once per session)
+    if 'initial_push_done' not in st.session_state:
+        st.session_state.initial_push_done = False
+    
+    if not st.session_state.initial_push_done:
+        result = push_to_github_now(force=True)
+        # Result might be bool or tuple, handle both
+        if not isinstance(result, bool):
+            success, _ = result
+        st.session_state.initial_push_done = True
+    
+    # Fetch live prices (cached for 10 minutes, but will be fresh on startup)
     price_data, last_update = fetch_material_prices()
     
     # Collect all professions from companies
@@ -414,13 +491,18 @@ def main():
     # Handle manual push button
     if push_button:
         with st.spinner("Pushing to GitHub..."):
-            if push_to_github_now(force=True):
-                st.success("✅ Successfully pushed to GitHub!")
+            success, message = push_to_github_now(force=True)
+            if success:
+                st.success(f"✅ {message}")
+                st.info("Note: GitHub raw CDN may take 1-2 minutes to update")
             else:
-                st.error("❌ Failed to push to GitHub. Check logs for details.")
+                st.error(f"❌ {message}")
     
     # Auto-push every 2 minutes
-    push_to_github_now(force=False)
+    result = push_to_github_now(force=False)
+    # Result might be bool (old code) or tuple (new code), handle both
+    if not isinstance(result, bool):
+        success, _ = result
     
     # Apply filters
     filtered_companies = apply_all_filters(

@@ -51,18 +51,32 @@ def render_sidebar_filters(professions_list, price_data, last_update, last_sheet
     if last_github_push:
         time_str = last_github_push.strftime("%b %d, %Y at %I:%M %p UTC")
         st.sidebar.caption(
-            f"🚀 **GitHub Data**  \n"
-            f"*Last pushed:*  \n"
+            f"🌌 **Galactic Repository**  \n"
+            f"*Last transmission:*  \n"
             f"*{time_str}*  \n"
-            f"*Auto-pushes every 2 minutes*"
+            f"*Auto-sync every 2 minutes*"
         )
     else:
         st.sidebar.caption(
-            f"🚀 **GitHub Data**  \n"
-            f"*Not yet pushed*"
+            f"🌌 **Galactic Repository**  \n"
+            f"*Awaiting first transmission*"
         )
     
-    push_button = st.sidebar.button("📤 Push to GitHub Now", use_container_width=True, type="primary")
+    st.sidebar.markdown("") # spacing
+    st.sidebar.markdown("""
+        <style>
+        div.stButton > button {
+            background-color: rgba(49, 51, 63, 0.2);
+            color: #fafafa;
+            border: 1px solid rgba(250, 250, 250, 0.2);
+        }
+        div.stButton > button:hover {
+            background-color: rgba(49, 51, 63, 0.4);
+            border-color: rgba(250, 250, 250, 0.4);
+        }
+        </style>
+    """, unsafe_allow_html=True)
+    push_button = st.sidebar.button("🚀 Launch to GitHub", use_container_width=True)
     
     return selected_professions, search_company, search_goods, push_button
 

@@ -32,9 +32,6 @@ APP_TITLE = "TiT Guild App™"
 APP_ICON = "🐔"
 APP_SUBTITLE = "*View and manage items that players are selling*"
 
-# Google Sheets URL
-GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/1GQ9EfvmBy0_TCm5yoxSjs-uHbREo1ULq0GC8dt_VxI8/edit?gid=0#gid=0"
-
 # Timezone options with city names
 TIMEZONE_OPTIONS = [
     "UTC -12:00 (Baker Island)",
