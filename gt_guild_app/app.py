@@ -432,178 +432,6 @@ def handle_goods_changes(company, edited_goods, price_data):
             break
 
 
-def handle_api_request(query_params):
-    """Handle API requests via query parameters (fallback for Streamlit Cloud)."""
-    import json
-    
-    endpoint = query_params.get('api_endpoint', '')
-    companies = load_google_sheets_data()
-    
-    if not companies:
-        response = {"status": "error", "message": "No data available"}
-        st.json(response)
-        return
-    
-    # Health check
-    if endpoint == 'health':
-        response = {"status": "healthy", "service": "TiT Guild App API"}
-        st.json(response)
-        return
-    
-    # List all goods
-    if endpoint == 'goods':
-        goods_set = set()
-        for company in companies:
-            for good in company['goods']:
-                goods_set.add(good.get('Produced Goods', ''))
-        response = {
-            "status": "success",
-            "data": {
-                "goods": sorted(list(goods_set)),
-                "count": len(goods_set)
-            }
-        }
-        st.json(response)
-        return
-    
-    # List all companies
-    if endpoint == 'companies':
-        company_list = []
-        for company in companies:
-            company_list.append({
-                "name": company['name'],
-                "industry": company['industry'],
-                "professions": company.get('professions', []),
-                "timezone": company.get('timezone', 'UTC +00:00'),
-                "goods_count": len(company['goods'])
-            })
-        response = {
-            "status": "success",
-            "data": {
-                "companies": company_list,
-                "count": len(company_list)
-            }
-        }
-        st.json(response)
-        return
-    
-    # Get good details
-    if endpoint.startswith('good/'):
-        good_name = endpoint.replace('good/', '')
-        results = []
-        for company in companies:
-            for good in company['goods']:
-                if good.get('Produced Goods', '').lower() == good_name.lower():
-                    results.append({
-                        'company': company['name'],
-                        'good': good.get('Produced Goods', ''),
-                        'planet_produced': good.get('Planet Produced', ''),
-                        'guildees_pay': good.get('Guildees Pay:', 0),
-                        'live_exc_price': good.get('Live EXC Price', 0),
-                        'live_avg_price': good.get('Live AVG Price', 0),
-                        'guild_max': good.get('Guild Max', 0),
-                        'guild_min': good.get('Guild Min', 0),
-                        'discount_percent': good.get('Guild % Discount', 0),
-                        'timezone': company.get('timezone', 'UTC +00:00'),
-                        'professions': company.get('professions', [])
-                    })
-        
-        if not results:
-            response = {"status": "error", "message": f"Good '{good_name}' not found"}
-            st.json(response)
-            return
-        
-        results.sort(key=lambda x: x['guildees_pay'])
-        response = {
-            "status": "success",
-            "query": {"good": good_name},
-            "data": {
-                "results": results,
-                "count": len(results),
-                "cheapest": results[0] if results else None
-            }
-        }
-        st.json(response)
-        return
-    
-    # Get company details
-    if endpoint.startswith('company/'):
-        company_name = endpoint.replace('company/', '')
-        for company in companies:
-            if company['name'].lower() == company_name.lower():
-                goods_list = []
-                for good in company['goods']:
-                    goods_list.append({
-                        'produced_goods': good.get('Produced Goods', ''),
-                        'planet_produced': good.get('Planet Produced', ''),
-                        'guildees_pay': good.get('Guildees Pay:', 0),
-                        'live_exc_price': good.get('Live EXC Price', 0),
-                        'live_avg_price': good.get('Live AVG Price', 0),
-                        'guild_max': good.get('Guild Max', 0),
-                        'guild_min': good.get('Guild Min', 0),
-                        'discount_percent': good.get('Guild % Discount', 0)
-                    })
-                
-                response = {
-                    "status": "success",
-                    "query": {"company": company_name},
-                    "data": {
-                        "name": company['name'],
-                        "industry": company['industry'],
-                        "professions": company.get('professions', []),
-                        "timezone": company.get('timezone', 'UTC +00:00'),
-                        "local_time": company.get('local_time', 'N/A'),
-                        "goods": goods_list
-                    }
-                }
-                st.json(response)
-                return
-        
-        response = {"status": "error", "message": f"Company '{company_name}' not found"}
-        st.json(response)
-        return
-    
-    # Get all data
-    if endpoint == 'all':
-        formatted_companies = []
-        for company in companies:
-            goods_list = []
-            for good in company['goods']:
-                goods_list.append({
-                    'produced_goods': good.get('Produced Goods', ''),
-                    'planet_produced': good.get('Planet Produced', ''),
-                    'guildees_pay': good.get('Guildees Pay:', 0),
-                    'live_exc_price': good.get('Live EXC Price', 0),
-                    'live_avg_price': good.get('Live AVG Price', 0),
-                    'guild_max': good.get('Guild Max', 0),
-                    'guild_min': good.get('Guild Min', 0),
-                    'discount_percent': good.get('Guild % Discount', 0)
-                })
-            
-            formatted_companies.append({
-                "name": company['name'],
-                "industry": company['industry'],
-                "professions": company.get('professions', []),
-                "timezone": company.get('timezone', 'UTC +00:00'),
-                "local_time": company.get('local_time', 'N/A'),
-                "goods": goods_list
-            })
-        
-        response = {
-            "status": "success",
-            "data": {
-                "companies": formatted_companies,
-                "count": len(formatted_companies)
-            }
-        }
-        st.json(response)
-        return
-    
-    # Unknown endpoint
-    response = {"status": "error", "message": f"Unknown endpoint: {endpoint}"}
-    st.json(response)
-
-
 def main():
     """Main application logic."""
     # Setup
@@ -613,12 +441,6 @@ def main():
     # Load data
     companies = st.session_state.companies
     materials = st.session_state.materials
-    
-    # Check for API requests via query parameters (fallback for Streamlit Cloud)
-    query_params = st.query_params
-    if any(key in query_params for key in ['api', 'api_endpoint']):
-        handle_api_request(query_params)
-        return
     
     # Normal UI flow - load CSS
     load_custom_css()
@@ -633,42 +455,29 @@ def main():
         try:
             from streamlit.starlette import App as StarletteApp
             api_available = True
-            api_status = "✅ Starlette API endpoints are active"
-            api_note = "Native REST API routes available at `/api/*`"
+            api_status = "✅ API endpoints are active"
         except ImportError:
             api_available = False
-            api_status = f"⚠️ Using query parameter fallback (Streamlit {st.__version__})"
-            api_note = "Starlette integration not available on this deployment"
+            api_status = f"⚠️ API not available (Streamlit {st.__version__} - requires 1.53+)"
         
         st.caption(api_status)
-        st.caption(api_note)
-        
         st.markdown("""
-        Access guild data programmatically via API endpoints:
+        Access guild data programmatically via REST API endpoints:
         
         **Available Endpoints:**
+        - `GET /api/health` - Health check
+        - `GET /api/goods` - List all goods
+        - `GET /api/companies` - List all companies
+        - `GET /api/good/{name}` - Get pricing for a specific good
+        - `GET /api/company/{name}` - Get company details
+        - `GET /api/all` - Get complete dataset
         
-        Query Parameter Format (works on Streamlit Cloud):
-        - `?api&api_endpoint=health` - Health check
-        - `?api&api_endpoint=goods` - List all goods
-        - `?api&api_endpoint=companies` - List all companies
-        - `?api&api_endpoint=good/Steel` - Get pricing for Steel
-        - `?api&api_endpoint=company/Flip%20Co` - Get company details
-        - `?api&api_endpoint=all` - Get complete dataset
-        
-        **Examples:**
+        **Example:**
         ```bash
-        # Health check
-        curl "https://tit-guild-app.streamlit.app/?api&api_endpoint=health"
-        
-        # Get Steel pricing
-        curl "https://tit-guild-app.streamlit.app/?api&api_endpoint=good/Steel"
-        
-        # List all goods
-        curl "https://tit-guild-app.streamlit.app/?api&api_endpoint=goods"
+        curl http://localhost:8503/api/good/Steel
         ```
         
-        Native REST routes (`/api/*`) work locally with Streamlit 1.53+
+        See API.md file in the project root for full documentation.
         """)
     
     # Refresh from Google Sheets if needed
