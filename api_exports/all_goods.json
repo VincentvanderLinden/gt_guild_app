@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T22:08:45.256830",
+  "last_updated": "2026-02-03T22:10:07.392868",
   "goods_count": 68,
   "data": [
     {
@@ -100,9 +100,7 @@
           "discount_fixed": 15,
           "timezone": "UTC -06:00",
           "professions": [
-            "Metallurgy",
-            "Chicken Farmer",
-            "Truss God"
+            "Metallurgy"
           ]
         },
         {
@@ -610,9 +608,7 @@
           "discount_fixed": 20,
           "timezone": "UTC -06:00",
           "professions": [
-            "Metallurgy",
-            "Chicken Farmer",
-            "Truss God"
+            "Metallurgy"
           ]
         }
       ]
@@ -688,9 +684,7 @@
           "discount_fixed": 0,
           "timezone": "UTC -06:00",
           "professions": [
-            "Metallurgy",
-            "Chicken Farmer",
-            "Truss God"
+            "Metallurgy"
           ]
         }
       ]
@@ -1117,9 +1111,7 @@
           "discount_fixed": 10,
           "timezone": "UTC -06:00",
           "professions": [
-            "Metallurgy",
-            "Chicken Farmer",
-            "Truss God"
+            "Metallurgy"
           ]
         }
       ]
@@ -1518,9 +1510,7 @@
           "discount_fixed": 200,
           "timezone": "UTC -06:00",
           "professions": [
-            "Metallurgy",
-            "Chicken Farmer",
-            "Truss God"
+            "Metallurgy"
           ]
         },
         {
@@ -1597,10 +1587,7 @@
           "discount_percent": 10,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
-          "professions": [
-            "Electronics",
-            "Construction"
-          ]
+          "professions": []
         }
       ]
     },
@@ -1815,9 +1802,7 @@
           "discount_fixed": 15,
           "timezone": "UTC -06:00",
           "professions": [
-            "Metallurgy",
-            "Chicken Farmer",
-            "Truss God"
+            "Metallurgy"
           ]
         },
         {
@@ -1860,9 +1845,7 @@
           "discount_fixed": 20,
           "timezone": "UTC -06:00",
           "professions": [
-            "Metallurgy",
-            "Chicken Farmer",
-            "Truss God"
+            "Metallurgy"
           ]
         },
         {
@@ -1949,9 +1932,7 @@
           "discount_fixed": 200,
           "timezone": "UTC -06:00",
           "professions": [
-            "Metallurgy",
-            "Chicken Farmer",
-            "Truss God"
+            "Metallurgy"
           ]
         }
       ]
@@ -2036,9 +2017,7 @@
           "discount_fixed": 0,
           "timezone": "UTC -06:00",
           "professions": [
-            "Metallurgy",
-            "Chicken Farmer",
-            "Truss God"
+            "Metallurgy"
           ]
         }
       ]
