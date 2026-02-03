@@ -167,6 +167,7 @@ def refresh_from_google_sheets():
                         # Export to public JSON
                         from integrations.json_exporter import export_to_public_json
                         from integrations.github_uploader import push_to_github
+                        from pathlib import Path
                         export_to_public_json(companies_copy)
                         
                         # Try GitHub API first (works remotely with token in secrets)
