@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T20:11:59.802057",
+  "last_updated": "2026-02-03T20:12:02.727406",
   "goods_count": 68,
   "data": [
     {
@@ -1559,10 +1559,7 @@
           "discount_percent": 10,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
-          "professions": [
-            "Electronics",
-            "Construction"
-          ]
+          "professions": []
         }
       ]
     },
