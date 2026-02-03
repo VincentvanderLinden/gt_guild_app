@@ -6,7 +6,7 @@ import pandas as pd
 from config import APP_TITLE, APP_ICON, APP_SUBTITLE, CSS_FILE, PROFESSIONS, GOOGLE_SHEET_URL, TIMEZONE_OPTIONS, TIMEZONE_OPTIONS
 from core.data_manager import (
     load_game_materials, load_game_planets, load_data, save_data, 
-    save_google_sheets_data, prepare_goods_dataframe, load_google_sheets_data
+    prepare_goods_dataframe
 )
 from integrations.api_client import fetch_material_prices
 from business.price_calculator import update_live_prices, calculate_all_guildees_prices
@@ -17,223 +17,6 @@ from ui.ui_components import render_sidebar_filters, render_stats_row, get_colum
 from integrations.timezone_utils import update_company_local_times, get_local_time, get_local_time
 from integrations.google_sheets import import_from_google_sheet
 from datetime import datetime, timedelta, timezone
-
-
-# ============================================================================
-# API Route Handlers (for Starlette integration)
-# ============================================================================
-
-async def api_health(request):
-    """Health check endpoint."""
-    from starlette.responses import JSONResponse
-    return JSONResponse({
-        "status": "healthy",
-        "service": "TiT Guild App API"
-    })
-
-
-async def api_goods_list(request):
-    """Get list of all goods across all companies."""
-    from starlette.responses import JSONResponse
-    companies = load_google_sheets_data()
-    if not companies:
-        return JSONResponse({
-            "status": "error",
-            "message": "No data available"
-        }, status_code=404)
-    
-    goods_set = set()
-    for company in companies:
-        for good in company['goods']:
-            goods_set.add(good.get('Produced Goods', ''))
-    
-    return JSONResponse({
-        "status": "success",
-        "data": {
-            "goods": sorted(list(goods_set)),
-            "count": len(goods_set)
-        }
-    })
-
-
-async def api_companies_list(request):
-    """Get list of all companies."""
-    from starlette.responses import JSONResponse
-    companies = load_google_sheets_data()
-    if not companies:
-        return JSONResponse({
-            "status": "error",
-            "message": "No data available"
-        }, status_code=404)
-    
-    company_list = []
-    for company in companies:
-        company_list.append({
-            "name": company['name'],
-            "industry": company['industry'],
-            "professions": company.get('professions', []),
-            "timezone": company.get('timezone', 'UTC +00:00'),
-            "goods_count": len(company['goods'])
-        })
-    
-    return JSONResponse({
-        "status": "success",
-        "data": {
-            "companies": company_list,
-            "count": len(company_list)
-        }
-    })
-
-
-async def api_good_detail(request):
-    """Get pricing details for a specific good."""
-    from starlette.responses import JSONResponse
-    good_name = request.path_params.get('good_name')
-    if not good_name:
-        return JSONResponse({
-            "status": "error",
-            "message": "Good name is required"
-        }, status_code=400)
-    
-    companies = load_google_sheets_data()
-    if not companies:
-        return JSONResponse({
-            "status": "error",
-            "message": "No data available"
-        }, status_code=404)
-    
-    results = []
-    for company in companies:
-        for good in company['goods']:
-            if good.get('Produced Goods', '').lower() == good_name.lower():
-                results.append({
-                    'company': company['name'],
-                    'good': good.get('Produced Goods', ''),
-                    'planet_produced': good.get('Planet Produced', ''),
-                    'guildees_pay': good.get('Guildees Pay:', 0),
-                    'live_exc_price': good.get('Live EXC Price', 0),
-                    'live_avg_price': good.get('Live AVG Price', 0),
-                    'guild_max': good.get('Guild Max', 0),
-                    'guild_min': good.get('Guild Min', 0),
-                    'discount_percent': good.get('Guild % Discount', 0),
-                    'discount_fixed': good.get('Guild Fixed Discount', 0),
-                    'timezone': company.get('timezone', 'UTC +00:00'),
-                    'professions': company.get('professions', [])
-                })
-    
-    if not results:
-        return JSONResponse({
-            "status": "error",
-            "message": f"Good '{good_name}' not found"
-        }, status_code=404)
-    
-    results.sort(key=lambda x: x['guildees_pay'])
-    
-    return JSONResponse({
-        "status": "success",
-        "query": {"good": good_name},
-        "data": {
-            "results": results,
-            "count": len(results),
-            "cheapest": results[0] if results else None
-        }
-    })
-
-
-async def api_company_detail(request):
-    """Get details for a specific company."""
-    from starlette.responses import JSONResponse
-    company_name = request.path_params.get('company_name')
-    if not company_name:
-        return JSONResponse({
-            "status": "error",
-            "message": "Company name is required"
-        }, status_code=400)
-    
-    companies = load_google_sheets_data()
-    if not companies:
-        return JSONResponse({
-            "status": "error",
-            "message": "No data available"
-        }, status_code=404)
-    
-    for company in companies:
-        if company['name'].lower() == company_name.lower():
-            goods_list = []
-            for good in company['goods']:
-                goods_list.append({
-                    'produced_goods': good.get('Produced Goods', ''),
-                    'planet_produced': good.get('Planet Produced', ''),
-                    'guildees_pay': good.get('Guildees Pay:', 0),
-                    'live_exc_price': good.get('Live EXC Price', 0),
-                    'live_avg_price': good.get('Live AVG Price', 0),
-                    'guild_max': good.get('Guild Max', 0),
-                    'guild_min': good.get('Guild Min', 0),
-                    'discount_percent': good.get('Guild % Discount', 0),
-                    'discount_fixed': good.get('Guild Fixed Discount', 0)
-                })
-            
-            return JSONResponse({
-                "status": "success",
-                "query": {"company": company_name},
-                "data": {
-                    "name": company['name'],
-                    "industry": company['industry'],
-                    "professions": company.get('professions', []),
-                    "timezone": company.get('timezone', 'UTC +00:00'),
-                    "local_time": company.get('local_time', 'N/A'),
-                    "goods": goods_list
-                }
-            })
-    
-    return JSONResponse({
-        "status": "error",
-        "message": f"Company '{company_name}' not found"
-    }, status_code=404)
-
-
-async def api_all_data(request):
-    """Get complete dataset."""
-    from starlette.responses import JSONResponse
-    companies = load_google_sheets_data()
-    if not companies:
-        return JSONResponse({
-            "status": "error",
-            "message": "No data available"
-        }, status_code=404)
-    
-    formatted_companies = []
-    for company in companies:
-        goods_list = []
-        for good in company['goods']:
-            goods_list.append({
-                'produced_goods': good.get('Produced Goods', ''),
-                'planet_produced': good.get('Planet Produced', ''),
-                'guildees_pay': good.get('Guildees Pay:', 0),
-                'live_exc_price': good.get('Live EXC Price', 0),
-                'live_avg_price': good.get('Live AVG Price', 0),
-                'guild_max': good.get('Guild Max', 0),
-                'guild_min': good.get('Guild Min', 0),
-                'discount_percent': good.get('Guild % Discount', 0),
-                'discount_fixed': good.get('Guild Fixed Discount', 0)
-            })
-        
-        formatted_companies.append({
-            "name": company['name'],
-            "industry": company['industry'],
-            "professions": company.get('professions', []),
-            "timezone": company.get('timezone', 'UTC +00:00'),
-            "local_time": company.get('local_time', 'N/A'),
-            "goods": goods_list
-        })
-    
-    return JSONResponse({
-        "status": "success",
-        "data": {
-            "companies": formatted_companies,
-            "count": len(formatted_companies)
-        }
-    })
 
 
 # ============================================================================
@@ -293,13 +76,35 @@ def refresh_from_google_sheets():
                 # Update local times
                 companies = update_company_local_times(companies)
                 
-                # Save to main data file only
-                # google_sheets_data will be saved when prices are calculated
+                # Save to main data file
                 save_data(companies)
                 
                 # Update session state
                 st.session_state.companies = companies
                 st.session_state.last_sheet_refresh = now
+                
+                # Export to JSON whenever we refresh from Google Sheets
+                try:
+                    # Get current price data
+                    from integrations.api_client import fetch_material_prices
+                    price_data, _ = fetch_material_prices()
+                    
+                    if price_data:
+                        # Update all companies with current prices
+                        companies_copy = []
+                        for company in companies:
+                            company_copy = company.copy()
+                            goods_df = prepare_goods_dataframe(company["goods"])
+                            goods_df = update_live_prices(goods_df, price_data)
+                            goods_df = calculate_all_guildees_prices(goods_df)
+                            company_copy["goods"] = goods_df.to_dict('records')
+                            companies_copy.append(company_copy)
+                        
+                        # Export to public JSON
+                        from integrations.json_exporter import export_to_public_json
+                        export_to_public_json(companies_copy)
+                except Exception as e:
+                    print(f"Error exporting JSON: {e}")
                 
                 return True
         except Exception as e:
@@ -367,7 +172,6 @@ def render_company_editor(company, idx, materials, price_data, all_professions_l
                         # Update local time immediately
                         c['local_time'] = get_local_time(tz_offset)
                         save_data(st.session_state.companies)
-                        save_google_sheets_data(st.session_state.companies)
                         break
         
         # Prepare goods dataframe
@@ -427,7 +231,6 @@ def handle_goods_changes(company, edited_goods, price_data):
         if c["name"] == company["name"]:
             c["goods"] = edited_goods.to_dict('records')
             save_data(st.session_state.companies)
-            save_google_sheets_data(st.session_state.companies)
             st.rerun()
             break
 
@@ -449,35 +252,40 @@ def main():
     st.title(f"{APP_ICON} {APP_TITLE}")
     st.markdown(APP_SUBTITLE)
     
-    # Add API info banner
-    with st.expander("🔌 REST API Access Available", expanded=False):
-        # Check if API is available
-        try:
-            from streamlit.starlette import App as StarletteApp
-            api_available = True
-            api_status = "✅ API endpoints are active"
-        except ImportError:
-            api_available = False
-            api_status = f"⚠️ API not available (Streamlit {st.__version__} - requires 1.53+)"
+    # Add JSON data access info
+    with st.expander("📊 Public Data Access", expanded=False):
+        st.info("""
+        **JSON Data Available via GitHub:**
         
-        st.caption(api_status)
-        st.markdown("""
-        Access guild data programmatically via REST API endpoints:
+        All guild data is exported to a public JSON file that updates automatically:
         
-        **Available Endpoints:**
-        - `GET /api/health` - Health check
-        - `GET /api/goods` - List all goods
-        - `GET /api/companies` - List all companies
-        - `GET /api/good/{name}` - Get pricing for a specific good
-        - `GET /api/company/{name}` - Get company details
-        - `GET /api/all` - Get complete dataset
-        
-        **Example:**
-        ```bash
-        curl http://localhost:8503/api/good/Steel
+        ```
+        https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_goods.json
         ```
         
-        See API.md file in the project root for full documentation.
+        **Data Structure:**
+        Each good includes:
+        - Good name
+        - Cheapest price and company
+        - Planet produced
+        - All listings sorted by price
+        
+        **JavaScript Example:**
+        ```javascript
+        fetch('https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_goods.json')
+            .then(r => r.json())
+            .then(data => console.log(data.data));  // Array of goods
+        ```
+        
+        **Python Example:**
+        ```python
+        import requests
+        url = "https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_goods.json"
+        data = requests.get(url).json()
+        goods = data["data"]
+        ```
+        
+        Data updates automatically every 10 minutes when prices refresh.
         """)
     
     # Refresh from Google Sheets if needed
@@ -509,35 +317,6 @@ def main():
         professions_list, price_data, last_update, st.session_state.last_sheet_refresh
     )
     
-    # Automatically update API data with current prices
-    if price_data and st.session_state.companies:
-        # Check if we need to update API data (track last update time)
-        if 'last_api_data_update' not in st.session_state:
-            st.session_state.last_api_data_update = None
-        
-        # Update if we haven't updated yet, or if prices were just refreshed
-        from datetime import datetime, timezone, timedelta
-        now = datetime.now(timezone.utc)
-        should_update = (
-            st.session_state.last_api_data_update is None or
-            (now - st.session_state.last_api_data_update) > timedelta(minutes=10)
-        )
-        
-        if should_update:
-            # Update all companies with current prices
-            companies_copy = []
-            for company in st.session_state.companies:
-                company_copy = company.copy()
-                goods_df = prepare_goods_dataframe(company["goods"])
-                goods_df = update_live_prices(goods_df, price_data)
-                goods_df = calculate_all_guildees_prices(goods_df)
-                company_copy["goods"] = goods_df.to_dict('records')
-                companies_copy.append(company_copy)
-            
-            # Save to API data file (not the main file to avoid affecting UI)
-            save_google_sheets_data(companies_copy)
-            st.session_state.last_api_data_update = now
-    
     # Apply filters
     filtered_companies = apply_all_filters(
         companies, selected_professions, search_company, search_goods
@@ -565,38 +344,6 @@ def main():
     st.info("💾 All changes are saved automatically")
     st.divider()
     st.write(f"**Showing {len(filtered_companies)} of {len(companies)} companies**")
-
-
-# ============================================================================
-# Streamlit App with Starlette API Routes
-# ============================================================================
-
-# Create the Streamlit app with API routes
-# This must be at module level for Streamlit Cloud to recognize it
-try:
-    from streamlit.starlette import App
-    from starlette.routing import Route
-    
-    app = App(
-        __file__,
-        routes=[
-            Route("/api/health", api_health),
-            Route("/api/goods", api_goods_list),
-            Route("/api/companies", api_companies_list),
-            Route("/api/good/{good_name}", api_good_detail),
-            Route("/api/company/{company_name}", api_company_detail),
-            Route("/api/all", api_all_data),
-        ],
-    )
-    print(f"✅ Starlette API routes registered successfully")
-except ImportError as e:
-    # Streamlit version doesn't support Starlette integration
-    print(f"⚠️ Streamlit Starlette not available: {e}")
-    print(f"⚠️ Streamlit version: {st.__version__}")
-    app = None
-except Exception as e:
-    print(f"❌ Error creating Starlette app: {e}")
-    app = None
 
 
 if __name__ == "__main__":

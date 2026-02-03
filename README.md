@@ -27,21 +27,34 @@ A comprehensive web application for managing guild trading data in Galactic Tyco
 - **Timezone Selection**: 30+ timezone options with city names (UTC -12:00 to +14:00)
 - **Discount Configuration**: Set min/max prices and discount percentages
 
-### 🌐 REST API Access
-Full REST API with JSON responses for programmatic data access:
-- `GET /api/health` - Health check endpoint
-- `GET /api/goods` - List all available goods
-- `GET /api/companies` - List all companies with summaries
-- `GET /api/good/{name}` - Get pricing details for a specific good (sorted by cheapest)
-- `GET /api/company/{name}` - Get full company details with all goods
-- `GET /api/all` - Get complete dataset
+### 📊 Public Data Access
+Comprehensive JSON data export updated automatically every 10 minutes:
 
-**Example:**
-```bash
-curl http://localhost:8503/api/good/Steel
+**GitHub Raw URL:**
+```
+https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_goods.json
 ```
 
-Full API documentation available in [API.md](API.md)
+**Data Structure:**
+- All goods with their cheapest prices
+- Complete listings sorted by guildee pay price
+- Planet information and company details
+- Live exchange prices and discounts
+
+**JavaScript Example:**
+```javascript
+fetch('https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_goods.json')
+    .then(r => r.json())
+    .then(data => console.log(data.data));
+```
+
+**Python Example:**
+```python
+import requests
+url = "https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_goods.json"
+data = requests.get(url).json()
+goods = data["data"]  # Array of all goods with listings
+```
 
 ### 📈 Statistics Dashboard
 - **Total Companies**: Count of active companies
