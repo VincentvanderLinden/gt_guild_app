@@ -1,11 +1,11 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T14:56:52.365966",
-  "goods_count": 62,
+  "last_updated": "2026-02-03T15:01:37.899977",
+  "goods_count": 66,
   "data": [
     {
       "good": "Advanced Research Data",
-      "cheapest_price": 6900.0,
+      "cheapest_price": 6800.0,
       "cheapest_company": "Stellara",
       "cheapest_planet": "Astera 3",
       "listings_count": 1,
@@ -14,8 +14,8 @@
           "company": "Stellara",
           "good": "Advanced Research Data",
           "planet_produced": "Astera 3",
-          "guildees_pay": 6900.0,
-          "live_exc_price": 7400,
+          "guildees_pay": 6800.0,
+          "live_exc_price": 7300,
           "live_avg_price": 5676,
           "guild_max": 0,
           "guild_min": 5300,
@@ -66,7 +66,7 @@
           "good": "Ale",
           "planet_produced": "",
           "guildees_pay": 70.0,
-          "live_exc_price": 65,
+          "live_exc_price": 66,
           "live_avg_price": 72,
           "guild_max": 95,
           "guild_min": 70,
@@ -332,7 +332,7 @@
           "planet_produced": "Reverie 4",
           "guildees_pay": 3300.0,
           "live_exc_price": 4350,
-          "live_avg_price": 4555,
+          "live_avg_price": 4554,
           "guild_max": 4000,
           "guild_min": 0,
           "discount_percent": 25,
@@ -351,7 +351,7 @@
           "planet_produced": "Tidal 5",
           "guildees_pay": 4050.0,
           "live_exc_price": 4350,
-          "live_avg_price": 4555,
+          "live_avg_price": 4554,
           "guild_max": 4323,
           "guild_min": 4000,
           "discount_percent": 5,
@@ -409,7 +409,7 @@
     },
     {
       "good": "Construction Kit",
-      "cheapest_price": 1200.0,
+      "cheapest_price": 1150.0,
       "cheapest_company": "Technically Federated Reserves",
       "cheapest_planet": "Kentaurus 2",
       "listings_count": 1,
@@ -418,8 +418,8 @@
           "company": "Technically Federated Reserves",
           "good": "Construction Kit",
           "planet_produced": "Kentaurus 2",
-          "guildees_pay": 1200.0,
-          "live_exc_price": 1300,
+          "guildees_pay": 1150.0,
+          "live_exc_price": 1250,
           "live_avg_price": 1359,
           "guild_max": 0,
           "guild_min": 0,
@@ -447,7 +447,7 @@
           "good": "Construction Tools",
           "planet_produced": "Kentaurus 2",
           "guildees_pay": 170.0,
-          "live_exc_price": 175,
+          "live_exc_price": 170,
           "live_avg_price": 169,
           "guild_max": 0,
           "guild_min": 0,
@@ -462,11 +462,28 @@
     },
     {
       "good": "Construction Vehicle",
-      "cheapest_price": 2800.0,
-      "cheapest_company": "Caboose Inc.",
-      "cheapest_planet": "Kentaurus 2",
-      "listings_count": 1,
+      "cheapest_price": 2350.0,
+      "cheapest_company": "B0dega",
+      "cheapest_planet": "",
+      "listings_count": 2,
       "listings": [
+        {
+          "company": "B0dega",
+          "good": "Construction Vehicle",
+          "planet_produced": "",
+          "guildees_pay": 2350.0,
+          "live_exc_price": 2900,
+          "live_avg_price": 2857,
+          "guild_max": 2700,
+          "guild_min": 0,
+          "discount_percent": 20,
+          "discount_fixed": 0,
+          "timezone": "Select Time Zone",
+          "professions": [
+            "Manufacturing",
+            "Electronics"
+          ]
+        },
         {
           "company": "Caboose Inc.",
           "good": "Construction Vehicle",
@@ -481,6 +498,58 @@
           "timezone": "UTC +04:00",
           "professions": [
             "Manufacturing"
+          ]
+        }
+      ]
+    },
+    {
+      "good": "Consumer Electronics",
+      "cheapest_price": 620.0,
+      "cheapest_company": "B0dega",
+      "cheapest_planet": "",
+      "listings_count": 1,
+      "listings": [
+        {
+          "company": "B0dega",
+          "good": "Consumer Electronics",
+          "planet_produced": "",
+          "guildees_pay": 620.0,
+          "live_exc_price": 720,
+          "live_avg_price": 749,
+          "guild_max": 750,
+          "guild_min": 600,
+          "discount_percent": 15,
+          "discount_fixed": 0,
+          "timezone": "Select Time Zone",
+          "professions": [
+            "Manufacturing",
+            "Electronics"
+          ]
+        }
+      ]
+    },
+    {
+      "good": "Cooling System",
+      "cheapest_price": 1250.0,
+      "cheapest_company": "B0dega",
+      "cheapest_planet": "",
+      "listings_count": 1,
+      "listings": [
+        {
+          "company": "B0dega",
+          "good": "Cooling System",
+          "planet_produced": "",
+          "guildees_pay": 1250.0,
+          "live_exc_price": 1550,
+          "live_avg_price": 1273,
+          "guild_max": 0,
+          "guild_min": 0,
+          "discount_percent": 20,
+          "discount_fixed": 0,
+          "timezone": "Select Time Zone",
+          "professions": [
+            "Manufacturing",
+            "Electronics"
           ]
         }
       ]
@@ -524,7 +593,7 @@
           "good": "Copper Wire",
           "planet_produced": "Kentaurus 2",
           "guildees_pay": 40.0,
-          "live_exc_price": 57,
+          "live_exc_price": 58,
           "live_avg_price": 59,
           "guild_max": 40,
           "guild_min": 35,
@@ -542,7 +611,7 @@
           "good": "Copper Wire",
           "planet_produced": "Reverie 4",
           "guildees_pay": 55.0,
-          "live_exc_price": 57,
+          "live_exc_price": 58,
           "live_avg_price": 59,
           "guild_max": 0,
           "guild_min": 55,
@@ -558,7 +627,7 @@
           "good": "Copper Wire",
           "planet_produced": "Aetheria 2",
           "guildees_pay": 60.0,
-          "live_exc_price": 57,
+          "live_exc_price": 58,
           "live_avg_price": 59,
           "guild_max": 0,
           "guild_min": 60,
@@ -574,17 +643,17 @@
     },
     {
       "good": "Cotton",
-      "cheapest_price": 32.0,
+      "cheapest_price": 33.0,
       "cheapest_company": "Flip Co",
       "cheapest_planet": "",
-      "listings_count": 1,
+      "listings_count": 2,
       "listings": [
         {
           "company": "Flip Co",
           "good": "Cotton",
           "planet_produced": "",
-          "guildees_pay": 32.0,
-          "live_exc_price": 32,
+          "guildees_pay": 33.0,
+          "live_exc_price": 33,
           "live_avg_price": 31,
           "guild_max": 0,
           "guild_min": 0,
@@ -594,6 +663,23 @@
           "professions": [
             "Agriculture",
             "Food Production"
+          ]
+        },
+        {
+          "company": "Bane Inc.",
+          "good": "Cotton",
+          "planet_produced": "",
+          "guildees_pay": 33.0,
+          "live_exc_price": 33,
+          "live_avg_price": 31,
+          "guild_max": 0,
+          "guild_min": 0,
+          "discount_percent": 0,
+          "discount_fixed": 0,
+          "timezone": "Select Time Zone",
+          "professions": [
+            "Resource Extraction",
+            "Agriculture"
           ]
         }
       ]
@@ -610,7 +696,7 @@
           "good": "Epoxy",
           "planet_produced": "Aetheria 8",
           "guildees_pay": 60.0,
-          "live_exc_price": 69,
+          "live_exc_price": 68,
           "live_avg_price": 73,
           "guild_max": 70,
           "guild_min": 60,
@@ -620,6 +706,32 @@
           "professions": [
             "Chemistry",
             "Resource Extraction"
+          ]
+        }
+      ]
+    },
+    {
+      "good": "Exosuit",
+      "cheapest_price": 600.0,
+      "cheapest_company": "B0dega",
+      "cheapest_planet": "",
+      "listings_count": 1,
+      "listings": [
+        {
+          "company": "B0dega",
+          "good": "Exosuit",
+          "planet_produced": "",
+          "guildees_pay": 600.0,
+          "live_exc_price": 740,
+          "live_avg_price": 647,
+          "guild_max": 600,
+          "guild_min": 540,
+          "discount_percent": 20,
+          "discount_fixed": 0,
+          "timezone": "Select Time Zone",
+          "professions": [
+            "Manufacturing",
+            "Electronics"
           ]
         }
       ]
@@ -677,7 +789,7 @@
     },
     {
       "good": "Fine Rations",
-      "cheapest_price": 93.0,
+      "cheapest_price": 92.0,
       "cheapest_company": "Romero Enterprises",
       "cheapest_planet": "Kentaurus 2",
       "listings_count": 1,
@@ -686,8 +798,8 @@
           "company": "Romero Enterprises",
           "good": "Fine Rations",
           "planet_produced": "Kentaurus 2",
-          "guildees_pay": 93.0,
-          "live_exc_price": 97,
+          "guildees_pay": 92.0,
+          "live_exc_price": 96,
           "live_avg_price": 92,
           "guild_max": 0,
           "guild_min": 0,
@@ -764,7 +876,7 @@
           "good": "Flux",
           "planet_produced": "Iconia 3",
           "guildees_pay": 60.0,
-          "live_exc_price": 64,
+          "live_exc_price": 63,
           "live_avg_price": 67,
           "guild_max": 60,
           "guild_min": 0,
@@ -782,17 +894,17 @@
     },
     {
       "good": "Furniture",
-      "cheapest_price": 260.0,
+      "cheapest_price": 250.0,
       "cheapest_company": "Caboose Inc.",
       "cheapest_planet": "Kentaurus 2",
-      "listings_count": 1,
+      "listings_count": 2,
       "listings": [
         {
           "company": "Caboose Inc.",
           "good": "Furniture",
           "planet_produced": "Kentaurus 2",
-          "guildees_pay": 260.0,
-          "live_exc_price": 265,
+          "guildees_pay": 250.0,
+          "live_exc_price": 260,
           "live_avg_price": 266,
           "guild_max": 0,
           "guild_min": 0,
@@ -802,12 +914,29 @@
           "professions": [
             "Manufacturing"
           ]
+        },
+        {
+          "company": "B0dega",
+          "good": "Furniture",
+          "planet_produced": "",
+          "guildees_pay": 300.0,
+          "live_exc_price": 260,
+          "live_avg_price": 266,
+          "guild_max": 240,
+          "guild_min": 300,
+          "discount_percent": 20,
+          "discount_fixed": 0,
+          "timezone": "Select Time Zone",
+          "professions": [
+            "Manufacturing",
+            "Electronics"
+          ]
         }
       ]
     },
     {
       "good": "Glass",
-      "cheapest_price": 66.0,
+      "cheapest_price": 67.0,
       "cheapest_company": "Drunkenduo's Ruthless Divident",
       "cheapest_planet": "Aetheria 8",
       "listings_count": 1,
@@ -816,8 +945,8 @@
           "company": "Drunkenduo's Ruthless Divident",
           "good": "Glass",
           "planet_produced": "Aetheria 8",
-          "guildees_pay": 66.0,
-          "live_exc_price": 77,
+          "guildees_pay": 67.0,
+          "live_exc_price": 78,
           "live_avg_price": 77,
           "guild_max": 75,
           "guild_min": 55,
@@ -844,7 +973,7 @@
           "good": "Gourmet Rations",
           "planet_produced": "",
           "guildees_pay": 200.0,
-          "live_exc_price": 200,
+          "live_exc_price": 195,
           "live_avg_price": 206,
           "guild_max": 300,
           "guild_min": 200,
@@ -870,7 +999,7 @@
           "good": "Graphene",
           "planet_produced": "Tidal 5",
           "guildees_pay": 351.0,
-          "live_exc_price": 360,
+          "live_exc_price": 355,
           "live_avg_price": 432,
           "guild_max": 413,
           "guild_min": 351,
@@ -964,17 +1093,17 @@
     },
     {
       "good": "Leather",
-      "cheapest_price": 61.0,
+      "cheapest_price": 63.0,
       "cheapest_company": "Flip Co",
       "cheapest_planet": "",
-      "listings_count": 1,
+      "listings_count": 2,
       "listings": [
         {
           "company": "Flip Co",
           "good": "Leather",
           "planet_produced": "",
-          "guildees_pay": 61.0,
-          "live_exc_price": 61,
+          "guildees_pay": 63.0,
+          "live_exc_price": 63,
           "live_avg_price": 70,
           "guild_max": 0,
           "guild_min": 0,
@@ -985,22 +1114,39 @@
             "Agriculture",
             "Food Production"
           ]
+        },
+        {
+          "company": "Bane Inc.",
+          "good": "Leather",
+          "planet_produced": "",
+          "guildees_pay": 63.0,
+          "live_exc_price": 63,
+          "live_avg_price": 70,
+          "guild_max": 0,
+          "guild_min": 0,
+          "discount_percent": 0,
+          "discount_fixed": 0,
+          "timezone": "Select Time Zone",
+          "professions": [
+            "Resource Extraction",
+            "Agriculture"
+          ]
         }
       ]
     },
     {
       "good": "Limestone",
-      "cheapest_price": 52.0,
+      "cheapest_price": 53.0,
       "cheapest_company": "Flip Co",
       "cheapest_planet": "",
-      "listings_count": 1,
+      "listings_count": 2,
       "listings": [
         {
           "company": "Flip Co",
           "good": "Limestone",
           "planet_produced": "",
-          "guildees_pay": 52.0,
-          "live_exc_price": 52,
+          "guildees_pay": 53.0,
+          "live_exc_price": 53,
           "live_avg_price": 55,
           "guild_max": 0,
           "guild_min": 0,
@@ -1011,12 +1157,29 @@
             "Agriculture",
             "Food Production"
           ]
+        },
+        {
+          "company": "Bane Inc.",
+          "good": "Limestone",
+          "planet_produced": "",
+          "guildees_pay": 53.0,
+          "live_exc_price": 53,
+          "live_avg_price": 55,
+          "guild_max": 0,
+          "guild_min": 0,
+          "discount_percent": 0,
+          "discount_fixed": 0,
+          "timezone": "Select Time Zone",
+          "professions": [
+            "Resource Extraction",
+            "Agriculture"
+          ]
         }
       ]
     },
     {
       "good": "Modern Prefab Kit",
-      "cheapest_price": 2850.0,
+      "cheapest_price": 2800.0,
       "cheapest_company": "Technically Federated Reserves",
       "cheapest_planet": "Kentaurus 2",
       "listings_count": 1,
@@ -1025,8 +1188,8 @@
           "company": "Technically Federated Reserves",
           "good": "Modern Prefab Kit",
           "planet_produced": "Kentaurus 2",
-          "guildees_pay": 2850.0,
-          "live_exc_price": 3150,
+          "guildees_pay": 2800.0,
+          "live_exc_price": 3100,
           "live_avg_price": 3045,
           "guild_max": 0,
           "guild_min": 0,
@@ -1192,7 +1355,7 @@
     },
     {
       "good": "Office Supplies",
-      "cheapest_price": 67.0,
+      "cheapest_price": 66.0,
       "cheapest_company": "Caboose Inc.",
       "cheapest_planet": "Kentaurus 2",
       "listings_count": 1,
@@ -1201,8 +1364,8 @@
           "company": "Caboose Inc.",
           "good": "Office Supplies",
           "planet_produced": "Kentaurus 2",
-          "guildees_pay": 67.0,
-          "live_exc_price": 70,
+          "guildees_pay": 66.0,
+          "live_exc_price": 69,
           "live_avg_price": 69,
           "guild_max": 0,
           "guild_min": 0,
@@ -1286,7 +1449,7 @@
     },
     {
       "good": "Prefab Kit",
-      "cheapest_price": 1300.0,
+      "cheapest_price": 1250.0,
       "cheapest_company": "Technically Federated Reserves",
       "cheapest_planet": "Kentaurus 2",
       "listings_count": 1,
@@ -1295,8 +1458,8 @@
           "company": "Technically Federated Reserves",
           "good": "Prefab Kit",
           "planet_produced": "Kentaurus 2",
-          "guildees_pay": 1300.0,
-          "live_exc_price": 1400,
+          "guildees_pay": 1250.0,
+          "live_exc_price": 1350,
           "live_avg_price": 1526,
           "guild_max": 0,
           "guild_min": 0,
@@ -1342,7 +1505,7 @@
     },
     {
       "good": "Quantum Research Data",
-      "cheapest_price": 40000.0,
+      "cheapest_price": 38000.0,
       "cheapest_company": "Flip Co",
       "cheapest_planet": "",
       "listings_count": 1,
@@ -1351,8 +1514,8 @@
           "company": "Flip Co",
           "good": "Quantum Research Data",
           "planet_produced": "",
-          "guildees_pay": 40000.0,
-          "live_exc_price": 49500,
+          "guildees_pay": 38000.0,
+          "live_exc_price": 47000,
           "live_avg_price": 54556,
           "guild_max": 0,
           "guild_min": 0,
@@ -1446,7 +1609,7 @@
     },
     {
       "good": "Research Data",
-      "cheapest_price": 1100.0,
+      "cheapest_price": 1150.0,
       "cheapest_company": "Stellara",
       "cheapest_planet": "Astera 3",
       "listings_count": 1,
@@ -1455,8 +1618,8 @@
           "company": "Stellara",
           "good": "Research Data",
           "planet_produced": "Astera 3",
-          "guildees_pay": 1100.0,
-          "live_exc_price": 1200,
+          "guildees_pay": 1150.0,
+          "live_exc_price": 1250,
           "live_avg_price": 1201,
           "guild_max": 0,
           "guild_min": 1050,
@@ -1509,7 +1672,7 @@
           "planet_produced": "Kentaurus 2",
           "guildees_pay": 850.0,
           "live_exc_price": 850,
-          "live_avg_price": 787,
+          "live_avg_price": 788,
           "guild_max": 0,
           "guild_min": 0,
           "discount_percent": 0,
@@ -1578,11 +1741,28 @@
     },
     {
       "good": "Tools",
-      "cheapest_price": 74.0,
-      "cheapest_company": "Caboose Inc.",
-      "cheapest_planet": "Kentaurus 2",
-      "listings_count": 1,
+      "cheapest_price": 62.0,
+      "cheapest_company": "B0dega",
+      "cheapest_planet": "",
+      "listings_count": 2,
       "listings": [
+        {
+          "company": "B0dega",
+          "good": "Tools",
+          "planet_produced": "",
+          "guildees_pay": 62.0,
+          "live_exc_price": 77,
+          "live_avg_price": 75,
+          "guild_max": 75,
+          "guild_min": 60,
+          "discount_percent": 20,
+          "discount_fixed": 0,
+          "timezone": "Select Time Zone",
+          "professions": [
+            "Manufacturing",
+            "Electronics"
+          ]
+        },
         {
           "company": "Caboose Inc.",
           "good": "Tools",
@@ -1629,8 +1809,34 @@
       ]
     },
     {
+      "good": "VR Headset",
+      "cheapest_price": 2400.0,
+      "cheapest_company": "B0dega",
+      "cheapest_planet": "",
+      "listings_count": 1,
+      "listings": [
+        {
+          "company": "B0dega",
+          "good": "VR Headset",
+          "planet_produced": "",
+          "guildees_pay": 2400.0,
+          "live_exc_price": 2500,
+          "live_avg_price": 2795,
+          "guild_max": 2500,
+          "guild_min": 2400,
+          "discount_percent": 15,
+          "discount_fixed": 0,
+          "timezone": "Select Time Zone",
+          "professions": [
+            "Manufacturing",
+            "Electronics"
+          ]
+        }
+      ]
+    },
+    {
       "good": "Vitaqua",
-      "cheapest_price": 63.0,
+      "cheapest_price": 62.0,
       "cheapest_company": "Flip Co",
       "cheapest_planet": "",
       "listings_count": 1,
@@ -1639,8 +1845,8 @@
           "company": "Flip Co",
           "good": "Vitaqua",
           "planet_produced": "",
-          "guildees_pay": 63.0,
-          "live_exc_price": 76,
+          "guildees_pay": 62.0,
+          "live_exc_price": 75,
           "live_avg_price": 85,
           "guild_max": 150,
           "guild_min": 50,
@@ -1659,7 +1865,7 @@
       "cheapest_price": 23.0,
       "cheapest_company": "Drunkenduo's Ruthless Divident",
       "cheapest_planet": "Achelois 5",
-      "listings_count": 1,
+      "listings_count": 2,
       "listings": [
         {
           "company": "Drunkenduo's Ruthless Divident",
@@ -1678,16 +1884,50 @@
             "Failing Hard",
             "Chicken Farmer"
           ]
+        },
+        {
+          "company": "Bane Inc.",
+          "good": "Water",
+          "planet_produced": "",
+          "guildees_pay": 24.0,
+          "live_exc_price": 24,
+          "live_avg_price": 22,
+          "guild_max": 0,
+          "guild_min": 0,
+          "discount_percent": 0,
+          "discount_fixed": 0,
+          "timezone": "Select Time Zone",
+          "professions": [
+            "Resource Extraction",
+            "Agriculture"
+          ]
         }
       ]
     },
     {
       "good": "Welding Kit",
-      "cheapest_price": 390.0,
-      "cheapest_company": "Caboose Inc.",
-      "cheapest_planet": "Kentaurus 2",
-      "listings_count": 1,
+      "cheapest_price": 370.0,
+      "cheapest_company": "B0dega",
+      "cheapest_planet": "",
+      "listings_count": 2,
       "listings": [
+        {
+          "company": "B0dega",
+          "good": "Welding Kit",
+          "planet_produced": "",
+          "guildees_pay": 370.0,
+          "live_exc_price": 410,
+          "live_avg_price": 409,
+          "guild_max": 420,
+          "guild_min": 370,
+          "discount_percent": 20,
+          "discount_fixed": 0,
+          "timezone": "Select Time Zone",
+          "professions": [
+            "Manufacturing",
+            "Electronics"
+          ]
+        },
         {
           "company": "Caboose Inc.",
           "good": "Welding Kit",
@@ -1708,17 +1948,34 @@
     },
     {
       "good": "Workwear",
-      "cheapest_price": 85.0,
-      "cheapest_company": "Caboose Inc.",
-      "cheapest_planet": "Kentaurus 2",
-      "listings_count": 1,
+      "cheapest_price": 72.0,
+      "cheapest_company": "B0dega",
+      "cheapest_planet": "",
+      "listings_count": 2,
       "listings": [
+        {
+          "company": "B0dega",
+          "good": "Workwear",
+          "planet_produced": "",
+          "guildees_pay": 72.0,
+          "live_exc_price": 90,
+          "live_avg_price": 82,
+          "guild_max": 80,
+          "guild_min": 60,
+          "discount_percent": 20,
+          "discount_fixed": 0,
+          "timezone": "Select Time Zone",
+          "professions": [
+            "Manufacturing",
+            "Electronics"
+          ]
+        },
         {
           "company": "Caboose Inc.",
           "good": "Workwear",
           "planet_produced": "Kentaurus 2",
-          "guildees_pay": 85.0,
-          "live_exc_price": 89,
+          "guildees_pay": 86.0,
+          "live_exc_price": 90,
           "live_avg_price": 82,
           "guild_max": 0,
           "guild_min": 0,
