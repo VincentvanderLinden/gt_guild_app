@@ -1,9 +1,8 @@
 """Main application file for TiT Guild App."""
 import streamlit as st
-import pandas as pd
 
 # Import local modules
-from config import APP_TITLE, APP_ICON, APP_SUBTITLE, CSS_FILE, PROFESSIONS, GOOGLE_SHEET_URL, TIMEZONE_OPTIONS, TIMEZONE_OPTIONS
+from config import APP_TITLE, APP_ICON, APP_SUBTITLE, CSS_FILE, PROFESSIONS, GOOGLE_SHEET_URL, TIMEZONE_OPTIONS
 from core.data_manager import (
     load_game_materials, load_game_planets, load_data, save_data, 
     prepare_goods_dataframe
@@ -14,7 +13,7 @@ from core.validators import validate_goods
 from business.stats import calculate_unique_goods, calculate_average_discount, get_unique_professions
 from business.filters import apply_all_filters
 from ui.ui_components import render_sidebar_filters, render_stats_row, get_column_config
-from integrations.timezone_utils import update_company_local_times, get_local_time, get_local_time
+from integrations.timezone_utils import update_company_local_times, get_local_time
 from integrations.google_sheets import import_from_google_sheet
 from datetime import datetime, timedelta, timezone
 
