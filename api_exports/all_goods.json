@@ -1,7 +1,7 @@
 {
   "status": "success",
-  "last_updated": "2026-02-03T09:00:35.093987",
-  "goods_count": 64,
+  "last_updated": "2026-02-03T09:01:52.357696",
+  "goods_count": 63,
   "data": [
     {
       "good": "Advanced Research Data",
@@ -908,32 +908,6 @@
             "Transporting",
             "Chemistry",
             "ConstRICtion"
-          ]
-        }
-      ]
-    },
-    {
-      "good": "Honeycaps",
-      "cheapest_price": 48.0,
-      "cheapest_company": "Flip Co",
-      "cheapest_planet": "None",
-      "listings_count": 1,
-      "listings": [
-        {
-          "company": "Flip Co",
-          "good": "Honeycaps",
-          "planet_produced": "None",
-          "guildees_pay": 48.0,
-          "live_exc_price": 56,
-          "live_avg_price": 58,
-          "guild_max": 0,
-          "guild_min": 0,
-          "discount_percent": 15,
-          "discount_fixed": 0,
-          "timezone": "UTC -07:00",
-          "professions": [
-            "Agriculture",
-            "Food Production"
           ]
         }
       ]
