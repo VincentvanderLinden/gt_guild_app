@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-04T07:11:05.754243",
+  "last_updated": "2026-02-04T07:11:26.922808",
   "companies_count": 12,
   "data": [
     {
@@ -480,7 +480,7 @@
         ],
         "timezone": "UTC -07:00",
         "local_time": "11:11 PM",
-        "goods_count": 10,
+        "goods_count": 7,
         "goods": [
           {
             "good": "Ale",
@@ -546,39 +546,6 @@
             "guild_max": 35,
             "guild_min": 32,
             "discount_percent": 15,
-            "discount_fixed": 0
-          },
-          {
-            "good": "Select Item",
-            "planet_produced": "",
-            "guildees_pay": 0.0,
-            "live_exc_price": 0,
-            "live_avg_price": 0,
-            "guild_max": 0,
-            "guild_min": 0,
-            "discount_percent": 0,
-            "discount_fixed": 0
-          },
-          {
-            "good": "Select Item",
-            "planet_produced": "",
-            "guildees_pay": 0.0,
-            "live_exc_price": 0,
-            "live_avg_price": 0,
-            "guild_max": 0,
-            "guild_min": 0,
-            "discount_percent": 0,
-            "discount_fixed": 0
-          },
-          {
-            "good": "Select Item",
-            "planet_produced": "",
-            "guildees_pay": 0.0,
-            "live_exc_price": 0,
-            "live_avg_price": 0,
-            "guild_max": 0,
-            "guild_min": 0,
-            "discount_percent": 0,
             "discount_fixed": 0
           },
           {
