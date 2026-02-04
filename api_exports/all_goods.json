@@ -1,7 +1,7 @@
 {
   "status": "success",
-  "last_updated": "2026-02-04T14:08:03.036733",
-  "goods_count": 85,
+  "last_updated": "2026-02-04T14:10:54.494623",
+  "goods_count": 86,
   "data": [
     {
       "good": "Advanced Prefab Kit",
@@ -264,7 +264,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         },
         {
@@ -422,7 +423,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         }
       ]
@@ -450,7 +452,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         }
       ]
@@ -504,7 +507,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         }
       ]
@@ -557,7 +561,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         },
         {
@@ -696,7 +701,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         },
         {
@@ -886,7 +892,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         },
         {
@@ -1227,7 +1234,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         }
       ]
@@ -1255,7 +1263,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         }
       ]
@@ -1367,7 +1376,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         },
         {
@@ -1522,7 +1532,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         }
       ]
@@ -1678,7 +1689,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         },
         {
@@ -2017,11 +2029,31 @@
     },
     {
       "good": "Limestone",
-      "cheapest_price": 45.0,
-      "cheapest_company": "Bane Inc.",
+      "cheapest_price": 40.5,
+      "cheapest_company": "Technically Federated Reserves",
       "cheapest_planet": "",
-      "listings_count": 1,
+      "listings_count": 2,
       "listings": [
+        {
+          "company": "Technically Federated Reserves",
+          "good": "Limestone",
+          "planet_produced": "",
+          "guildees_pay": 40.5,
+          "live_exc_price": 45,
+          "live_avg_price": 53,
+          "guild_max": 0,
+          "guild_min": 0,
+          "discount_percent": 10,
+          "discount_fixed": 0,
+          "timezone": "UTC +01:00",
+          "professions": [
+            "Jack-of-all-Trades",
+            "Transporting",
+            "Chemistry",
+            "ConstRICtion",
+            "Resource Extraction"
+          ]
+        },
         {
           "company": "Bane Inc.",
           "good": "Limestone",
@@ -2090,7 +2122,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         }
       ]
@@ -2143,7 +2176,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         },
         {
@@ -2247,7 +2281,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         }
       ]
@@ -2292,7 +2327,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         }
       ]
@@ -2320,7 +2356,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         }
       ]
@@ -2562,7 +2599,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         },
         {
@@ -2642,7 +2680,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         }
       ]
@@ -2765,7 +2804,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         }
       ]
@@ -2792,6 +2832,35 @@
           "professions": [
             "Manufacturing",
             "Electronics"
+          ]
+        }
+      ]
+    },
+    {
+      "good": "Silica",
+      "cheapest_price": 31.0,
+      "cheapest_company": "Technically Federated Reserves",
+      "cheapest_planet": "",
+      "listings_count": 1,
+      "listings": [
+        {
+          "company": "Technically Federated Reserves",
+          "good": "Silica",
+          "planet_produced": "",
+          "guildees_pay": 31.0,
+          "live_exc_price": 34,
+          "live_avg_price": 41,
+          "guild_max": 0,
+          "guild_min": 0,
+          "discount_percent": 10,
+          "discount_fixed": 0,
+          "timezone": "UTC +01:00",
+          "professions": [
+            "Jack-of-all-Trades",
+            "Transporting",
+            "Chemistry",
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         }
       ]
@@ -2973,7 +3042,8 @@
             "Jack-of-all-Trades",
             "Transporting",
             "Chemistry",
-            "ConstRICtion"
+            "ConstRICtion",
+            "Resource Extraction"
           ]
         },
         {
