@@ -632,6 +632,9 @@ def render_guild_offers_tab(companies, selected_professions, search_company, sea
         companies, selected_professions, search_company, search_goods
     )
     
+    # Sort companies alphabetically by name
+    filtered_companies = sorted(filtered_companies, key=lambda c: c['name'])
+    
     # Calculate and display statistics
     total_unique_goods = calculate_unique_goods(filtered_companies)
     avg_discount = calculate_average_discount(filtered_companies)
@@ -661,7 +664,12 @@ def render_guild_offers_tab(companies, selected_professions, search_company, sea
 
 def render_recurring_contracts_tab(price_data, all_companies):
     """Render the contract manager tab."""
-    st.header("🔄 Contract Manager")
+    col_header, col_help = st.columns([6, 1])
+    with col_header:
+        st.header("🔄 Contract Manager")
+    with col_help:
+        st.markdown("")
+        st.markdown("ℹ️", help="Track recurring material delivery contracts for your companies. Add materials, set daily amounts needed, and track fulfillment from multiple sources. Icons: ✅ = daily amount fulfilled, ⚠️ = more needed.")
     
     # Get company list from configuration (available companies)
     config = load_company_config()
@@ -730,7 +738,7 @@ def render_recurring_contracts_tab(price_data, all_companies):
                 
                 goods_summary.append(f"{indicator} {good_name}")
         
-        goods_list_text = ", ".join(goods_summary[:3]) if goods_summary else "No goods yet"
+        goods_list_text = ", ".join(goods_summary[:3]) if goods_summary else "No materials yet"
         if len(goods_summary) > 3:
             goods_list_text += f" +{len(goods_summary) - 3} more"
         
@@ -776,7 +784,8 @@ def render_recurring_contracts_tab(price_data, all_companies):
                                 min_value=0,
                                 value=daily_amount,
                                 step=1,
-                                key=f"daily_amount_{company_name}_{good_name}"
+                                key=f"daily_amount_{company_name}_{good_name}",
+                                help="Set the total daily amount needed for this material across all your contracts"
                             )
                             # Update if changed
                             if new_daily_amount != daily_amount:
@@ -804,15 +813,15 @@ def render_recurring_contracts_tab(price_data, all_companies):
                         # Show metrics
                         col1, col2, col3, col4, col5 = st.columns(5)
                         with col1:
-                            st.metric("Live EXC", f"${live_exc_price}")
+                            st.metric("Live EXC", f"${live_exc_price}", help="Current exchange price from the game API")
                         with col2:
-                            st.metric("Live AVG", f"${live_avg_price}")
+                            st.metric("Live AVG", f"${live_avg_price}", help="Average market price from the game API")
                         with col3:
-                            st.metric("Daily Need", f"{new_daily_amount}")
+                            st.metric("Daily Need", f"{new_daily_amount}", help="Total daily amount you need")
                         with col4:
-                            st.metric("Fulfilled", f"{total_fulfilled}")
+                            st.metric("Fulfilled", f"{total_fulfilled}", help="Sum of all contract lines below")
                         with col5:
-                            st.metric("Remaining", f"{total_remaining}")
+                            st.metric("Remaining", f"{total_remaining}", help="How much more you still need")
                         
                         st.divider()
                         
@@ -927,7 +936,12 @@ def render_recurring_contracts_tab(price_data, all_companies):
 
 def render_configuration_tab(all_companies):
     """Render the configuration tab for managing companies."""
-    st.header("⚙️ Configuration")
+    col_header, col_help = st.columns([6, 1])
+    with col_header:
+        st.header("⚙️ Configuration")
+    with col_help:
+        st.markdown("")
+        st.markdown("ℹ️", help="Manage your company list. Add new rows to create custom companies, or delete rows to remove companies from all tabs.")
     
     # Load current configuration
     config = load_company_config()
@@ -941,78 +955,76 @@ def render_configuration_tab(all_companies):
     # Remove companies marked for removal
     available_companies = all_company_names - removed_companies
     
-    # Stats
-    col_stat1, col_stat2 = st.columns(2)
-    with col_stat1:
+    # Put company configuration in a collapsed expander
+    with st.expander("🏢 Company Management", expanded=False):
+        # Stats
         st.metric("Total Companies", len(available_companies))
-    with col_stat2:
-        st.metric("Removed", len(removed_companies))
-    
-    st.divider()
-    
-    # Build dataframe for companies
-    company_data = []
-    for company_name in sorted(available_companies):
-        # Find goods count
-        goods_count = 0
-        for company in all_companies:
-            if company['name'] == company_name:
-                goods_count = len(company.get('goods', []))
-                break
         
-        company_data.append({
-            'Company': company_name,
-            'Goods': goods_count
-        })
-    
-    companies_df = pd.DataFrame(company_data)
-    
-    # Calculate height to show all rows without scrolling
-    table_height = 35 * len(companies_df) + 73
-    
-    # Data editor
-    edited_companies_df = st.data_editor(
-        companies_df,
-        hide_index=True,
-        width="stretch",
-        height=table_height,
-        num_rows="dynamic",
-        key="companies_editor",
-        disabled=["Goods"],
-        column_config={
-            'Company': st.column_config.TextColumn('Company', required=True),
-            'Goods': st.column_config.NumberColumn('Goods', disabled=True)
-        }
-    )
-    
-    # Handle changes
-    if not companies_df.equals(edited_companies_df):
-        # Get current and new company names
-        old_names = set(companies_df['Company'].tolist())
-        new_names = set(edited_companies_df['Company'].dropna().tolist())
-        new_names = {name.strip() for name in new_names if name.strip()}
+        st.divider()
         
-        # Find added and removed companies
-        added = new_names - old_names
-        removed = old_names - new_names
+        # Build dataframe for companies
+        company_data = []
+        for company_name in sorted(available_companies):
+            # Find goods count
+            goods_count = 0
+            for company in all_companies:
+                if company['name'] == company_name:
+                    goods_count = len(company.get('goods', []))
+                    break
+            
+            company_data.append({
+                'Company': company_name,
+                'Materials': goods_count
+            })
         
-        # Handle additions
-        for company_name in added:
-            if company_name not in all_company_names:
-                if 'custom_companies' not in config:
-                    config['custom_companies'] = []
-                config['custom_companies'].append(company_name)
+        companies_df = pd.DataFrame(company_data)
         
-        # Handle removals
-        for company_name in removed:
-            if 'removed_companies' not in config:
-                config['removed_companies'] = []
-            config['removed_companies'].append(company_name)
-            if company_name in custom_companies:
-                config['custom_companies'].remove(company_name)
+        # Calculate height to show all rows without scrolling
+        table_height = 35 * len(companies_df) + 73
         
-        save_company_config(config)
-        st.rerun()
+        # Data editor
+        edited_companies_df = st.data_editor(
+            companies_df,
+            hide_index=True,
+            width="stretch",
+            height=table_height,
+            num_rows="dynamic",
+            key="companies_editor",
+            disabled=["Materials"],
+            column_config={
+                'Company': st.column_config.TextColumn('Company', required=True),
+                'Materials': st.column_config.NumberColumn('Materials', disabled=True)
+            }
+        )
+        
+        # Handle changes
+        if not companies_df.equals(edited_companies_df):
+            # Get current and new company names
+            old_names = set(companies_df['Company'].tolist())
+            new_names = set(edited_companies_df['Company'].dropna().tolist())
+            new_names = {name.strip() for name in new_names if name.strip()}
+            
+            # Find added and removed companies
+            added = new_names - old_names
+            removed = old_names - new_names
+            
+            # Handle additions
+            for company_name in added:
+                if company_name not in all_company_names:
+                    if 'custom_companies' not in config:
+                        config['custom_companies'] = []
+                    config['custom_companies'].append(company_name)
+            
+            # Handle removals
+            for company_name in removed:
+                if 'removed_companies' not in config:
+                    config['removed_companies'] = []
+                config['removed_companies'].append(company_name)
+                if company_name in custom_companies:
+                    config['custom_companies'].remove(company_name)
+            
+            save_company_config(config)
+            st.rerun()
 
 
 if __name__ == "__main__":

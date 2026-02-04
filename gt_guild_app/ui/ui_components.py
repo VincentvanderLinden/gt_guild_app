@@ -14,7 +14,11 @@ def render_sidebar_filters(professions_list, price_data, last_update, materials_
     st.sidebar.space()
     
     # Profession filter
-    selected_professions = st.sidebar.multiselect("Professions", professions_list)
+    selected_professions = st.sidebar.multiselect(
+        "Professions", 
+        professions_list,
+        help="Filter companies by the professions they require. Select one or more professions to narrow down results."
+    )
     
     # Company filter as dropdown
     company_options = ['']  # Empty option first
@@ -25,7 +29,12 @@ def render_sidebar_filters(professions_list, price_data, last_update, materials_
         else:
             company_options.append(company_name)
     
-    selected_company_option = st.sidebar.selectbox("Search Company", company_options, key="search_company")
+    selected_company_option = st.sidebar.selectbox(
+        "Search Company", 
+        company_options, 
+        key="search_company",
+        help="Filter by specific company name. Number in parentheses shows unique materials offered by that company."
+    )
     
     # Extract company name without count
     if selected_company_option and '(' in selected_company_option:
@@ -42,7 +51,12 @@ def render_sidebar_filters(professions_list, price_data, last_update, materials_
         else:
             material_options.append(material)
     
-    selected_option = st.sidebar.selectbox("Search Goods", material_options, key="search_goods")
+    selected_option = st.sidebar.selectbox(
+        "Search Materials", 
+        material_options, 
+        key="search_goods",
+        help="Filter by specific material/good. Number in parentheses shows how many companies offer this material."
+    )
     
     # Extract material name without count (remove " (X)" suffix)
     if selected_option and '(' in selected_option:
@@ -105,7 +119,7 @@ def render_stats_row(total_companies: int, total_goods: int,
     with col1:
         st.metric("Total Companies", total_companies)
     with col2:
-        st.metric("Total Goods", total_goods)
+        st.metric("Total Materials", total_goods)
     with col3:
         st.metric("Professions", total_professions)
     with col4:
