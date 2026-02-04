@@ -613,7 +613,10 @@ def main():
             st.rerun()
     
     # Create tabs
-    tab1, tab2, tab3 = st.tabs(["📋 Guild Offers", "🔄 Contract Manager", "⚙️ Configuration"])
+    tab0, tab1, tab2, tab3 = st.tabs(["🏠 Welcome", "📋 Guild Offers", "🔄 Contract Manager", "⚙️ Configuration"])
+    
+    with tab0:
+        render_welcome_tab()
     
     with tab1:
         render_guild_offers_tab(companies, selected_professions, search_company, search_goods, materials, price_data, professions_list)
@@ -623,6 +626,39 @@ def main():
     
     with tab3:
         render_configuration_tab(all_companies)
+
+
+def render_welcome_tab():
+    """Render the welcome tab with app instructions."""
+    st.header("🏠 Welcome to TiT Guild App")
+    
+    # Instructions in collapsed container
+    with st.expander("📖 How to Use This App", expanded=False):
+        st.markdown("""
+        ### Guild Offers Tab
+        - **Browse** all guild company offers with live market prices
+        - **Filter** by profession, company, or material using the sidebar
+        - **Edit** prices and discounts directly in the table
+        - **Track** guild discounts and fixed pricing
+        
+        ### Contract Manager Tab
+        - **Manage** recurring material delivery contracts for your companies
+        - **Set** daily amounts needed for each material
+        - **Track** fulfillment from multiple sources
+        - **Monitor** status with ✅ (fulfilled) and ⚠️ (needs more) indicators
+        
+        ### Configuration Tab
+        - **Add** custom companies to track contracts
+        - **Remove** companies you don't need
+        - **Manage** your company list in one place
+        
+        All changes are automatically saved and synced to GitHub!
+        """)
+    
+    # Centered image
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("gt_guild_app/assets/images/content.png", width=600)
 
 
 def render_guild_offers_tab(companies, selected_professions, search_company, search_goods, materials, price_data, professions_list):
