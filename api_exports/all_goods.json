@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-04T23:35:05.853995",
+  "last_updated": "2026-02-04T23:38:02.377645",
   "goods_count": 92,
   "data": [
     {
@@ -1513,7 +1513,7 @@
           "guildees_pay": 38.0,
           "live_exc_price": 43,
           "live_avg_price": 46,
-          "guild_max": 45,
+          "guild_max": 44,
           "guild_min": 38,
           "discount_percent": 15,
           "discount_fixed": 0,
