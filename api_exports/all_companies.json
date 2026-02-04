@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-04T14:06:28.536328",
+  "last_updated": "2026-02-04T14:08:03.039656",
   "companies_count": 21,
   "data": [
     {
@@ -12,7 +12,7 @@
           "Electronics"
         ],
         "timezone": "UTC -08:00",
-        "local_time": "5:06 AM",
+        "local_time": "5:08 AM",
         "goods_count": 11,
         "goods": [
           {
@@ -148,7 +148,7 @@
           "Agriculture"
         ],
         "timezone": "Select Time Zone",
-        "local_time": "1:06 PM",
+        "local_time": "1:08 PM",
         "goods_count": 3,
         "goods": [
           {
@@ -195,7 +195,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:06 PM",
+        "local_time": "2:08 PM",
         "goods_count": 8,
         "goods": [
           {
@@ -297,7 +297,7 @@
           "Manufacturing"
         ],
         "timezone": "UTC +04:00",
-        "local_time": "5:06 PM",
+        "local_time": "5:08 PM",
         "goods_count": 12,
         "goods": [
           {
@@ -445,7 +445,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC +13:00",
-        "local_time": "2:06 AM",
+        "local_time": "2:08 AM",
         "goods_count": 4,
         "goods": [
           {
@@ -503,7 +503,7 @@
           "Science"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:06 PM",
+        "local_time": "2:08 PM",
         "goods_count": 1,
         "goods": [
           {
@@ -530,7 +530,7 @@
           "Chicken Farmer"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:06 PM",
+        "local_time": "2:08 PM",
         "goods_count": 7,
         "goods": [
           {
@@ -622,7 +622,7 @@
           "Food Production"
         ],
         "timezone": "UTC -07:00",
-        "local_time": "6:06 AM",
+        "local_time": "6:08 AM",
         "goods_count": 6,
         "goods": [
           {
@@ -703,7 +703,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "1:06 PM",
+        "local_time": "1:08 PM",
         "goods_count": 8,
         "goods": [
           {
@@ -805,7 +805,7 @@
           "Manufacturing"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:06 PM",
+        "local_time": "2:08 PM",
         "goods_count": 4,
         "goods": [
           {
@@ -864,7 +864,7 @@
           "Resource Extraction"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:06 PM",
+        "local_time": "2:08 PM",
         "goods_count": 14,
         "goods": [
           {
@@ -1033,7 +1033,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "1:06 PM",
+        "local_time": "1:08 PM",
         "goods_count": 19,
         "goods": [
           {
@@ -1258,7 +1258,7 @@
           "Truss God"
         ],
         "timezone": "UTC -06:00",
-        "local_time": "7:06 AM",
+        "local_time": "7:08 AM",
         "goods_count": 9,
         "goods": [
           {
@@ -1372,7 +1372,7 @@
           "Science"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:06 PM",
+        "local_time": "2:08 PM",
         "goods_count": 2,
         "goods": [
           {
@@ -1409,7 +1409,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC -05:00",
-        "local_time": "8:06 AM",
+        "local_time": "8:08 AM",
         "goods_count": 3,
         "goods": [
           {
@@ -1457,7 +1457,7 @@
           "Truss God"
         ],
         "timezone": "UTC -08:00",
-        "local_time": "5:06 AM",
+        "local_time": "5:08 AM",
         "goods_count": 4,
         "goods": [
           {
@@ -1515,7 +1515,7 @@
           "Science"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "1:06 PM",
+        "local_time": "1:08 PM",
         "goods_count": 1,
         "goods": [
           {
@@ -1543,7 +1543,7 @@
           "ConstRICtion"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:06 PM",
+        "local_time": "2:08 PM",
         "goods_count": 21,
         "goods": [
           {
@@ -1582,12 +1582,12 @@
           {
             "good": "Color Compound",
             "planet_produced": "",
-            "guildees_pay": 65.0,
+            "guildees_pay": 62.0,
             "live_exc_price": 65,
             "live_avg_price": 64,
             "guild_max": 0,
             "guild_min": 0,
-            "discount_percent": 0,
+            "discount_percent": 5,
             "discount_fixed": 0
           },
           {
@@ -1615,45 +1615,45 @@
           {
             "good": "Coolant",
             "planet_produced": "",
-            "guildees_pay": 39.0,
+            "guildees_pay": 37.5,
             "live_exc_price": 39,
             "live_avg_price": 40,
             "guild_max": 0,
             "guild_min": 0,
-            "discount_percent": 0,
+            "discount_percent": 5,
             "discount_fixed": 0
           },
           {
             "good": "Epoxy",
             "planet_produced": "",
-            "guildees_pay": 69.0,
+            "guildees_pay": 66.0,
             "live_exc_price": 69,
             "live_avg_price": 72,
             "guild_max": 0,
             "guild_min": 0,
-            "discount_percent": 0,
+            "discount_percent": 5,
             "discount_fixed": 0
           },
           {
             "good": "Ethanol",
             "planet_produced": "",
-            "guildees_pay": 39.0,
+            "guildees_pay": 37.5,
             "live_exc_price": 39,
             "live_avg_price": 34,
             "guild_max": 0,
             "guild_min": 0,
-            "discount_percent": 0,
+            "discount_percent": 5,
             "discount_fixed": 0
           },
           {
             "good": "Fertilizer",
             "planet_produced": "",
-            "guildees_pay": 46.0,
+            "guildees_pay": 44.0,
             "live_exc_price": 46,
             "live_avg_price": 46,
             "guild_max": 0,
             "guild_min": 0,
-            "discount_percent": 0,
+            "discount_percent": 5,
             "discount_fixed": 0
           },
           {
@@ -1681,12 +1681,12 @@
           {
             "good": "Lubricant",
             "planet_produced": "",
-            "guildees_pay": 29.0,
+            "guildees_pay": 28.0,
             "live_exc_price": 29,
             "live_avg_price": 26,
             "guild_max": 0,
             "guild_min": 0,
-            "discount_percent": 0,
+            "discount_percent": 5,
             "discount_fixed": 0
           },
           {
@@ -1758,12 +1758,12 @@
           {
             "good": "Rubber",
             "planet_produced": "",
-            "guildees_pay": 32.0,
+            "guildees_pay": 30.5,
             "live_exc_price": 32,
             "live_avg_price": 29,
             "guild_max": 0,
             "guild_min": 0,
-            "discount_percent": 0,
+            "discount_percent": 5,
             "discount_fixed": 0
           },
           {
@@ -1788,7 +1788,7 @@
           "Manufacturing"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "1:06 PM",
+        "local_time": "1:08 PM",
         "goods_count": 2,
         "goods": [
           {
@@ -1825,7 +1825,7 @@
           "Resource Extraction"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:06 PM",
+        "local_time": "2:08 PM",
         "goods_count": 8,
         "goods": [
           {
@@ -1927,7 +1927,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:06 PM",
+        "local_time": "2:08 PM",
         "goods_count": 9,
         "goods": [
           {
