@@ -1,8 +1,500 @@
 {
   "status": "success",
-  "last_updated": "2026-02-04T13:13:38.670909",
-  "companies_count": 2,
+  "last_updated": "2026-02-04T13:14:51.439857",
+  "companies_count": 21,
   "data": [
+    {
+      "company": {
+        "name": "B0dega",
+        "industry": "Manufacturing",
+        "professions": [
+          "Manufacturing",
+          "Electronics"
+        ],
+        "timezone": "UTC -08:00",
+        "local_time": "4:14 AM",
+        "goods_count": 11,
+        "goods": [
+          {
+            "good": "Construction Vehicle",
+            "planet_produced": "",
+            "guildees_pay": 2850.0,
+            "live_exc_price": 2900,
+            "live_avg_price": 2854,
+            "guild_max": 2850,
+            "guild_min": 2700,
+            "discount_percent": 0,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Consumer Electronics",
+            "planet_produced": "",
+            "guildees_pay": 750.0,
+            "live_exc_price": 710,
+            "live_avg_price": 745,
+            "guild_max": 750,
+            "guild_min": 750,
+            "discount_percent": 600,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Cooling System",
+            "planet_produced": "",
+            "guildees_pay": 1335.0,
+            "live_exc_price": 1350,
+            "live_avg_price": 1360,
+            "guild_max": 1350,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Exosuit",
+            "planet_produced": "",
+            "guildees_pay": 660.0,
+            "live_exc_price": 740,
+            "live_avg_price": 661,
+            "guild_max": 660,
+            "guild_min": 600,
+            "discount_percent": 540,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Furniture",
+            "planet_produced": "",
+            "guildees_pay": 275.0,
+            "live_exc_price": 290,
+            "live_avg_price": 273,
+            "guild_max": 275,
+            "guild_min": 240,
+            "discount_percent": 300,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Hydrogen Generator",
+            "planet_produced": "",
+            "guildees_pay": 24000.0,
+            "live_exc_price": 23500,
+            "live_avg_price": 23082,
+            "guild_max": 23000,
+            "guild_min": 24000,
+            "discount_percent": 22500,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Kevlar",
+            "planet_produced": "",
+            "guildees_pay": 400.0,
+            "live_exc_price": 375,
+            "live_avg_price": 368,
+            "guild_max": 370,
+            "guild_min": 400,
+            "discount_percent": 350,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Ship Interior Kit",
+            "planet_produced": "",
+            "guildees_pay": 12000.0,
+            "live_exc_price": 9900,
+            "live_avg_price": 10166,
+            "guild_max": 10000,
+            "guild_min": 12000,
+            "discount_percent": 9600,
+            "discount_fixed": 10
+          },
+          {
+            "good": "VR Headset",
+            "planet_produced": "",
+            "guildees_pay": 3000.0,
+            "live_exc_price": 2400,
+            "live_avg_price": 2722,
+            "guild_max": 2700,
+            "guild_min": 3000,
+            "discount_percent": 2200,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Welding Kit",
+            "planet_produced": "",
+            "guildees_pay": 410.0,
+            "live_exc_price": 435,
+            "live_avg_price": 409,
+            "guild_max": 410,
+            "guild_min": 420,
+            "discount_percent": 360,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Workwear",
+            "planet_produced": "",
+            "guildees_pay": 80.0,
+            "live_exc_price": 85,
+            "live_avg_price": 82,
+            "guild_max": 83,
+            "guild_min": 80,
+            "discount_percent": 60,
+            "discount_fixed": 15
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "Bane Inc.",
+        "industry": "Resource Extraction",
+        "professions": [
+          "Resource Extraction",
+          "Agriculture"
+        ],
+        "timezone": "Select Time Zone",
+        "local_time": "12:14 PM",
+        "goods_count": 3,
+        "goods": [
+          {
+            "good": "Cotton",
+            "planet_produced": "",
+            "guildees_pay": 28.0,
+            "live_exc_price": 28,
+            "live_avg_price": 30,
+            "guild_max": 30,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Leather",
+            "planet_produced": "",
+            "guildees_pay": 59.0,
+            "live_exc_price": 59,
+            "live_avg_price": 67,
+            "guild_max": 67,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Limestone",
+            "planet_produced": "",
+            "guildees_pay": 45.0,
+            "live_exc_price": 45,
+            "live_avg_price": 53,
+            "guild_max": 54,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "Blackmoore Investment",
+        "industry": "Metallurgy",
+        "professions": [
+          "Metallurgy"
+        ],
+        "timezone": "UTC +01:00",
+        "local_time": "1:14 PM",
+        "goods_count": 8,
+        "goods": [
+          {
+            "good": "Aeridium",
+            "planet_produced": "",
+            "guildees_pay": 2090.0,
+            "live_exc_price": 2100,
+            "live_avg_price": 2103,
+            "guild_max": 2100,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Composite Truss",
+            "planet_produced": "",
+            "guildees_pay": 920.0,
+            "live_exc_price": 930,
+            "live_avg_price": 1131,
+            "guild_max": 1150,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Graphenium Wire",
+            "planet_produced": "",
+            "guildees_pay": 1950.0,
+            "live_exc_price": 2300,
+            "live_avg_price": 1941,
+            "guild_max": 1950,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Iron",
+            "planet_produced": "",
+            "guildees_pay": 265.0,
+            "live_exc_price": 275,
+            "live_avg_price": 262,
+            "guild_max": 265,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Steel",
+            "planet_produced": "",
+            "guildees_pay": 790.0,
+            "live_exc_price": 790,
+            "live_avg_price": 795,
+            "guild_max": 800,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Tiridium Alloy",
+            "planet_produced": "",
+            "guildees_pay": 5790.0,
+            "live_exc_price": 5800,
+            "live_avg_price": 5997,
+            "guild_max": 6000,
+            "guild_min": 0,
+            "discount_percent": 5500,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Titanium",
+            "planet_produced": "",
+            "guildees_pay": 1690.0,
+            "live_exc_price": 1700,
+            "live_avg_price": 1937,
+            "guild_max": 1950,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Truss",
+            "planet_produced": "",
+            "guildees_pay": 450.0,
+            "live_exc_price": 440,
+            "live_avg_price": 464,
+            "guild_max": 465,
+            "guild_min": 450,
+            "discount_percent": 385,
+            "discount_fixed": 15
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "Caboose Inc.",
+        "industry": "Manufacturing",
+        "professions": [
+          "Manufacturing"
+        ],
+        "timezone": "UTC +04:00",
+        "local_time": "4:14 PM",
+        "goods_count": 12,
+        "goods": [
+          {
+            "good": "Combustion Engine",
+            "planet_produced": "",
+            "guildees_pay": 840.0,
+            "live_exc_price": 890,
+            "live_avg_price": 839,
+            "guild_max": 840,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Construction Tools",
+            "planet_produced": "",
+            "guildees_pay": 170.0,
+            "live_exc_price": 175,
+            "live_avg_price": 170,
+            "guild_max": 170,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Construction Vehicle",
+            "planet_produced": "",
+            "guildees_pay": 2850.0,
+            "live_exc_price": 2900,
+            "live_avg_price": 2854,
+            "guild_max": 2850,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Fabric",
+            "planet_produced": "",
+            "guildees_pay": 51.0,
+            "live_exc_price": 56,
+            "live_avg_price": 53,
+            "guild_max": 54,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Fission Reactor",
+            "planet_produced": "",
+            "guildees_pay": 83000.0,
+            "live_exc_price": 85000,
+            "live_avg_price": 82994,
+            "guild_max": 83000,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Furniture",
+            "planet_produced": "",
+            "guildees_pay": 275.0,
+            "live_exc_price": 290,
+            "live_avg_price": 273,
+            "guild_max": 275,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Kevlar",
+            "planet_produced": "",
+            "guildees_pay": 370.0,
+            "live_exc_price": 375,
+            "live_avg_price": 368,
+            "guild_max": 370,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Laboratory Suit",
+            "planet_produced": "",
+            "guildees_pay": 1100.0,
+            "live_exc_price": 1400,
+            "live_avg_price": 1079,
+            "guild_max": 1100,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Molecular Fusion Kit",
+            "planet_produced": "",
+            "guildees_pay": 1545.0,
+            "live_exc_price": 1550,
+            "live_avg_price": 1552,
+            "guild_max": 1550,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Office Supplies",
+            "planet_produced": "",
+            "guildees_pay": 59.0,
+            "live_exc_price": 64,
+            "live_avg_price": 66,
+            "guild_max": 67,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Welding Kit",
+            "planet_produced": "",
+            "guildees_pay": 410.0,
+            "live_exc_price": 435,
+            "live_avg_price": 409,
+            "guild_max": 410,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Workwear",
+            "planet_produced": "",
+            "guildees_pay": 80.0,
+            "live_exc_price": 85,
+            "live_avg_price": 82,
+            "guild_max": 83,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 5
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "Cracklor Ltd",
+        "industry": "ConstRICtion",
+        "professions": [
+          "ConstRICtion",
+          "Manufacturing",
+          "Metallurgy"
+        ],
+        "timezone": "UTC +13:00",
+        "local_time": "1:14 AM",
+        "goods_count": 4,
+        "goods": [
+          {
+            "good": "Amenities",
+            "planet_produced": "",
+            "guildees_pay": 1500.0,
+            "live_exc_price": 1700,
+            "live_avg_price": 1704,
+            "guild_max": 1700,
+            "guild_min": 1500,
+            "discount_percent": 1500,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Construction Kit",
+            "planet_produced": "",
+            "guildees_pay": 1300.0,
+            "live_exc_price": 1300,
+            "live_avg_price": 1350,
+            "guild_max": 1350,
+            "guild_min": 1300,
+            "discount_percent": 1200,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Construction Vehicle",
+            "planet_produced": "",
+            "guildees_pay": 2400.0,
+            "live_exc_price": 2900,
+            "live_avg_price": 2854,
+            "guild_max": 2850,
+            "guild_min": 2400,
+            "discount_percent": 2400,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Prefab Kit",
+            "planet_produced": "",
+            "guildees_pay": 1400.0,
+            "live_exc_price": 1450,
+            "live_avg_price": 1509,
+            "guild_max": 1500,
+            "guild_min": 1400,
+            "discount_percent": 1400,
+            "discount_fixed": 0
+          }
+        ]
+      }
+    },
     {
       "company": {
         "name": "DeLey",
@@ -11,18 +503,1340 @@
           "Science"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "1:13 PM",
+        "local_time": "1:14 PM",
         "goods_count": 1,
         "goods": [
           {
-            "good": "700",
-            "planet_produced": "Zicigawa 2",
+            "good": "Advanced Research Data",
+            "planet_produced": "700",
+            "guildees_pay": 5800.0,
+            "live_exc_price": 6800,
+            "live_avg_price": 5757,
+            "guild_max": 5800,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "Drunkenduo's Ruthless Divident",
+        "industry": "Metallurgy",
+        "professions": [
+          "Metallurgy",
+          "Failing Hard",
+          "Chicken Farmer"
+        ],
+        "timezone": "UTC +01:00",
+        "local_time": "1:14 PM",
+        "goods_count": 7,
+        "goods": [
+          {
+            "good": "Composite Truss",
+            "planet_produced": "",
+            "guildees_pay": 1250.0,
+            "live_exc_price": 930,
+            "live_avg_price": 1131,
+            "guild_max": 1150,
+            "guild_min": 1250,
+            "discount_percent": 750,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Copper",
+            "planet_produced": "",
+            "guildees_pay": 850.0,
+            "live_exc_price": 810,
+            "live_avg_price": 724,
+            "guild_max": 720,
+            "guild_min": 850,
+            "discount_percent": 650,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Copper Wire",
+            "planet_produced": "",
+            "guildees_pay": 44.0,
+            "live_exc_price": 54,
+            "live_avg_price": 58,
+            "guild_max": 59,
+            "guild_min": 40,
+            "discount_percent": 35,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Glass",
+            "planet_produced": "",
+            "guildees_pay": 75.0,
+            "live_exc_price": 76,
+            "live_avg_price": 77,
+            "guild_max": 78,
+            "guild_min": 75,
+            "discount_percent": 55,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Platinum",
+            "planet_produced": "",
+            "guildees_pay": 2750.0,
+            "live_exc_price": 2500,
+            "live_avg_price": 2865,
+            "guild_max": 2850,
+            "guild_min": 2750,
+            "discount_percent": 2100,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Silicon Wafer",
+            "planet_produced": "",
+            "guildees_pay": 220.0,
+            "live_exc_price": 210,
+            "live_avg_price": 220,
+            "guild_max": 220,
+            "guild_min": 220,
+            "discount_percent": 200,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Titanium",
+            "planet_produced": "",
+            "guildees_pay": 1700.0,
+            "live_exc_price": 1700,
+            "live_avg_price": 1937,
+            "guild_max": 1950,
+            "guild_min": 1700,
+            "discount_percent": 1400,
+            "discount_fixed": 5
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "Flip Co",
+        "industry": "Agriculture",
+        "professions": [
+          "Agriculture",
+          "Food Production"
+        ],
+        "timezone": "UTC -07:00",
+        "local_time": "5:14 AM",
+        "goods_count": 7,
+        "goods": [
+          {
+            "good": "Ale",
+            "planet_produced": "",
+            "guildees_pay": 95.0,
+            "live_exc_price": 59,
+            "live_avg_price": 71,
+            "guild_max": 71,
+            "guild_min": 95,
+            "discount_percent": 70,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Coffee",
+            "planet_produced": "",
+            "guildees_pay": 200.0,
+            "live_exc_price": 190,
+            "live_avg_price": 174,
+            "guild_max": 175,
+            "guild_min": 200,
+            "discount_percent": 125,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Gourmet Rations",
+            "planet_produced": "",
+            "guildees_pay": 300.0,
+            "live_exc_price": 230,
+            "live_avg_price": 209,
+            "guild_max": 210,
+            "guild_min": 300,
+            "discount_percent": 200,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Lobster",
+            "planet_produced": "",
+            "guildees_pay": 820.0,
+            "live_exc_price": 1300,
+            "live_avg_price": 822,
+            "guild_max": 820,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Pie",
+            "planet_produced": "",
+            "guildees_pay": 400.0,
+            "live_exc_price": 380,
+            "live_avg_price": 351,
+            "guild_max": 350,
+            "guild_min": 400,
+            "discount_percent": 295,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Select Item",
+            "planet_produced": "",
+            "guildees_pay": 35.0,
+            "live_exc_price": 0,
+            "live_avg_price": 0,
+            "guild_max": 0,
+            "guild_min": 35,
+            "discount_percent": 32,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Vitaqua",
+            "planet_produced": "",
+            "guildees_pay": 150.0,
+            "live_exc_price": 74,
+            "live_avg_price": 82,
+            "guild_max": 82,
+            "guild_min": 150,
+            "discount_percent": 50,
+            "discount_fixed": 15
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "Karsian Industries",
+        "industry": "Construction",
+        "professions": [
+          "Construction",
+          "Metallurgy"
+        ],
+        "timezone": "UTC +00:00",
+        "local_time": "12:14 PM",
+        "goods_count": 8,
+        "goods": [
+          {
+            "good": "Advanced Prefab Kit",
+            "planet_produced": "",
+            "guildees_pay": 9400.0,
+            "live_exc_price": 9500,
+            "live_avg_price": 9394,
+            "guild_max": 9400,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Amenities",
+            "planet_produced": "",
+            "guildees_pay": 1700.0,
+            "live_exc_price": 1700,
+            "live_avg_price": 1704,
+            "guild_max": 1700,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Industrial Machinery",
+            "planet_produced": "",
+            "guildees_pay": 11500.0,
+            "live_exc_price": 11500,
+            "live_avg_price": 11628,
+            "guild_max": 11500,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Modern Prefab Kit",
+            "planet_produced": "",
+            "guildees_pay": 3100.0,
+            "live_exc_price": 5200,
+            "live_avg_price": 3113,
+            "guild_max": 3100,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Prefab Kit",
+            "planet_produced": "",
+            "guildees_pay": 1450.0,
+            "live_exc_price": 1450,
+            "live_avg_price": 1509,
+            "guild_max": 1500,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Structural Elements",
+            "planet_produced": "",
+            "guildees_pay": 3350.0,
+            "live_exc_price": 3550,
+            "live_avg_price": 3350,
+            "guild_max": 3350,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Tiridium Alloy",
+            "planet_produced": "",
+            "guildees_pay": 5800.0,
+            "live_exc_price": 5800,
+            "live_avg_price": 5997,
+            "guild_max": 6000,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Tiridium Hull Plate",
+            "planet_produced": "",
+            "guildees_pay": 13500.0,
+            "live_exc_price": 13500,
+            "live_avg_price": 14724,
+            "guild_max": 14500,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "Kombinat Fertigungswerke Ost",
+        "industry": "Manufacturing",
+        "professions": [
+          "Manufacturing"
+        ],
+        "timezone": "UTC +01:00",
+        "local_time": "1:14 PM",
+        "goods_count": 4,
+        "goods": [
+          {
+            "good": "Exosuit",
+            "planet_produced": "",
+            "guildees_pay": 660.0,
+            "live_exc_price": 740,
+            "live_avg_price": 661,
+            "guild_max": 660,
+            "guild_min": 0,
+            "discount_percent": 500,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Fission Reactor",
+            "planet_produced": "",
+            "guildees_pay": -67915000.0,
+            "live_exc_price": 85000,
+            "live_avg_price": 82994,
+            "guild_max": 83000,
+            "guild_min": 0,
+            "discount_percent": 80000,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Hauler Bridge",
+            "planet_produced": "",
+            "guildees_pay": 75990.0,
+            "live_exc_price": 76000,
+            "live_avg_price": 88503,
+            "guild_max": 89000,
+            "guild_min": 0,
+            "discount_percent": 85000,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Tools",
+            "planet_produced": "",
+            "guildees_pay": 68.0,
+            "live_exc_price": 78,
+            "live_avg_price": 74,
+            "guild_max": 75,
+            "guild_min": 0,
+            "discount_percent": 70,
+            "discount_fixed": 10
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "MB Industries",
+        "industry": "Chemistry",
+        "professions": [
+          "Chemistry",
+          "Resource Extraction"
+        ],
+        "timezone": "UTC +01:00",
+        "local_time": "1:14 PM",
+        "goods_count": 14,
+        "goods": [
+          {
+            "good": "Aerogel",
+            "planet_produced": "",
+            "guildees_pay": 105.0,
+            "live_exc_price": 110,
+            "live_avg_price": 112,
+            "guild_max": 110,
+            "guild_min": 105,
+            "discount_percent": 94,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Battery",
+            "planet_produced": "",
+            "guildees_pay": 405.0,
+            "live_exc_price": 420,
+            "live_avg_price": 423,
+            "guild_max": 425,
+            "guild_min": 404,
+            "discount_percent": 343,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Bio-Nutrient Blend",
+            "planet_produced": "",
+            "guildees_pay": 138.0,
+            "live_exc_price": 125,
+            "live_avg_price": 144,
+            "guild_max": 145,
+            "guild_min": 138,
+            "discount_percent": 117,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Biopolyne",
+            "planet_produced": "",
+            "guildees_pay": 1200.0,
+            "live_exc_price": 1250,
+            "live_avg_price": 1203,
+            "guild_max": 1200,
+            "guild_min": 1140,
+            "discount_percent": 969,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Composite Shielding",
+            "planet_produced": "",
+            "guildees_pay": 4550.0,
+            "live_exc_price": 4600,
+            "live_avg_price": 4572,
+            "guild_max": 4550,
+            "guild_min": 4323,
+            "discount_percent": 4000,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Epoxy",
+            "planet_produced": "",
+            "guildees_pay": 69.0,
+            "live_exc_price": 69,
+            "live_avg_price": 72,
+            "guild_max": 73,
+            "guild_min": 69,
+            "discount_percent": 59,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Fertilizer",
+            "planet_produced": "",
+            "guildees_pay": 45.0,
+            "live_exc_price": 45,
+            "live_avg_price": 46,
+            "guild_max": 47,
+            "guild_min": 45,
+            "discount_percent": 38,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Fission Fuel",
+            "planet_produced": "",
+            "guildees_pay": 2390.0,
+            "live_exc_price": 2400,
+            "live_avg_price": 2486,
+            "guild_max": 2500,
+            "guild_min": 2375,
+            "discount_percent": 1800,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Graphene",
+            "planet_produced": "",
+            "guildees_pay": 394.0,
+            "live_exc_price": 385,
+            "live_avg_price": 413,
+            "guild_max": 415,
+            "guild_min": 394,
+            "discount_percent": 335,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Nanopolyne",
+            "planet_produced": "",
+            "guildees_pay": 347.0,
+            "live_exc_price": 330,
+            "live_avg_price": 362,
+            "guild_max": 365,
+            "guild_min": 347,
+            "discount_percent": 295,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Nanoweave",
+            "planet_produced": "",
+            "guildees_pay": 694.0,
+            "live_exc_price": 650,
+            "live_avg_price": 731,
+            "guild_max": 730,
+            "guild_min": 694,
+            "discount_percent": 589,
+            "discount_fixed": 15
+          },
+          {
+            "good": "Neoplast",
+            "planet_produced": "",
+            "guildees_pay": 48.0,
+            "live_exc_price": 48,
+            "live_avg_price": 51,
+            "guild_max": 51,
+            "guild_min": 48,
+            "discount_percent": 44,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Reinforced Glass",
+            "planet_produced": "",
+            "guildees_pay": 233.0,
+            "live_exc_price": 225,
+            "live_avg_price": 243,
+            "guild_max": 245,
+            "guild_min": 233,
+            "discount_percent": 209,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Rejuvaline",
+            "planet_produced": "",
+            "guildees_pay": 770.0,
+            "live_exc_price": 1100,
+            "live_avg_price": 765,
+            "guild_max": 770,
+            "guild_min": 732,
+            "discount_percent": 622,
+            "discount_fixed": 15
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "Pear Inc",
+        "industry": "Construction",
+        "professions": [
+          "Construction",
+          "Metallurgy"
+        ],
+        "timezone": "UTC +00:00",
+        "local_time": "12:14 PM",
+        "goods_count": 20,
+        "goods": [
+          {
+            "good": "Aeridium",
+            "planet_produced": "",
+            "guildees_pay": 2100.0,
+            "live_exc_price": 2100,
+            "live_avg_price": 2103,
+            "guild_max": 2100,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Aluminium",
+            "planet_produced": "",
+            "guildees_pay": 480.0,
+            "live_exc_price": 490,
+            "live_avg_price": 480,
+            "guild_max": 480,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Amenities",
+            "planet_produced": "",
+            "guildees_pay": 1700.0,
+            "live_exc_price": 1700,
+            "live_avg_price": 1704,
+            "guild_max": 1700,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Composite Truss",
+            "planet_produced": "",
+            "guildees_pay": 925.0,
+            "live_exc_price": 930,
+            "live_avg_price": 1131,
+            "guild_max": 1150,
+            "guild_min": 0,
+            "discount_percent": 700,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Construction Kit",
+            "planet_produced": "",
+            "guildees_pay": 1300.0,
+            "live_exc_price": 1300,
+            "live_avg_price": 1350,
+            "guild_max": 1350,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Copper",
+            "planet_produced": "",
+            "guildees_pay": 720.0,
+            "live_exc_price": 810,
+            "live_avg_price": 724,
+            "guild_max": 720,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Copper Wire",
+            "planet_produced": "",
+            "guildees_pay": 54.0,
+            "live_exc_price": 54,
+            "live_avg_price": 58,
+            "guild_max": 59,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Hull Plate",
+            "planet_produced": "",
+            "guildees_pay": 2850.0,
+            "live_exc_price": 2850,
+            "live_avg_price": 3085,
+            "guild_max": 3100,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Iron",
+            "planet_produced": "",
+            "guildees_pay": 265.0,
+            "live_exc_price": 275,
+            "live_avg_price": 262,
+            "guild_max": 265,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Modern Prefab Kit",
+            "planet_produced": "",
+            "guildees_pay": 3100.0,
+            "live_exc_price": 5200,
+            "live_avg_price": 3113,
+            "guild_max": 3100,
+            "guild_min": 0,
+            "discount_percent": 2800,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Pipes",
+            "planet_produced": "",
+            "guildees_pay": 165.0,
+            "live_exc_price": 170,
+            "live_avg_price": 163,
+            "guild_max": 165,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Platinum",
+            "planet_produced": "",
+            "guildees_pay": 2500.0,
+            "live_exc_price": 2500,
+            "live_avg_price": 2865,
+            "guild_max": 2850,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Prefab Kit",
+            "planet_produced": "",
+            "guildees_pay": 1450.0,
+            "live_exc_price": 1450,
+            "live_avg_price": 1509,
+            "guild_max": 1500,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Select Item",
+            "planet_produced": "",
             "guildees_pay": 0.0,
             "live_exc_price": 0,
             "live_avg_price": 0,
             "guild_max": 0,
             "guild_min": 0,
             "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Steel",
+            "planet_produced": "",
+            "guildees_pay": 785.0,
+            "live_exc_price": 790,
+            "live_avg_price": 795,
+            "guild_max": 800,
+            "guild_min": 0,
+            "discount_percent": 600,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Structural Elements",
+            "planet_produced": "",
+            "guildees_pay": 3350.0,
+            "live_exc_price": 3550,
+            "live_avg_price": 3350,
+            "guild_max": 3350,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Tiridium Alloy",
+            "planet_produced": "",
+            "guildees_pay": 5795.0,
+            "live_exc_price": 5800,
+            "live_avg_price": 5997,
+            "guild_max": 6000,
+            "guild_min": 0,
+            "discount_percent": 5500,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Tiridium Hull Plate",
+            "planet_produced": "",
+            "guildees_pay": 13500.0,
+            "live_exc_price": 13500,
+            "live_avg_price": 14724,
+            "guild_max": 14500,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Titanium",
+            "planet_produced": "",
+            "guildees_pay": 1700.0,
+            "live_exc_price": 1700,
+            "live_avg_price": 1937,
+            "guild_max": 1950,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Truss",
+            "planet_produced": "",
+            "guildees_pay": 435.0,
+            "live_exc_price": 440,
+            "live_avg_price": 464,
+            "guild_max": 465,
+            "guild_min": 0,
+            "discount_percent": 375,
+            "discount_fixed": 5
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "Piecorp",
+        "industry": "Metallurgy",
+        "professions": [
+          "Metallurgy",
+          "Chicken Farmer",
+          "Truss God"
+        ],
+        "timezone": "UTC -06:00",
+        "local_time": "6:14 AM",
+        "goods_count": 8,
+        "goods": [
+          {
+            "good": "Aluminium",
+            "planet_produced": "",
+            "guildees_pay": 480.0,
+            "live_exc_price": 490,
+            "live_avg_price": 480,
+            "guild_max": 480,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 8
+          },
+          {
+            "good": "Copper",
+            "planet_produced": "",
+            "guildees_pay": 720.0,
+            "live_exc_price": 810,
+            "live_avg_price": 724,
+            "guild_max": 720,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Copper Wire",
+            "planet_produced": "",
+            "guildees_pay": 49.0,
+            "live_exc_price": 54,
+            "live_avg_price": 58,
+            "guild_max": 59,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Platinum",
+            "planet_produced": "",
+            "guildees_pay": 2500.0,
+            "live_exc_price": 2500,
+            "live_avg_price": 2865,
+            "guild_max": 2850,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Silicon Wafer",
+            "planet_produced": "",
+            "guildees_pay": 210.0,
+            "live_exc_price": 210,
+            "live_avg_price": 220,
+            "guild_max": 220,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Steel",
+            "planet_produced": "",
+            "guildees_pay": 782.0,
+            "live_exc_price": 790,
+            "live_avg_price": 795,
+            "guild_max": 800,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 8
+          },
+          {
+            "good": "Titanium",
+            "planet_produced": "",
+            "guildees_pay": 1700.0,
+            "live_exc_price": 1700,
+            "live_avg_price": 1937,
+            "guild_max": 1950,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Truss",
+            "planet_produced": "",
+            "guildees_pay": 430.0,
+            "live_exc_price": 440,
+            "live_avg_price": 464,
+            "guild_max": 465,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 10
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "Potatoes",
+        "industry": "Agriculture",
+        "professions": [
+          "Agriculture",
+          "Science"
+        ],
+        "timezone": "UTC +01:00",
+        "local_time": "1:14 PM",
+        "goods_count": 2,
+        "goods": [
+          {
+            "good": "Fine Rations",
+            "planet_produced": "",
+            "guildees_pay": 94.0,
+            "live_exc_price": 99,
+            "live_avg_price": 93,
+            "guild_max": 94,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Rations",
+            "planet_produced": "",
+            "guildees_pay": 42.0,
+            "live_exc_price": 42,
+            "live_avg_price": 42,
+            "guild_max": 42,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "Romero Enterprises",
+        "industry": "Food Production",
+        "professions": [
+          "Food Production",
+          "Metallurgy"
+        ],
+        "timezone": "UTC -05:00",
+        "local_time": "7:14 AM",
+        "goods_count": 3,
+        "goods": [
+          {
+            "good": "Aluminium",
+            "planet_produced": "",
+            "guildees_pay": 480.0,
+            "live_exc_price": 490,
+            "live_avg_price": 480,
+            "guild_max": 480,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Copper Wire",
+            "planet_produced": "",
+            "guildees_pay": 44.0,
+            "live_exc_price": 54,
+            "live_avg_price": 58,
+            "guild_max": 59,
+            "guild_min": 0,
+            "discount_percent": 55,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Drinking Water",
+            "planet_produced": "",
+            "guildees_pay": 20.0,
+            "live_exc_price": 22,
+            "live_avg_price": 20,
+            "guild_max": 20,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "Skunk Industries",
+        "industry": "Metallurgy",
+        "professions": [
+          "Metallurgy",
+          "Truss God"
+        ],
+        "timezone": "UTC -08:00",
+        "local_time": "4:14 AM",
+        "goods_count": 3,
+        "goods": [
+          {
+            "good": "Copper Wire",
+            "planet_produced": "",
+            "guildees_pay": 44.0,
+            "live_exc_price": 54,
+            "live_avg_price": 58,
+            "guild_max": 59,
+            "guild_min": 0,
+            "discount_percent": 55,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Platinum",
+            "planet_produced": "",
+            "guildees_pay": 2495.0,
+            "live_exc_price": 2500,
+            "live_avg_price": 2865,
+            "guild_max": 2850,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Steel",
+            "planet_produced": "",
+            "guildees_pay": 790.0,
+            "live_exc_price": 790,
+            "live_avg_price": 795,
+            "guild_max": 800,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "Stellara",
+        "industry": "Science",
+        "professions": [
+          "Science"
+        ],
+        "timezone": "UTC +00:00",
+        "local_time": "12:14 PM",
+        "goods_count": 1,
+        "goods": [
+          {
+            "good": "Advanced Research Data",
+            "planet_produced": "",
+            "guildees_pay": 5800.0,
+            "live_exc_price": 6800,
+            "live_avg_price": 5757,
+            "guild_max": 5800,
+            "guild_min": 0,
+            "discount_percent": 5300,
+            "discount_fixed": 8
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "Technically Federated Reserves",
+        "industry": "Jack-of-all-Trades",
+        "professions": [
+          "Jack-of-all-Trades",
+          "Transporting",
+          "Chemistry",
+          "ConstRICtion"
+        ],
+        "timezone": "UTC +01:00",
+        "local_time": "1:14 PM",
+        "goods_count": 14,
+        "goods": [
+          {
+            "good": "Amenities",
+            "planet_produced": "",
+            "guildees_pay": 1700.0,
+            "live_exc_price": 1700,
+            "live_avg_price": 1704,
+            "guild_max": 1700,
+            "guild_min": 1700,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Carbon",
+            "planet_produced": "",
+            "guildees_pay": 205.0,
+            "live_exc_price": 205,
+            "live_avg_price": 203,
+            "guild_max": 205,
+            "guild_min": 180,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Carbon Nanotubes",
+            "planet_produced": "",
+            "guildees_pay": 850.0,
+            "live_exc_price": 960,
+            "live_avg_price": 852,
+            "guild_max": 850,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Composite Shielding",
+            "planet_produced": "",
+            "guildees_pay": 4550.0,
+            "live_exc_price": 4600,
+            "live_avg_price": 4572,
+            "guild_max": 4550,
+            "guild_min": 4000,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Construction Kit",
+            "planet_produced": "",
+            "guildees_pay": 1500.0,
+            "live_exc_price": 1300,
+            "live_avg_price": 1350,
+            "guild_max": 1350,
+            "guild_min": 1500,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Flux",
+            "planet_produced": "",
+            "guildees_pay": 67.0,
+            "live_exc_price": 67,
+            "live_avg_price": 67,
+            "guild_max": 68,
+            "guild_min": 60,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Graphene",
+            "planet_produced": "",
+            "guildees_pay": 380.0,
+            "live_exc_price": 385,
+            "live_avg_price": 413,
+            "guild_max": 415,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Modern Prefab Kit",
+            "planet_produced": "",
+            "guildees_pay": 3100.0,
+            "live_exc_price": 5200,
+            "live_avg_price": 3113,
+            "guild_max": 3100,
+            "guild_min": 3000,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Nanopolyne",
+            "planet_produced": "",
+            "guildees_pay": 325.0,
+            "live_exc_price": 330,
+            "live_avg_price": 362,
+            "guild_max": 365,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Nanoweave",
+            "planet_produced": "",
+            "guildees_pay": 645.0,
+            "live_exc_price": 650,
+            "live_avg_price": 731,
+            "guild_max": 730,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Nanoweave Shielding",
+            "planet_produced": "",
+            "guildees_pay": 7500.0,
+            "live_exc_price": 7500,
+            "live_avg_price": 7739,
+            "guild_max": 7700,
+            "guild_min": 6000,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Prefab Kit",
+            "planet_produced": "",
+            "guildees_pay": 1600.0,
+            "live_exc_price": 1450,
+            "live_avg_price": 1509,
+            "guild_max": 1500,
+            "guild_min": 1600,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Pressure Sealant Kit",
+            "planet_produced": "",
+            "guildees_pay": 1350.0,
+            "live_exc_price": 1350,
+            "live_avg_price": 1332,
+            "guild_max": 1350,
+            "guild_min": 1000,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Structural Elements",
+            "planet_produced": "",
+            "guildees_pay": 3350.0,
+            "live_exc_price": 3550,
+            "live_avg_price": 3350,
+            "guild_max": 3350,
+            "guild_min": 3000,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "The Boring Company",
+        "industry": "Manufacturing",
+        "professions": [
+          "Manufacturing"
+        ],
+        "timezone": "UTC +00:00",
+        "local_time": "12:14 PM",
+        "goods_count": 2,
+        "goods": [
+          {
+            "good": "Construction Vehicle",
+            "planet_produced": "",
+            "guildees_pay": 3000.0,
+            "live_exc_price": 2900,
+            "live_avg_price": 2854,
+            "guild_max": 2850,
+            "guild_min": 3000,
+            "discount_percent": 2300,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Mining Vehicle",
+            "planet_produced": "",
+            "guildees_pay": 3450.0,
+            "live_exc_price": 4100,
+            "live_avg_price": 3446,
+            "guild_max": 3450,
+            "guild_min": 3300,
+            "discount_percent": 2850,
+            "discount_fixed": 10
+          }
+        ]
+      }
+    },
+    {
+      "company": {
+        "name": "VEB Chemiewerke Magdeburg",
+        "industry": "Chemistry",
+        "professions": [
+          "Chemistry",
+          "Resource Extraction"
+        ],
+        "timezone": "UTC +01:00",
+        "local_time": "1:14 PM",
+        "goods_count": 8,
+        "goods": [
+          {
+            "good": "Composite Shielding",
+            "planet_produced": "",
+            "guildees_pay": 4550.0,
+            "live_exc_price": 4600,
+            "live_avg_price": 4572,
+            "guild_max": 4550,
+            "guild_min": 0,
+            "discount_percent": 4000,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Coolant",
+            "planet_produced": "",
+            "guildees_pay": 40.0,
+            "live_exc_price": 40,
+            "live_avg_price": 40,
+            "guild_max": 40,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Fertilizer",
+            "planet_produced": "",
+            "guildees_pay": 40.0,
+            "live_exc_price": 45,
+            "live_avg_price": 46,
+            "guild_max": 47,
+            "guild_min": 0,
+            "discount_percent": 40,
+            "discount_fixed": 5
+          },
+          {
+            "good": "Fission Fuel",
+            "planet_produced": "",
+            "guildees_pay": 2400.0,
+            "live_exc_price": 2400,
+            "live_avg_price": 2486,
+            "guild_max": 2500,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Graphene",
+            "planet_produced": "",
+            "guildees_pay": 390.0,
+            "live_exc_price": 385,
+            "live_avg_price": 413,
+            "guild_max": 415,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Hydrogen Fuel",
+            "planet_produced": "",
+            "guildees_pay": 120.0,
+            "live_exc_price": 130,
+            "live_avg_price": 122,
+            "guild_max": 125,
+            "guild_min": 0,
+            "discount_percent": 100,
+            "discount_fixed": 10
+          },
+          {
+            "good": "Insulation Panels",
+            "planet_produced": "",
+            "guildees_pay": 550.0,
+            "live_exc_price": 550,
+            "live_avg_price": 621,
+            "guild_max": 620,
+            "guild_min": 0,
+            "discount_percent": 0,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Reinforced Glass",
+            "planet_produced": "",
+            "guildees_pay": -337.5,
+            "live_exc_price": 225,
+            "live_avg_price": 243,
+            "guild_max": 245,
+            "guild_min": 0,
+            "discount_percent": 250,
             "discount_fixed": 0
           }
         ]
@@ -36,104 +1850,104 @@
           "Metallurgy"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "1:13 PM",
+        "local_time": "1:14 PM",
         "goods_count": 9,
         "goods": [
           {
-            "good": "100",
-            "planet_produced": "Kentaurus 2",
-            "guildees_pay": 0.0,
-            "live_exc_price": 0,
-            "live_avg_price": 0,
-            "guild_max": 0,
+            "good": "Aluminium",
+            "planet_produced": "300",
+            "guildees_pay": 480.0,
+            "live_exc_price": 490,
+            "live_avg_price": 480,
+            "guild_max": 480,
             "guild_min": 0,
             "discount_percent": 0,
             "discount_fixed": 0
           },
           {
-            "good": "1500",
-            "planet_produced": "Kentaurus 2",
-            "guildees_pay": 0.0,
-            "live_exc_price": 0,
-            "live_avg_price": 0,
-            "guild_max": 0,
+            "good": "Copper Wire",
+            "planet_produced": "2200",
+            "guildees_pay": 54.0,
+            "live_exc_price": 54,
+            "live_avg_price": 58,
+            "guild_max": 59,
             "guild_min": 0,
             "discount_percent": 0,
             "discount_fixed": 0
           },
           {
-            "good": "20",
-            "planet_produced": "Kentaurus 2",
-            "guildees_pay": 0.0,
-            "live_exc_price": 0,
-            "live_avg_price": 0,
-            "guild_max": 0,
+            "good": "Glass",
+            "planet_produced": "1500",
+            "guildees_pay": 76.0,
+            "live_exc_price": 76,
+            "live_avg_price": 77,
+            "guild_max": 78,
             "guild_min": 0,
             "discount_percent": 0,
             "discount_fixed": 0
           },
           {
-            "good": "2200",
-            "planet_produced": "Kentaurus 2",
-            "guildees_pay": 0.0,
-            "live_exc_price": 0,
-            "live_avg_price": 0,
-            "guild_max": 0,
+            "good": "Pipes",
+            "planet_produced": "500",
+            "guildees_pay": 165.0,
+            "live_exc_price": 170,
+            "live_avg_price": 163,
+            "guild_max": 165,
             "guild_min": 0,
             "discount_percent": 0,
             "discount_fixed": 0
           },
           {
-            "good": "25",
-            "planet_produced": "Kentaurus 2",
-            "guildees_pay": 0.0,
-            "live_exc_price": 0,
-            "live_avg_price": 0,
-            "guild_max": 0,
+            "good": "Platinum",
+            "planet_produced": "25",
+            "guildees_pay": 2500.0,
+            "live_exc_price": 2500,
+            "live_avg_price": 2865,
+            "guild_max": 2850,
             "guild_min": 0,
             "discount_percent": 0,
             "discount_fixed": 0
           },
           {
-            "good": "250",
-            "planet_produced": "Kentaurus 2",
-            "guildees_pay": 0.0,
-            "live_exc_price": 0,
-            "live_avg_price": 0,
-            "guild_max": 0,
+            "good": "Silicon Wafer",
+            "planet_produced": "100",
+            "guildees_pay": 210.0,
+            "live_exc_price": 210,
+            "live_avg_price": 220,
+            "guild_max": 220,
             "guild_min": 0,
             "discount_percent": 0,
             "discount_fixed": 0
           },
           {
-            "good": "300",
-            "planet_produced": "Kentaurus 2",
-            "guildees_pay": 0.0,
-            "live_exc_price": 0,
-            "live_avg_price": 0,
-            "guild_max": 0,
+            "good": "Steel",
+            "planet_produced": "250",
+            "guildees_pay": 790.0,
+            "live_exc_price": 790,
+            "live_avg_price": 795,
+            "guild_max": 800,
             "guild_min": 0,
             "discount_percent": 0,
             "discount_fixed": 0
           },
           {
-            "good": "400",
-            "planet_produced": "Kentaurus 2",
-            "guildees_pay": 0.0,
-            "live_exc_price": 0,
-            "live_avg_price": 0,
-            "guild_max": 0,
+            "good": "Tiridium Alloy",
+            "planet_produced": "20",
+            "guildees_pay": 5800.0,
+            "live_exc_price": 5800,
+            "live_avg_price": 5997,
+            "guild_max": 6000,
             "guild_min": 0,
             "discount_percent": 0,
             "discount_fixed": 0
           },
           {
-            "good": "500",
-            "planet_produced": "Kentaurus 2",
-            "guildees_pay": 0.0,
-            "live_exc_price": 0,
-            "live_avg_price": 0,
-            "guild_max": 0,
+            "good": "Truss",
+            "planet_produced": "400",
+            "guildees_pay": 440.0,
+            "live_exc_price": 440,
+            "live_avg_price": 464,
+            "guild_max": 465,
             "guild_min": 0,
             "discount_percent": 0,
             "discount_fixed": 0
