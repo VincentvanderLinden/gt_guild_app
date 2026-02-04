@@ -34,7 +34,7 @@ def fetch_google_sheet(sheet_url: str) -> Optional[pd.DataFrame]:
     csv_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv&gid={gid}"
     
     try:
-        response = requests.get(csv_url, timeout=10)
+        response = requests.get(csv_url, timeout=30)
         response.raise_for_status()
         
         # Parse CSV data
@@ -67,7 +67,7 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
       * A: Company name
       * B: Industry/Professions (can be comma-separated, e.g., "Agriculture, Food Production")
       * C: Timezone
-      * M: Produced Goods (one per row)
+      * L: Produced Goods (one per row)
       * N: Planet Produced (ignores "Select Planet")
       * R: Guild Max
       * S: Guild Min
@@ -76,6 +76,10 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
     
     Returns list of company dictionaries.
     """
+    # Load valid materials list for validation
+    from core.data_manager import load_game_materials
+    valid_materials = set(load_game_materials())
+    
     df = fetch_google_sheet(sheet_url)
     
     if df is None:
@@ -83,7 +87,7 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
     
     # Find the header row (contains "Company Name")
     header_row_idx = None
-    for idx in range(min(50, len(df))):
+    for idx in range(min(100, len(df))):
         if pd.notna(df.iloc[idx, 0]) and str(df.iloc[idx, 0]).strip() == "Company Name":
             header_row_idx = idx
             break
@@ -100,6 +104,10 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
     current_timezone = None
     
     # Iterate through data rows (starting after header)
+    processed_rows = 0
+    skipped_rows = 0
+    companies_found = set()
+    
     for idx in range(header_row_idx + 1, len(df)):
         try:
             company_name_cell = df.iloc[idx, 0] if len(df.iloc[idx]) > 0 else None  # Column A
@@ -115,6 +123,7 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
             # Check if this row has a new company name
             if pd.notna(company_name_cell) and str(company_name_cell).strip():
                 current_company = str(company_name_cell).strip()
+                companies_found.add(current_company)
                 
                 # Parse industry/professions (can be comma-separated)
                 industry_str = str(df.iloc[idx, 1]).strip() if len(df.iloc[idx]) > 1 and pd.notna(df.iloc[idx, 1]) else "Unknown"  # Column B
@@ -124,12 +133,13 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
                 current_professions = []
                 if industry_str and industry_str != "Unknown":
                     prof_list = industry_str.replace('\n', ',').replace('&', ',').replace(' and ', ',').split(',')
-                    current_professions = [p.strip() for p in prof_list if p.strip() and p.strip().lower() not in ['select profession(s)', 'select profession', 'unknown']]
+                    current_professions = [p.strip() for p in prof_list if p.strip() and p.strip().lower() not in ['select profession(s)', 'select profession', 'unknown', '']]
                 
                 current_timezone = str(df.iloc[idx, 2]).strip() if len(df.iloc[idx]) > 2 and pd.notna(df.iloc[idx, 2]) else "UTC +00:00"  # Column C
             
             # Skip if we don't have a current company context
             if not current_company:
+                skipped_rows += 1
                 continue
             
             # Check for additional profession in column B (on rows where column A is empty)
@@ -138,7 +148,7 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
                 # This is an additional profession for the current company
                 prof = str(profession_cell).strip()
                 # Skip placeholder text
-                if prof not in current_professions and prof.lower() not in ['select profession(s)', 'select profession', 'unknown']:
+                if prof not in current_professions and prof.lower() not in ['select profession(s)', 'select profession', 'unknown', '']:
                     current_professions.append(prof)
             
             company_name = current_company
@@ -146,8 +156,8 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
             professions = current_professions
             timezone = current_timezone
             
-            # Get goods info for this row
-            good_name = df.iloc[idx, 12] if len(df.iloc[idx]) > 12 else ""  # Column M (0-indexed: 12)
+            # Get goods info for this row - COLUMN L (0-indexed: 11)
+            good_name = df.iloc[idx, 11] if len(df.iloc[idx]) > 11 else ""  # Column L
             
             # Skip if no good name (must check before any other processing)
             if pd.isna(good_name) or not str(good_name).strip():
@@ -158,6 +168,12 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
             # Skip placeholder text for goods
             if good_name.lower() in ['select good', 'select goods', 'select product', '']:
                 continue
+            
+            # Validate good is in game materials list
+            if good_name not in valid_materials:
+                continue
+            
+            processed_rows += 1
             planet_produced = df.iloc[idx, 13] if len(df.iloc[idx]) > 13 else ""  # Column N (0-indexed: 13)
             
             # Parse planet produced, filter out placeholder
@@ -178,7 +194,7 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
                 except:
                     return 0
             
-            guildees_pay = parse_price(df.iloc[idx, 14])  # Column O (0-indexed: 14)
+            guildees_pay = 0  # Not specified in sheet mapping, defaulting to 0
             guild_max = parse_price(df.iloc[idx, 17])  # Column R (0-indexed: 17)
             guild_min = parse_price(df.iloc[idx, 18])  # Column S (0-indexed: 18)
             guild_discount = parse_price(df.iloc[idx, 19])  # Column T (0-indexed: 19)

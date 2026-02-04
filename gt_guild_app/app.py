@@ -3,6 +3,7 @@ import streamlit as st
 import warnings
 import hashlib
 import json
+import pandas as pd
 
 # Suppress FutureWarning from Streamlit's data_editor
 warnings.filterwarnings('ignore', category=FutureWarning, module='streamlit.elements.widgets.data_editor')
@@ -11,7 +12,8 @@ warnings.filterwarnings('ignore', category=FutureWarning, module='streamlit.elem
 from config import APP_TITLE, APP_ICON, APP_SUBTITLE, CSS_FILE, PROFESSIONS, TIMEZONE_OPTIONS
 from core.data_manager import (
     load_game_materials, load_game_planets, load_data, save_data, 
-    prepare_goods_dataframe
+    prepare_goods_dataframe, load_contracts, save_contracts,
+    load_company_config, save_company_config
 )
 from integrations.api_client import fetch_material_prices
 from business.price_calculator import update_live_prices, calculate_all_guildees_prices
@@ -222,6 +224,35 @@ def initialize_session_state():
     
     if 'data_version' not in st.session_state:
         st.session_state.data_version = None
+    
+    if 'contracts' not in st.session_state:
+        loaded_contracts = load_contracts()
+        # Convert old format to new format if needed
+        if loaded_contracts and isinstance(loaded_contracts, list):
+            # Old format - convert to dict
+            st.session_state.player_companies = {
+                'MB Industries': {},
+                'Flip Co': {},
+                "Drunkenduo's Ruthless Divident": {}
+            }
+        elif loaded_contracts and isinstance(loaded_contracts, dict):
+            # Check if it's old single-company format (goods as keys) or new multi-company format
+            if loaded_contracts and any(isinstance(v, dict) and 'daily_amount' in v for v in loaded_contracts.values()):
+                # Old format: goods as keys directly
+                st.session_state.player_companies = {
+                    'MB Industries': loaded_contracts,
+                    'Flip Co': {},
+                    "Drunkenduo's Ruthless Divident": {}
+                }
+            else:
+                # New format: companies as keys
+                st.session_state.player_companies = loaded_contracts
+        else:
+            st.session_state.player_companies = {
+                'MB Industries': {},
+                'Flip Co': {},
+                "Drunkenduo's Ruthless Divident": {}
+            }
 
 
 def refresh_from_google_sheets():
@@ -384,7 +415,7 @@ def render_company_editor(company, idx, materials, price_data, all_professions_l
             handle_goods_changes(company, edited_goods, price_data)
 
 
-@st.fragment(run_every=5)  # Refresh every 5 seconds
+@st.fragment()  # Manual refresh only
 def render_companies_fragment(filtered_companies, materials, price_data, professions_list, search_goods):
     """Auto-refreshing fragment that renders company editors and checks for changes."""
     # Reload data to check for changes
@@ -471,89 +502,46 @@ def main():
     initialize_page()
     initialize_session_state()
     
-    # Load data
-    companies = st.session_state.companies
+    # Load data and CSS first
+    all_companies = st.session_state.companies
     materials = st.session_state.materials
-    
-    # Normal UI flow - load CSS
     load_custom_css()
     
-    # Title
-    st.title(f"{APP_ICON} {APP_TITLE}")
-    st.markdown(APP_SUBTITLE)
+    # Filter companies based on configuration (removed companies only)
+    config = load_company_config()
+    removed_companies = set(config.get('removed_companies', []))
     
-    # Add JSON data access info
-    with st.expander("📊 Public Data Access", expanded=False):
-        st.info("""
-        **JSON Data Available via GitHub:**
-        
-        Guild data is exported to public JSON files that update automatically:
-        
-        **By Good (find cheapest prices):**
-        ```
-        https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_goods.json
-        ```
-        
-        **By Company (see all offers per company):**
-        ```
-        https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_companies.json
-        ```
-        
-        **Data Structure:**
-        - `all_goods.json`: Each good includes cheapest price, company, planet, and all listings sorted by price
-        - `all_companies.json`: Each company includes professions, timezone, and all their goods with prices
-        
-        **JavaScript Example:**
-        ```javascript
-        // Get all goods
-        fetch('https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_goods.json')
-            .then(r => r.json())
-            .then(data => console.log(data.data));
-        
-        // Get all companies
-        fetch('https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_companies.json')
-            .then(r => r.json())
-            .then(data => console.log(data.data));
-        ```
-        
-        **Python Example:**
-        ```python
-        import requests
-        
-        # Get all goods
-        goods_url = "https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_goods.json"
-        goods = requests.get(goods_url).json()["data"]
-        
-        # Get all companies
-        companies_url = "https://raw.githubusercontent.com/VincentvanderLinden/gt_guild_app/main/api_exports/all_companies.json"
-        companies = requests.get(companies_url).json()["data"]
-        ```
-        
-        Data updates automatically every 10 minutes when prices refresh.
-        """)
+    # Filter out removed companies
+    companies = [company for company in all_companies if company['name'] not in removed_companies]
     
-    # Refresh from Google Sheets if needed
+    # Show loading spinner for initial app load
+    if 'initial_refresh_done' not in st.session_state:
+        st.session_state.initial_refresh_done = False
+    
+    if 'initial_push_done' not in st.session_state:
+        st.session_state.initial_push_done = False
+    
+    # Show loading indicator during initial setup
+    if not st.session_state.initial_refresh_done:
+        with st.spinner("⏳ Loading guild data and market prices..."):
+            # Force Google Sheets refresh on startup
+            st.session_state.last_sheet_refresh = None
+            refresh_from_google_sheets()
+            
+            # Fetch live prices
+            price_data, last_update = fetch_material_prices()
+            
+            st.session_state.initial_refresh_done = True
+            st.rerun()  # Rerun to show the actual content
+    
+    # Refresh from Google Sheets if needed (background refresh, not on initial load)
     refresh_from_google_sheets()
     
     # Update local times (in case time has changed)
     if st.session_state.companies:
         st.session_state.companies = update_company_local_times(st.session_state.companies)
     
-    # Force refresh on first app load (once per session)
-    if 'initial_refresh_done' not in st.session_state:
-        st.session_state.initial_refresh_done = False
-    
-    if not st.session_state.initial_refresh_done:
-        with st.spinner("Loading guild data from Google Sheets..."):
-            # Force Google Sheets refresh on startup
-            st.session_state.last_sheet_refresh = None
-            refresh_from_google_sheets()
-        st.session_state.initial_refresh_done = True
-    
     # Push to GitHub on app startup (once per session)
-    if 'initial_push_done' not in st.session_state:
-        st.session_state.initial_push_done = False
-    
     if not st.session_state.initial_push_done:
         result = push_to_github_now(force=True)
         # Result might be bool or tuple, handle both
@@ -561,9 +549,8 @@ def main():
             success, _ = result
         st.session_state.initial_push_done = True
     
-    # Fetch live prices (cached for 10 minutes, but will be fresh on startup)
-    with st.spinner("Fetching live market prices..."):
-        price_data, last_update = fetch_material_prices()
+    # Fetch live prices (cached for 10 minutes)
+    price_data, last_update = fetch_material_prices()
     
     # Collect all professions from companies
     all_professions = set(PROFESSIONS)  # Start with the base list
@@ -579,10 +566,31 @@ def main():
         valid_profs = [p for p in company.get('professions', []) if p in professions_list]
         company['professions'] = valid_profs
     
+    # Calculate material counts per company
+    material_counts = {}
+    for company in companies:
+        for good in company.get('goods', []):
+            material = good.get('Produced Goods', '')
+            if material:
+                material_counts[material] = material_counts.get(material, 0) + 1
+    
+    # Calculate unique goods count per company for sidebar
+    company_goods_counts = {}
+    for company in all_companies:
+        unique_goods = set()
+        for good in company.get('goods', []):
+            material = good.get('Produced Goods', '')
+            if material:
+                unique_goods.add(material)
+        company_goods_counts[company['name']] = len(unique_goods)
+    
+    # Get company list from configuration
+    company_list = [company['name'] for company in all_companies]
+    
     # Render sidebar and get filter values
     selected_professions, search_company, search_goods, push_button = render_sidebar_filters(
-        professions_list, price_data, last_update, st.session_state.last_sheet_refresh, 
-        st.session_state.last_github_push
+        professions_list, price_data, last_update, materials, material_counts, company_list, company_goods_counts,
+        st.session_state.last_sheet_refresh, st.session_state.last_github_push
     )
     
     # Handle manual push button
@@ -604,6 +612,21 @@ def main():
         if success:
             st.rerun()
     
+    # Create tabs
+    tab1, tab2, tab3 = st.tabs(["📋 Guild Offers", "🔄 Contract Manager", "⚙️ Configuration"])
+    
+    with tab1:
+        render_guild_offers_tab(companies, selected_professions, search_company, search_goods, materials, price_data, professions_list)
+    
+    with tab2:
+        render_recurring_contracts_tab(price_data, all_companies)
+    
+    with tab3:
+        render_configuration_tab(all_companies)
+
+
+def render_guild_offers_tab(companies, selected_professions, search_company, search_goods, materials, price_data, professions_list):
+    """Render the main guild offers tab."""
     # Apply filters
     filtered_companies = apply_all_filters(
         companies, selected_professions, search_company, search_goods
@@ -634,6 +657,362 @@ def main():
     st.info("💾 All changes are saved automatically")
     st.divider()
     st.write(f"**Showing {len(filtered_companies)} of {len(companies)} companies**")
+
+
+def render_recurring_contracts_tab(price_data, all_companies):
+    """Render the contract manager tab."""
+    st.header("🔄 Contract Manager")
+    
+    # Get company list from configuration (available companies)
+    config = load_company_config()
+    removed_companies = set(config.get('removed_companies', []))
+    custom_companies = config.get('custom_companies', [])
+    
+    # Combine sheet companies and custom companies
+    all_company_names = {company['name'] for company in all_companies}
+    all_company_names.update(custom_companies)
+    
+    # Remove companies marked for removal
+    available_company_names = all_company_names - removed_companies
+    
+    # Initialize companies structure in session state
+    if 'player_companies' not in st.session_state:
+        st.session_state.player_companies = {}
+    
+    # Add any missing companies from config to player_companies
+    for company_name in available_company_names:
+        if company_name not in st.session_state.player_companies:
+            st.session_state.player_companies[company_name] = {}
+    
+    # Remove companies that are no longer in config
+    for company_name in list(st.session_state.player_companies.keys()):
+        if company_name not in available_company_names:
+            del st.session_state.player_companies[company_name]
+    
+    # Get materials and planets for dropdowns
+    materials = st.session_state.materials if 'materials' in st.session_state else []
+    planets = st.session_state.planets if 'planets' in st.session_state else []
+    
+    # Sort companies: by number of contracts (highest first), then alphabetically for zero contracts
+    def get_sort_key(company_name):
+        contract_count = len(st.session_state.player_companies[company_name])
+        if contract_count == 0:
+            return (1, company_name)  # Sort alphabetically, but after companies with contracts
+        else:
+            return (0, -contract_count, company_name)  # Sort by count desc, comes first
+    
+    sorted_company_names = sorted(st.session_state.player_companies.keys(), key=get_sort_key, reverse=False)
+    
+    # Loop through each company
+    for company_name in sorted_company_names:
+        company_contracts = st.session_state.player_companies[company_name]
+        
+        # Create summary of goods for container title with color indicators
+        goods_summary = []
+        if company_contracts:
+            for good_name in company_contracts.keys():
+                contract_data = company_contracts[good_name]
+                daily_amount = contract_data.get('daily_amount', 0)
+                
+                # Calculate fulfilled amount
+                contract_lines = contract_data.get('lines', [])
+                if contract_lines:
+                    lines_df = pd.DataFrame(contract_lines)
+                    total_fulfilled = lines_df['Fulfilled Amount'].sum()
+                else:
+                    total_fulfilled = 0
+                
+                # Determine indicator: green checkmark if fulfilled, orange warning if remaining
+                if total_fulfilled >= daily_amount and daily_amount > 0:
+                    indicator = "✅"
+                else:
+                    indicator = "⚠️"
+                
+                goods_summary.append(f"{indicator} {good_name}")
+        
+        goods_list_text = ", ".join(goods_summary[:3]) if goods_summary else "No goods yet"
+        if len(goods_summary) > 3:
+            goods_list_text += f" +{len(goods_summary) - 3} more"
+        
+        with st.expander(f"🏭 {company_name} • {goods_list_text}", expanded=False):
+            # Display each good in its own container
+            if not company_contracts:
+                st.info("No materials added yet. Click 'Add Material' to start.")
+            else:
+                for good_name in list(company_contracts.keys()):
+                    contract_data = company_contracts[good_name]
+                    daily_amount = contract_data.get('daily_amount', 0)
+                    
+                    # Calculate totals for title
+                    contract_lines = contract_data['lines']
+                    if not contract_lines:
+                        lines_df = pd.DataFrame({
+                            'Company': [''] * 2,
+                            'Delivery Location': [''] * 2,
+                            'Fulfilled Amount': [0] * 2
+                        })
+                    else:
+                        lines_df = pd.DataFrame(contract_lines)
+                    
+                    total_fulfilled = lines_df['Fulfilled Amount'].sum()
+                    total_remaining = max(0, daily_amount - total_fulfilled)
+                    
+                    # Determine indicator: green checkmark if fulfilled, orange warning if remaining
+                    if total_fulfilled >= daily_amount and daily_amount > 0:
+                        indicator = "✅"
+                    else:
+                        indicator = "⚠️"
+                    
+                    # Container title with amounts and status indicator
+                    container_title = f"{indicator} {good_name} • {daily_amount} needed • {total_remaining} remaining"
+                    
+                    with st.expander(container_title, expanded=False):
+                        # Header row with daily amount and delete button
+                        col_amount, col_delete = st.columns([3, 1])
+                        
+                        with col_amount:
+                            new_daily_amount = st.number_input(
+                                "Daily Amount Needed",
+                                min_value=0,
+                                value=daily_amount,
+                                step=1,
+                                key=f"daily_amount_{company_name}_{good_name}"
+                            )
+                            # Update if changed
+                            if new_daily_amount != daily_amount:
+                                st.session_state.player_companies[company_name][good_name]['daily_amount'] = new_daily_amount
+                                save_contracts(st.session_state.player_companies)
+                        
+                        with col_delete:
+                            st.markdown("<br>", unsafe_allow_html=True)  # Spacing
+                            if st.button("🗑️ Delete", key=f"delete_{company_name}_{good_name}", use_container_width=True):
+                                del st.session_state.player_companies[company_name][good_name]
+                                save_contracts(st.session_state.player_companies)
+                                st.rerun()
+                        
+                        # Get current live prices for this good
+                        live_exc_price = 0
+                        live_avg_price = 0
+                        if price_data and good_name in price_data:
+                            live_exc_price = int(price_data[good_name]['currentPrice'])
+                            live_avg_price = int(price_data[good_name]['avgPrice'])
+                        
+                        # Recalculate totals with updated daily amount
+                        total_fulfilled = lines_df['Fulfilled Amount'].sum()
+                        total_remaining = max(0, new_daily_amount - total_fulfilled)
+                        
+                        # Show metrics
+                        col1, col2, col3, col4, col5 = st.columns(5)
+                        with col1:
+                            st.metric("Live EXC", f"${live_exc_price}")
+                        with col2:
+                            st.metric("Live AVG", f"${live_avg_price}")
+                        with col3:
+                            st.metric("Daily Need", f"{new_daily_amount}")
+                        with col4:
+                            st.metric("Fulfilled", f"{total_fulfilled}")
+                        with col5:
+                            st.metric("Remaining", f"{total_remaining}")
+                        
+                        st.divider()
+                        
+                        # Column configuration for contract lines
+                        lines_column_config = {
+                            'Company': st.column_config.TextColumn('Company'),
+                            'Delivery Location': st.column_config.SelectboxColumn(
+                                'Delivery Location',
+                                options=planets,
+                                required=True
+                            ),
+                            'Fulfilled Amount': st.column_config.NumberColumn(
+                                'Fulfilled Amount',
+                                min_value=0,
+                                format="%d"
+                            )
+                        }
+                        
+                        # Calculate dynamic height
+                        table_height = min(35 * len(lines_df) + 73, 400)
+                        
+                        # Render data editor
+                        edited_lines = st.data_editor(
+                            lines_df,
+                            hide_index=True,
+                            width="stretch",
+                            height=table_height,
+                            num_rows="dynamic",
+                            key=f"contract_lines_{company_name}_{good_name}",
+                            column_config=lines_column_config
+                        )
+                        
+                        # Handle changes
+                        if not lines_df.equals(edited_lines):
+                            # Filter out empty rows
+                            edited_lines = edited_lines[
+                                (edited_lines['Company'].notna() & (edited_lines['Company'].str.strip() != '')) |
+                                (edited_lines['Delivery Location'].notna() & (edited_lines['Delivery Location'].str.strip() != ''))
+                            ].copy()
+                            
+                            st.session_state.player_companies[company_name][good_name]['lines'] = edited_lines.to_dict('records')
+                            save_contracts(st.session_state.player_companies)
+                            st.rerun()
+            
+            st.divider()
+            
+            # Button to add new material at the bottom
+            col_add, col_space = st.columns([1, 3])
+            with col_add:
+                if st.button("➕ Add Material", use_container_width=True, key=f"add_good_{company_name}"):
+                    st.session_state[f'show_add_good_{company_name}'] = True
+            
+            # Show add material dialog
+            if st.session_state.get(f'show_add_good_{company_name}', False):
+                with st.form(f"add_good_form_{company_name}"):
+                    st.markdown("**Add New Material**")
+                    new_good = st.selectbox("Select Material", options=[g for g in materials if g not in company_contracts], key=f"select_good_{company_name}")
+                    new_daily_amount = st.number_input("Daily Amount Needed", min_value=0, value=100, step=1, key=f"daily_amt_{company_name}")
+                    
+                    col_submit, col_cancel = st.columns(2)
+                    with col_submit:
+                        submitted = st.form_submit_button("Add", use_container_width=True)
+                    with col_cancel:
+                        cancelled = st.form_submit_button("Cancel", use_container_width=True)
+                    
+                    if submitted and new_good:
+                        st.session_state.player_companies[company_name][new_good] = {
+                            'daily_amount': new_daily_amount,
+                            'lines': []
+                        }
+                        save_contracts(st.session_state.player_companies)
+                        st.session_state[f'show_add_good_{company_name}'] = False
+                        st.rerun()
+                    
+                    if cancelled:
+                        st.session_state[f'show_add_good_{company_name}'] = False
+                        st.rerun()
+    
+    st.divider()
+    
+    # Add Company button at the bottom
+    col_add_company, col_space = st.columns([1, 3])
+    with col_add_company:
+        if st.button("➕ Add Company", use_container_width=True, key="add_company_contract"):
+            st.session_state.show_add_company = True
+    
+    # Show add company dialog
+    if st.session_state.get('show_add_company', False):
+        with st.form("add_company_form"):
+            st.markdown("**Add New Company**")
+            new_company_name = st.text_input("Company Name")
+            
+            col_submit, col_cancel = st.columns(2)
+            with col_submit:
+                submitted = st.form_submit_button("Add", use_container_width=True)
+            with col_cancel:
+                cancelled = st.form_submit_button("Cancel", use_container_width=True)
+            
+            if submitted and new_company_name and new_company_name.strip():
+                if new_company_name not in st.session_state.player_companies:
+                    st.session_state.player_companies[new_company_name] = {}
+                    save_contracts(st.session_state.player_companies)
+                    st.session_state.show_add_company = False
+                    st.rerun()
+                else:
+                    st.error("Company already exists!")
+            
+            if cancelled:
+                st.session_state.show_add_company = False
+                st.rerun()
+
+
+def render_configuration_tab(all_companies):
+    """Render the configuration tab for managing companies."""
+    st.header("⚙️ Configuration")
+    
+    # Load current configuration
+    config = load_company_config()
+    removed_companies = set(config.get('removed_companies', []))
+    custom_companies = config.get('custom_companies', [])
+    
+    # Combine sheet companies and custom companies
+    all_company_names = {company['name'] for company in all_companies}
+    all_company_names.update(custom_companies)
+    
+    # Remove companies marked for removal
+    available_companies = all_company_names - removed_companies
+    
+    # Stats
+    col_stat1, col_stat2 = st.columns(2)
+    with col_stat1:
+        st.metric("Total Companies", len(available_companies))
+    with col_stat2:
+        st.metric("Removed", len(removed_companies))
+    
+    st.divider()
+    
+    # Build dataframe for companies
+    company_data = []
+    for company_name in sorted(available_companies):
+        # Find goods count
+        goods_count = 0
+        for company in all_companies:
+            if company['name'] == company_name:
+                goods_count = len(company.get('goods', []))
+                break
+        
+        company_data.append({
+            'Company': company_name,
+            'Goods': goods_count
+        })
+    
+    companies_df = pd.DataFrame(company_data)
+    
+    # Calculate height to show all rows without scrolling
+    table_height = 35 * len(companies_df) + 73
+    
+    # Data editor
+    edited_companies_df = st.data_editor(
+        companies_df,
+        hide_index=True,
+        width="stretch",
+        height=table_height,
+        num_rows="dynamic",
+        key="companies_editor",
+        disabled=["Goods"],
+        column_config={
+            'Company': st.column_config.TextColumn('Company', required=True),
+            'Goods': st.column_config.NumberColumn('Goods', disabled=True)
+        }
+    )
+    
+    # Handle changes
+    if not companies_df.equals(edited_companies_df):
+        # Get current and new company names
+        old_names = set(companies_df['Company'].tolist())
+        new_names = set(edited_companies_df['Company'].dropna().tolist())
+        new_names = {name.strip() for name in new_names if name.strip()}
+        
+        # Find added and removed companies
+        added = new_names - old_names
+        removed = old_names - new_names
+        
+        # Handle additions
+        for company_name in added:
+            if company_name not in all_company_names:
+                if 'custom_companies' not in config:
+                    config['custom_companies'] = []
+                config['custom_companies'].append(company_name)
+        
+        # Handle removals
+        for company_name in removed:
+            if 'removed_companies' not in config:
+                config['removed_companies'] = []
+            config['removed_companies'].append(company_name)
+            if company_name in custom_companies:
+                config['custom_companies'].remove(company_name)
+        
+        save_company_config(config)
+        st.rerun()
 
 
 if __name__ == "__main__":

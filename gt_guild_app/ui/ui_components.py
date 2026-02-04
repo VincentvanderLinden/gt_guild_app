@@ -4,65 +4,75 @@ from typing import Dict, Any, Optional
 from datetime import datetime
 
 
-def render_sidebar_filters(professions_list, price_data, last_update, last_sheet_refresh: Optional[datetime] = None, last_github_push: Optional[datetime] = None):
+def render_sidebar_filters(professions_list, price_data, last_update, materials_list, material_counts, company_list, company_goods_counts, last_sheet_refresh: Optional[datetime] = None, last_github_push: Optional[datetime] = None):
     """Render sidebar with filters and price info."""
+    # Title at top of sidebar
+    st.sidebar.markdown("<h3 style='text-align: center;'>TiT Guild App🐔™</h3>", unsafe_allow_html=True)
+    st.sidebar.markdown("<p style='text-align: center; font-size: 12px; color: #8b9dc3; margin-top: -10px;'>Made possible by Skunk's sheet</p>", unsafe_allow_html=True)
+    
     st.sidebar.title("⚙️ Filters")
     st.sidebar.space()
     
     # Profession filter
     selected_professions = st.sidebar.multiselect("Professions", professions_list)
     
-    # Search filters
-    search_company = st.sidebar.text_input("Search Company", "", key="search_company")
-    search_goods = st.sidebar.text_input("Search Goods", "", key="search_goods")
+    # Company filter as dropdown
+    company_options = ['']  # Empty option first
+    for company_name in sorted(company_list):
+        goods_count = company_goods_counts.get(company_name, 0)
+        if goods_count > 0:
+            company_options.append(f"{company_name} ({goods_count})")
+        else:
+            company_options.append(company_name)
+    
+    selected_company_option = st.sidebar.selectbox("Search Company", company_options, key="search_company")
+    
+    # Extract company name without count
+    if selected_company_option and '(' in selected_company_option:
+        search_company = selected_company_option.rsplit(' (', 1)[0]
+    else:
+        search_company = selected_company_option
+    
+    # Search goods as dropdown with materials and counts
+    material_options = ['']  # Empty option first
+    for material in sorted(materials_list):
+        count = material_counts.get(material, 0)
+        if count > 0:
+            material_options.append(f"{material} ({count})")
+        else:
+            material_options.append(material)
+    
+    selected_option = st.sidebar.selectbox("Search Goods", material_options, key="search_goods")
+    
+    # Extract material name without count (remove " (X)" suffix)
+    if selected_option and '(' in selected_option:
+        search_goods = selected_option.rsplit(' (', 1)[0]
+    else:
+        search_goods = selected_option
     
     # Price update status
     st.sidebar.divider()
-    if price_data:
-        st.sidebar.caption(
-            f"📊 **Live prices:** {len(price_data)} materials  \n"
-            f"*Last updated:*  \n"
-            f"*{last_update}*  \n"
-            f"*Updates every 10 minutes*"
-        )
+    if price_data and last_update:
+        st.sidebar.caption(f"📊 **Prices** • *{last_update}*")
     else:
-        st.sidebar.warning("⚠️ Could not load live prices")
+        st.sidebar.caption(f"📊 **Prices** • *Not loaded*")
     
     # Google Sheets refresh status
-    st.sidebar.divider()
     if last_sheet_refresh:
-        # Format UTC time (already in UTC from app.py)
-        time_str = last_sheet_refresh.strftime("%b %d, %Y at %I:%M %p UTC")
-        st.sidebar.caption(
-            f"📋 **Google Sheets data**  \n"
-            f"*Last refreshed:*  \n"
-            f"*{time_str}*  \n"
-            f"*Auto-refreshes every 10 minutes*"
-        )
+        time_str = last_sheet_refresh.strftime("%I:%M %p UTC")
+        st.sidebar.caption(f"📋 **Sheets** • *{time_str}*")
     else:
-        st.sidebar.caption(
-            f"📋 **Google Sheets data**  \n"
-            f"*Not yet synced*  \n"
-            f"*Will sync on next refresh*"
-        )
+        st.sidebar.caption(f"📋 **Sheets** • *Not synced*")
     
     # GitHub push status and button
-    st.sidebar.divider()
     if last_github_push:
-        time_str = last_github_push.strftime("%b %d, %Y at %I:%M %p UTC")
-        st.sidebar.caption(
-            f"🌌 **Galactic Repository**  \n"
-            f"*Last transmission:*  \n"
-            f"*{time_str}*  \n"
-            f"*Auto-sync every 2 minutes*"
-        )
+        time_str = last_github_push.strftime("%I:%M %p UTC")
+        st.sidebar.caption(f"🌌 **GitHub** • *{time_str}*")
     else:
-        st.sidebar.caption(
-            f"🌌 **Galactic Repository**  \n"
-            f"*Awaiting first transmission*"
-        )
+        st.sidebar.caption(f"🌌 **GitHub** • *Awaiting sync*")
     
-    st.sidebar.markdown("") # spacing
+    st.sidebar.divider()
+    st.sidebar.markdown("")  # spacing
     st.sidebar.markdown("""
         <style>
         div.stButton > button {

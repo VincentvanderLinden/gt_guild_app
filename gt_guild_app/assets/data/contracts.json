@@ -1,0 +1,60 @@
+{
+  "MB Industries": {
+    "AI Training Data": {
+      "daily_amount": 600,
+      "lines": [
+        {
+          "Delivery Location": "Abberon 4",
+          "Highest Buying Price ($)": 0,
+          "Company": "DrD",
+          "Fulfilled Amount": 500,
+          "Remaining Needed": 100
+        }
+      ]
+    }
+  },
+  "Flip Co": {
+    "Carbon Nanotubes": {
+      "daily_amount": 100,
+      "lines": [
+        {
+          "Company": "MB Industries",
+          "Delivery Location": "",
+          "Fulfilled Amount": 100
+        }
+      ]
+    },
+    "Cargo Bay Segment": {
+      "daily_amount": 50,
+      "lines": [
+        {
+          "Company": "MB Industries",
+          "Delivery Location": "",
+          "Fulfilled Amount": 25
+        }
+      ]
+    }
+  },
+  "Drunkenduo's Ruthless Divident": {
+    "Chickens": {
+      "daily_amount": 100000,
+      "lines": [
+        {
+          "Company": "Skunk",
+          "Delivery Location": "Kentaurus 2",
+          "Fulfilled Amount": 80000
+        }
+      ]
+    },
+    "Cows": {
+      "daily_amount": 100000,
+      "lines": [
+        {
+          "Company": "Flip Co",
+          "Delivery Location": "Exchange Station",
+          "Fulfilled Amount": 100000
+        }
+      ]
+    }
+  }
+}

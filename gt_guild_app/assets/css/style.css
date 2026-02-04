@@ -6,6 +6,46 @@
     font-family: 'Titillium Web', sans-serif;
 }
 
+/* Modern segmented tabs styling */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+    padding: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(74, 158, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.stTabs [data-baseweb="tab"] {
+    height: 48px;
+    padding: 0 28px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    background-color: transparent;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: rgba(230, 230, 230, 0.6) !important;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    background-color: rgba(74, 158, 255, 0.1);
+    color: rgba(230, 230, 230, 0.9) !important;
+    transform: translateY(-1px);
+}
+
+.stTabs [aria-selected="true"] {
+    background: linear-gradient(135deg, rgba(74, 158, 255, 0.25), rgba(74, 158, 255, 0.15)) !important;
+    color: #4a9eff !important;
+    box-shadow: 0 2px 8px rgba(74, 158, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(74, 158, 255, 0.4) !important;
+}
+
 /* Force dark theme for all modes */
 body,
 html,
@@ -56,7 +96,7 @@ header[data-testid="stHeader"] {
 
 /* Reduce top padding */
 .block-container {
-    padding-top: 33px;
+    padding-top: 40px;
 }
 
 /* Headers */

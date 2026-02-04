@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import List, Dict, Any, Optional
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from config import DATA_FILE, GOOGLE_SHEETS_DATA_FILE, GAMEDATA_FILE
+from config import DATA_FILE, GOOGLE_SHEETS_DATA_FILE, GAMEDATA_FILE, CONTRACTS_FILE, COMPANY_CONFIG_FILE
 
 
 def load_game_materials() -> List[str]:
@@ -173,3 +173,47 @@ def prepare_goods_dataframe(goods: List[Dict[str, Any]]) -> pd.DataFrame:
         goods_df['Planet Produced'] = goods_df['Planet Produced'].astype('str')
     
     return goods_df
+
+
+def load_contracts() -> Optional[Dict[str, Any]]:
+    """Load contracts data from JSON file."""
+    if not CONTRACTS_FILE.exists():
+        return {}
+    
+    try:
+        # Change to JSON for nested dict structure
+        import json
+        contracts_json = CONTRACTS_FILE.with_suffix('.json')
+        if contracts_json.exists():
+            with open(contracts_json, 'r') as f:
+                return json.load(f)
+        return {}
+    except Exception:
+        return {}
+
+
+def save_contracts(contracts: Dict[str, Any]) -> None:
+    """Save contracts data to JSON file."""
+    import json
+    # Change to JSON for nested dict structure
+    contracts_json = CONTRACTS_FILE.with_suffix('.json')
+    with open(contracts_json, 'w') as f:
+        json.dump(contracts, f, indent=2)
+
+
+def load_company_config() -> Dict[str, Any]:
+    """Load company configuration (enabled companies list)."""
+    if not COMPANY_CONFIG_FILE.exists():
+        return {'enabled_companies': []}
+    
+    try:
+        with open(COMPANY_CONFIG_FILE, 'r') as f:
+            return json.load(f)
+    except Exception:
+        return {'enabled_companies': []}
+
+
+def save_company_config(config: Dict[str, Any]) -> None:
+    """Save company configuration to JSON file."""
+    with open(COMPANY_CONFIG_FILE, 'w') as f:
+        json.dump(config, f, indent=2)

@@ -7,6 +7,8 @@ ASSETS_DIR = BASE_DIR / "assets"
 CSS_FILE = ASSETS_DIR / "css" / "style.css"
 DATA_FILE = ASSETS_DIR / "data" / "guild_data.feather"
 GOOGLE_SHEETS_DATA_FILE = ASSETS_DIR / "data" / "google_sheets_data.feather"
+CONTRACTS_FILE = ASSETS_DIR / "data" / "contracts.json"
+COMPANY_CONFIG_FILE = ASSETS_DIR / "data" / "company_config.json"
 GAMEDATA_FILE = ASSETS_DIR / "data" / "gamedata.json"
 
 # Available professions (sorted alphabetically)

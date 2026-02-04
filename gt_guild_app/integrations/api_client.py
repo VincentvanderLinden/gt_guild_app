@@ -12,7 +12,7 @@ def fetch_material_prices() -> Tuple[Dict[str, Dict[str, float]], str]:
     Returns a tuple of (price_dict, timestamp_string).
     Cached for 10 minutes.
     """
-    timestamp = datetime.now(timezone.utc).strftime("%b %d, %Y at %I:%M %p UTC")
+    timestamp = datetime.now(timezone.utc).strftime("%I:%M %p UTC")
     
     try:
         response = requests.get(
