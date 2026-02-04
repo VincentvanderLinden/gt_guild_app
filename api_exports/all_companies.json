@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-04T23:12:44.332587",
+  "last_updated": "2026-02-04T23:13:47.563376",
   "companies_count": 22,
   "data": [
     {
@@ -12,7 +12,7 @@
           "Electronics"
         ],
         "timezone": "UTC -08:00",
-        "local_time": "3:12 PM",
+        "local_time": "3:13 PM",
         "goods_count": 11,
         "goods": [
           {
@@ -148,7 +148,7 @@
           "Agriculture"
         ],
         "timezone": "UTC -07:00",
-        "local_time": "4:12 PM",
+        "local_time": "4:13 PM",
         "goods_count": 5,
         "goods": [
           {
@@ -217,8 +217,8 @@
           "Metallurgy"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "12:12 AM",
-        "goods_count": 8,
+        "local_time": "12:13 AM",
+        "goods_count": 9,
         "goods": [
           {
             "good": "Aeridium",
@@ -229,6 +229,17 @@
             "guild_max": 0,
             "guild_min": 0,
             "discount_percent": 10,
+            "discount_fixed": 0
+          },
+          {
+            "good": "Aluminium",
+            "planet_produced": "",
+            "guildees_pay": 480.0,
+            "live_exc_price": 475,
+            "live_avg_price": 480,
+            "guild_max": 0,
+            "guild_min": 0,
+            "discount_percent": 0,
             "discount_fixed": 0
           },
           {
@@ -245,12 +256,12 @@
           {
             "good": "Graphenium Wire",
             "planet_produced": "",
-            "guildees_pay": 1850.0,
+            "guildees_pay": 1750.0,
             "live_exc_price": 2050,
             "live_avg_price": 1971,
             "guild_max": 0,
             "guild_min": 0,
-            "discount_percent": 10,
+            "discount_percent": 15,
             "discount_fixed": 0
           },
           {
@@ -278,11 +289,11 @@
           {
             "good": "Tiridium Alloy",
             "planet_produced": "",
-            "guildees_pay": 5500.0,
+            "guildees_pay": 5400.0,
             "live_exc_price": 5500,
             "live_avg_price": 5921,
             "guild_max": 0,
-            "guild_min": 5500,
+            "guild_min": 5400,
             "discount_percent": 10,
             "discount_fixed": 0
           },
@@ -319,7 +330,7 @@
           "Manufacturing"
         ],
         "timezone": "UTC +04:00",
-        "local_time": "3:12 AM",
+        "local_time": "3:13 AM",
         "goods_count": 13,
         "goods": [
           {
@@ -478,7 +489,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC +13:00",
-        "local_time": "12:12 PM",
+        "local_time": "12:13 PM",
         "goods_count": 4,
         "goods": [
           {
@@ -536,7 +547,7 @@
           "Science"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "12:12 AM",
+        "local_time": "12:13 AM",
         "goods_count": 1,
         "goods": [
           {
@@ -564,7 +575,7 @@
           "Truss God"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "12:12 AM",
+        "local_time": "12:13 AM",
         "goods_count": 7,
         "goods": [
           {
@@ -656,7 +667,7 @@
           "Food Production"
         ],
         "timezone": "UTC -07:00",
-        "local_time": "4:12 PM",
+        "local_time": "4:13 PM",
         "goods_count": 7,
         "goods": [
           {
@@ -748,7 +759,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "11:12 PM",
+        "local_time": "11:13 PM",
         "goods_count": 8,
         "goods": [
           {
@@ -850,7 +861,7 @@
           "Manufacturing"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "12:12 AM",
+        "local_time": "12:13 AM",
         "goods_count": 4,
         "goods": [
           {
@@ -909,7 +920,7 @@
           "Resource Extraction"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "12:12 AM",
+        "local_time": "12:13 AM",
         "goods_count": 14,
         "goods": [
           {
@@ -1078,7 +1089,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "11:12 PM",
+        "local_time": "11:13 PM",
         "goods_count": 19,
         "goods": [
           {
@@ -1303,7 +1314,7 @@
           "Truss God"
         ],
         "timezone": "UTC -06:00",
-        "local_time": "5:12 PM",
+        "local_time": "5:13 PM",
         "goods_count": 9,
         "goods": [
           {
@@ -1417,7 +1428,7 @@
           "Science"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "12:12 AM",
+        "local_time": "12:13 AM",
         "goods_count": 2,
         "goods": [
           {
@@ -1454,7 +1465,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC -05:00",
-        "local_time": "6:12 PM",
+        "local_time": "6:13 PM",
         "goods_count": 5,
         "goods": [
           {
@@ -1524,7 +1535,7 @@
           "Truss God"
         ],
         "timezone": "UTC -08:00",
-        "local_time": "3:12 PM",
+        "local_time": "3:13 PM",
         "goods_count": 4,
         "goods": [
           {
@@ -1582,7 +1593,7 @@
           "Science"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "11:12 PM",
+        "local_time": "11:13 PM",
         "goods_count": 3,
         "goods": [
           {
@@ -1629,7 +1640,7 @@
           "Manufacturing"
         ],
         "timezone": "UTC -07:00",
-        "local_time": "4:12 PM",
+        "local_time": "4:13 PM",
         "goods_count": 3,
         "goods": [
           {
@@ -1680,7 +1691,7 @@
           "Resource Extraction"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "12:12 AM",
+        "local_time": "12:13 AM",
         "goods_count": 26,
         "goods": [
           {
@@ -1980,7 +1991,7 @@
           "Manufacturing"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "11:12 PM",
+        "local_time": "11:13 PM",
         "goods_count": 2,
         "goods": [
           {
@@ -2017,7 +2028,7 @@
           "Resource Extraction"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "12:12 AM",
+        "local_time": "12:13 AM",
         "goods_count": 8,
         "goods": [
           {
@@ -2119,7 +2130,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "12:12 AM",
+        "local_time": "12:13 AM",
         "goods_count": 9,
         "goods": [
           {
