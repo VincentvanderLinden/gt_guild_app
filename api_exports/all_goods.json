@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-04T13:42:07.630925",
+  "last_updated": "2026-02-04T13:43:50.339999",
   "goods_count": 80,
   "data": [
     {
@@ -2024,7 +2024,7 @@
     },
     {
       "good": "Nanopolyne",
-      "cheapest_price": 295.0,
+      "cheapest_price": 291.0,
       "cheapest_company": "MB Industries",
       "cheapest_planet": "Tidal 5",
       "listings_count": 2,
@@ -2033,11 +2033,11 @@
           "company": "MB Industries",
           "good": "Nanopolyne",
           "planet_produced": "Tidal 5",
-          "guildees_pay": 295.0,
+          "guildees_pay": 291.0,
           "live_exc_price": 335,
           "live_avg_price": 362,
-          "guild_max": 347,
-          "guild_min": 295,
+          "guild_max": 342,
+          "guild_min": 291,
           "discount_percent": 15,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
