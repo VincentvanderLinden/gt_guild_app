@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-04T14:06:28.532462",
+  "last_updated": "2026-02-04T14:08:03.036733",
   "goods_count": 85,
   "data": [
     {
@@ -483,7 +483,7 @@
     },
     {
       "good": "Color Compound",
-      "cheapest_price": 65.0,
+      "cheapest_price": 62.0,
       "cheapest_company": "Technically Federated Reserves",
       "cheapest_planet": "",
       "listings_count": 1,
@@ -492,12 +492,12 @@
           "company": "Technically Federated Reserves",
           "good": "Color Compound",
           "planet_produced": "",
-          "guildees_pay": 65.0,
+          "guildees_pay": 62.0,
           "live_exc_price": 65,
           "live_avg_price": 64,
           "guild_max": 0,
           "guild_min": 0,
-          "discount_percent": 0,
+          "discount_percent": 5,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
           "professions": [
@@ -865,7 +865,7 @@
     },
     {
       "good": "Coolant",
-      "cheapest_price": 39.0,
+      "cheapest_price": 37.5,
       "cheapest_company": "Technically Federated Reserves",
       "cheapest_planet": "",
       "listings_count": 2,
@@ -874,12 +874,12 @@
           "company": "Technically Federated Reserves",
           "good": "Coolant",
           "planet_produced": "",
-          "guildees_pay": 39.0,
+          "guildees_pay": 37.5,
           "live_exc_price": 39,
           "live_avg_price": 40,
           "guild_max": 0,
           "guild_min": 0,
-          "discount_percent": 0,
+          "discount_percent": 5,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
           "professions": [
@@ -1215,12 +1215,12 @@
           "company": "Technically Federated Reserves",
           "good": "Epoxy",
           "planet_produced": "",
-          "guildees_pay": 69.0,
+          "guildees_pay": 66.0,
           "live_exc_price": 69,
           "live_avg_price": 72,
           "guild_max": 0,
           "guild_min": 0,
-          "discount_percent": 0,
+          "discount_percent": 5,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
           "professions": [
@@ -1234,7 +1234,7 @@
     },
     {
       "good": "Ethanol",
-      "cheapest_price": 39.0,
+      "cheapest_price": 37.5,
       "cheapest_company": "Technically Federated Reserves",
       "cheapest_planet": "",
       "listings_count": 1,
@@ -1243,12 +1243,12 @@
           "company": "Technically Federated Reserves",
           "good": "Ethanol",
           "planet_produced": "",
-          "guildees_pay": 39.0,
+          "guildees_pay": 37.5,
           "live_exc_price": 39,
           "live_avg_price": 34,
           "guild_max": 0,
           "guild_min": 0,
-          "discount_percent": 0,
+          "discount_percent": 5,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
           "professions": [
@@ -1352,6 +1352,25 @@
           ]
         },
         {
+          "company": "Technically Federated Reserves",
+          "good": "Fertilizer",
+          "planet_produced": "",
+          "guildees_pay": 44.0,
+          "live_exc_price": 46,
+          "live_avg_price": 46,
+          "guild_max": 0,
+          "guild_min": 0,
+          "discount_percent": 5,
+          "discount_fixed": 0,
+          "timezone": "UTC +01:00",
+          "professions": [
+            "Jack-of-all-Trades",
+            "Transporting",
+            "Chemistry",
+            "ConstRICtion"
+          ]
+        },
+        {
           "company": "VEB Chemiewerke Magdeburg",
           "good": "Fertilizer",
           "planet_produced": "",
@@ -1366,25 +1385,6 @@
           "professions": [
             "Chemistry",
             "Resource Extraction"
-          ]
-        },
-        {
-          "company": "Technically Federated Reserves",
-          "good": "Fertilizer",
-          "planet_produced": "",
-          "guildees_pay": 46.0,
-          "live_exc_price": 46,
-          "live_avg_price": 46,
-          "guild_max": 0,
-          "guild_min": 0,
-          "discount_percent": 0,
-          "discount_fixed": 0,
-          "timezone": "UTC +01:00",
-          "professions": [
-            "Jack-of-all-Trades",
-            "Transporting",
-            "Chemistry",
-            "ConstRICtion"
           ]
         }
       ]
@@ -2069,7 +2069,7 @@
     },
     {
       "good": "Lubricant",
-      "cheapest_price": 29.0,
+      "cheapest_price": 28.0,
       "cheapest_company": "Technically Federated Reserves",
       "cheapest_planet": "",
       "listings_count": 1,
@@ -2078,12 +2078,12 @@
           "company": "Technically Federated Reserves",
           "good": "Lubricant",
           "planet_produced": "",
-          "guildees_pay": 29.0,
+          "guildees_pay": 28.0,
           "live_exc_price": 29,
           "live_avg_price": 26,
           "guild_max": 0,
           "guild_min": 0,
-          "discount_percent": 0,
+          "discount_percent": 5,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
           "professions": [
@@ -2744,7 +2744,7 @@
     },
     {
       "good": "Rubber",
-      "cheapest_price": 32.0,
+      "cheapest_price": 30.5,
       "cheapest_company": "Technically Federated Reserves",
       "cheapest_planet": "",
       "listings_count": 1,
@@ -2753,12 +2753,12 @@
           "company": "Technically Federated Reserves",
           "good": "Rubber",
           "planet_produced": "",
-          "guildees_pay": 32.0,
+          "guildees_pay": 30.5,
           "live_exc_price": 32,
           "live_avg_price": 29,
           "guild_max": 0,
           "guild_min": 0,
-          "discount_percent": 0,
+          "discount_percent": 5,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
           "professions": [
