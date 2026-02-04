@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-04T12:06:10.609473",
+  "last_updated": "2026-02-04T13:11:00.934561",
   "companies_count": 2,
   "data": [
     {
@@ -11,7 +11,7 @@
           "Science"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "1:06 PM",
+        "local_time": "1:11 PM",
         "goods_count": 1,
         "goods": [
           {
@@ -36,7 +36,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "1:06 PM",
+        "local_time": "1:11 PM",
         "goods_count": 9,
         "goods": [
           {
