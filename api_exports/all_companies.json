@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-04T13:16:10.072929",
+  "last_updated": "2026-02-04T13:19:13.999500",
   "companies_count": 22,
   "data": [
     {
@@ -12,7 +12,7 @@
           "Electronics"
         ],
         "timezone": "UTC -08:00",
-        "local_time": "5:16 AM",
+        "local_time": "5:19 AM",
         "goods_count": 11,
         "goods": [
           {
@@ -148,7 +148,7 @@
           "Agriculture"
         ],
         "timezone": "Select Time Zone",
-        "local_time": "1:16 PM",
+        "local_time": "1:19 PM",
         "goods_count": 3,
         "goods": [
           {
@@ -195,7 +195,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:16 PM",
+        "local_time": "2:19 PM",
         "goods_count": 8,
         "goods": [
           {
@@ -297,7 +297,7 @@
           "Manufacturing"
         ],
         "timezone": "UTC +04:00",
-        "local_time": "5:16 PM",
+        "local_time": "5:19 PM",
         "goods_count": 12,
         "goods": [
           {
@@ -444,7 +444,7 @@
           "Resource Extraction"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "1:16 PM",
+        "local_time": "1:19 PM",
         "goods_count": 22,
         "goods": [
           {
@@ -476,7 +476,7 @@
             "live_exc_price": 7300,
             "live_avg_price": 7270,
             "guild_max": 0,
-            "guild_min": 0,
+            "guild_min": 7000,
             "discount_percent": 5,
             "discount_fixed": 0
           },
@@ -702,7 +702,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC +13:00",
-        "local_time": "2:16 AM",
+        "local_time": "2:19 AM",
         "goods_count": 4,
         "goods": [
           {
@@ -760,7 +760,7 @@
           "Science"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:16 PM",
+        "local_time": "2:19 PM",
         "goods_count": 1,
         "goods": [
           {
@@ -787,7 +787,7 @@
           "Chicken Farmer"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:16 PM",
+        "local_time": "2:19 PM",
         "goods_count": 7,
         "goods": [
           {
@@ -879,7 +879,7 @@
           "Food Production"
         ],
         "timezone": "UTC -07:00",
-        "local_time": "6:16 AM",
+        "local_time": "6:19 AM",
         "goods_count": 6,
         "goods": [
           {
@@ -960,7 +960,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "1:16 PM",
+        "local_time": "1:19 PM",
         "goods_count": 8,
         "goods": [
           {
@@ -1062,7 +1062,7 @@
           "Manufacturing"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:16 PM",
+        "local_time": "2:19 PM",
         "goods_count": 4,
         "goods": [
           {
@@ -1121,7 +1121,7 @@
           "Resource Extraction"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:16 PM",
+        "local_time": "2:19 PM",
         "goods_count": 14,
         "goods": [
           {
@@ -1290,7 +1290,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "1:16 PM",
+        "local_time": "1:19 PM",
         "goods_count": 19,
         "goods": [
           {
@@ -1515,7 +1515,7 @@
           "Truss God"
         ],
         "timezone": "UTC -06:00",
-        "local_time": "7:16 AM",
+        "local_time": "7:19 AM",
         "goods_count": 9,
         "goods": [
           {
@@ -1629,7 +1629,7 @@
           "Science"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:16 PM",
+        "local_time": "2:19 PM",
         "goods_count": 2,
         "goods": [
           {
@@ -1666,7 +1666,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC -05:00",
-        "local_time": "8:16 AM",
+        "local_time": "8:19 AM",
         "goods_count": 3,
         "goods": [
           {
@@ -1714,7 +1714,7 @@
           "Truss God"
         ],
         "timezone": "UTC -08:00",
-        "local_time": "5:16 AM",
+        "local_time": "5:19 AM",
         "goods_count": 4,
         "goods": [
           {
@@ -1772,7 +1772,7 @@
           "Science"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "1:16 PM",
+        "local_time": "1:19 PM",
         "goods_count": 1,
         "goods": [
           {
@@ -1798,7 +1798,7 @@
           "Transporting"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:16 PM",
+        "local_time": "2:19 PM",
         "goods_count": 2,
         "goods": [
           {
@@ -1834,7 +1834,7 @@
           "Manufacturing"
         ],
         "timezone": "UTC +00:00",
-        "local_time": "1:16 PM",
+        "local_time": "1:19 PM",
         "goods_count": 2,
         "goods": [
           {
@@ -1871,7 +1871,7 @@
           "Resource Extraction"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:16 PM",
+        "local_time": "2:19 PM",
         "goods_count": 8,
         "goods": [
           {
@@ -1973,7 +1973,7 @@
           "Metallurgy"
         ],
         "timezone": "UTC +01:00",
-        "local_time": "2:16 PM",
+        "local_time": "2:19 PM",
         "goods_count": 9,
         "goods": [
           {
