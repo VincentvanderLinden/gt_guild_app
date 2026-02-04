@@ -1,7 +1,7 @@
 {
   "status": "success",
-  "last_updated": "2026-02-04T07:11:05.750644",
-  "goods_count": 71,
+  "last_updated": "2026-02-04T07:11:26.921294",
+  "goods_count": 70,
   "data": [
     {
       "good": "Advanced Research Data",
@@ -1800,66 +1800,6 @@
           "timezone": "UTC +00:00",
           "professions": [
             "Science"
-          ]
-        }
-      ]
-    },
-    {
-      "good": "Select Item",
-      "cheapest_price": 0.0,
-      "cheapest_company": "Flip Co",
-      "cheapest_planet": "",
-      "listings_count": 3,
-      "listings": [
-        {
-          "company": "Flip Co",
-          "good": "Select Item",
-          "planet_produced": "",
-          "guildees_pay": 0.0,
-          "live_exc_price": 0,
-          "live_avg_price": 0,
-          "guild_max": 0,
-          "guild_min": 0,
-          "discount_percent": 0,
-          "discount_fixed": 0,
-          "timezone": "UTC -07:00",
-          "professions": [
-            "Agriculture",
-            "Food Production"
-          ]
-        },
-        {
-          "company": "Flip Co",
-          "good": "Select Item",
-          "planet_produced": "",
-          "guildees_pay": 0.0,
-          "live_exc_price": 0,
-          "live_avg_price": 0,
-          "guild_max": 0,
-          "guild_min": 0,
-          "discount_percent": 0,
-          "discount_fixed": 0,
-          "timezone": "UTC -07:00",
-          "professions": [
-            "Agriculture",
-            "Food Production"
-          ]
-        },
-        {
-          "company": "Flip Co",
-          "good": "Select Item",
-          "planet_produced": "",
-          "guildees_pay": 0.0,
-          "live_exc_price": 0,
-          "live_avg_price": 0,
-          "guild_max": 0,
-          "guild_min": 0,
-          "discount_percent": 0,
-          "discount_fixed": 0,
-          "timezone": "UTC -07:00",
-          "professions": [
-            "Agriculture",
-            "Food Production"
           ]
         }
       ]
