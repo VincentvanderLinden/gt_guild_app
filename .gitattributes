@@ -1,3 +1,3 @@
 # Auto-generated API export files - always keep remote version on merge conflicts
-api_exports/all_companies.json merge=ours
-api_exports/all_goods.json merge=ours
+api_exports/all_companies.json merge=theirs
+api_exports/all_goods.json merge=theirs
