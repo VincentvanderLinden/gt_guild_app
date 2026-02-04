@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-04T23:21:18.408875",
+  "last_updated": "2026-02-04T23:22:02.329318",
   "goods_count": 92,
   "data": [
     {
@@ -1699,7 +1699,7 @@
     },
     {
       "good": "Flux",
-      "cheapest_price": 60.0,
+      "cheapest_price": 68.0,
       "cheapest_company": "Technically Federated Reserves",
       "cheapest_planet": "Iconia 3",
       "listings_count": 1,
@@ -1708,12 +1708,12 @@
           "company": "Technically Federated Reserves",
           "good": "Flux",
           "planet_produced": "Iconia 3",
-          "guildees_pay": 60.0,
+          "guildees_pay": 68.0,
           "live_exc_price": 71,
           "live_avg_price": 67,
-          "guild_max": 60,
+          "guild_max": 0,
           "guild_min": 0,
-          "discount_percent": 0,
+          "discount_percent": 5,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
           "professions": [
