@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-04T14:34:04.075451",
+  "last_updated": "2026-02-04T14:34:12.319108",
   "goods_count": 87,
   "data": [
     {
@@ -1816,7 +1816,7 @@
           "good": "Hydrogen Generator",
           "planet_produced": "Daedalus 5",
           "guildees_pay": 22500.0,
-          "live_exc_price": 23000,
+          "live_exc_price": 22500,
           "live_avg_price": 23084,
           "guild_max": 24000,
           "guild_min": 22500,
@@ -2423,7 +2423,7 @@
           "good": "Pipes",
           "planet_produced": "Kentaurus 2",
           "guildees_pay": 160.0,
-          "live_exc_price": 160,
+          "live_exc_price": 155,
           "live_avg_price": 163,
           "guild_max": 0,
           "guild_min": 0,
@@ -2439,7 +2439,7 @@
           "good": "Pipes",
           "planet_produced": "Kentaurus 2",
           "guildees_pay": 160.0,
-          "live_exc_price": 160,
+          "live_exc_price": 155,
           "live_avg_price": 163,
           "guild_max": 0,
           "guild_min": 0,
