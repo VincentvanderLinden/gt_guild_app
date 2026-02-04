@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-04T13:16:10.065642",
+  "last_updated": "2026-02-04T13:19:13.994567",
   "goods_count": 87,
   "data": [
     {
@@ -464,7 +464,7 @@
           "live_exc_price": 7300,
           "live_avg_price": 7270,
           "guild_max": 0,
-          "guild_min": 0,
+          "guild_min": 7000,
           "discount_percent": 5,
           "discount_fixed": 0,
           "timezone": "UTC +00:00",
