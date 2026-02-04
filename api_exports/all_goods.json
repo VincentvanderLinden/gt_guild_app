@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-04T23:12:44.327405",
+  "last_updated": "2026-02-04T23:13:47.558172",
   "goods_count": 92,
   "data": [
     {
@@ -143,7 +143,7 @@
       "cheapest_price": 460.0,
       "cheapest_company": "Piecorp",
       "cheapest_planet": "Kentaurus 2",
-      "listings_count": 4,
+      "listings_count": 5,
       "listings": [
         {
           "company": "Piecorp",
@@ -184,6 +184,22 @@
           "company": "ZorkCorp",
           "good": "Aluminium",
           "planet_produced": "Kentaurus 2",
+          "guildees_pay": 480.0,
+          "live_exc_price": 475,
+          "live_avg_price": 480,
+          "guild_max": 0,
+          "guild_min": 0,
+          "discount_percent": 0,
+          "discount_fixed": 0,
+          "timezone": "UTC +01:00",
+          "professions": [
+            "Metallurgy"
+          ]
+        },
+        {
+          "company": "Blackmoore Investment",
+          "good": "Aluminium",
+          "planet_produced": "",
           "guildees_pay": 480.0,
           "live_exc_price": 475,
           "live_avg_price": 480,
@@ -1887,7 +1903,7 @@
     },
     {
       "good": "Graphenium Wire",
-      "cheapest_price": 1850.0,
+      "cheapest_price": 1750.0,
       "cheapest_company": "Blackmoore Investment",
       "cheapest_planet": "",
       "listings_count": 1,
@@ -1896,12 +1912,12 @@
           "company": "Blackmoore Investment",
           "good": "Graphenium Wire",
           "planet_produced": "",
-          "guildees_pay": 1850.0,
+          "guildees_pay": 1750.0,
           "live_exc_price": 2050,
           "live_avg_price": 1971,
           "guild_max": 0,
           "guild_min": 0,
-          "discount_percent": 10,
+          "discount_percent": 15,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
           "professions": [
@@ -3327,11 +3343,27 @@
     },
     {
       "good": "Tiridium Alloy",
-      "cheapest_price": 5500.0,
-      "cheapest_company": "ZorkCorp",
-      "cheapest_planet": "Kentaurus 2",
+      "cheapest_price": 5400.0,
+      "cheapest_company": "Blackmoore Investment",
+      "cheapest_planet": "",
       "listings_count": 4,
       "listings": [
+        {
+          "company": "Blackmoore Investment",
+          "good": "Tiridium Alloy",
+          "planet_produced": "",
+          "guildees_pay": 5400.0,
+          "live_exc_price": 5500,
+          "live_avg_price": 5921,
+          "guild_max": 0,
+          "guild_min": 5400,
+          "discount_percent": 10,
+          "discount_fixed": 0,
+          "timezone": "UTC +01:00",
+          "professions": [
+            "Metallurgy"
+          ]
+        },
         {
           "company": "ZorkCorp",
           "good": "Tiridium Alloy",
@@ -3362,22 +3394,6 @@
           "timezone": "UTC +00:00",
           "professions": [
             "Construction",
-            "Metallurgy"
-          ]
-        },
-        {
-          "company": "Blackmoore Investment",
-          "good": "Tiridium Alloy",
-          "planet_produced": "",
-          "guildees_pay": 5500.0,
-          "live_exc_price": 5500,
-          "live_avg_price": 5921,
-          "guild_max": 0,
-          "guild_min": 5500,
-          "discount_percent": 10,
-          "discount_fixed": 0,
-          "timezone": "UTC +01:00",
-          "professions": [
             "Metallurgy"
           ]
         },
