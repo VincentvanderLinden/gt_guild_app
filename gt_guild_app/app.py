@@ -1,6 +1,8 @@
 """Main application file for TiT Guild App."""
 import streamlit as st
 import warnings
+import hashlib
+import json
 
 # Suppress FutureWarning from Streamlit's data_editor
 warnings.filterwarnings('ignore', category=FutureWarning, module='streamlit.elements.widgets.data_editor')
@@ -25,6 +27,12 @@ from datetime import datetime, timedelta, timezone
 # ============================================================================
 # Streamlit UI Functions
 # ============================================================================
+
+def get_data_version(companies):
+    """Generate a version hash from companies data to detect changes."""
+    data_str = json.dumps(companies, sort_keys=True)
+    return hashlib.md5(data_str.encode()).hexdigest()[:8]
+
 
 def export_json_if_needed():
     """Export JSON with current prices after any data change (without pushing)."""
@@ -211,6 +219,9 @@ def initialize_session_state():
             st.session_state.sheet_url = st.secrets.get("GOOGLE_SHEET_URL", "")
         except:
             st.session_state.sheet_url = ""
+    
+    if 'data_version' not in st.session_state:
+        st.session_state.data_version = None
 
 
 def refresh_from_google_sheets():
@@ -235,6 +246,7 @@ def refresh_from_google_sheets():
                 # Update session state
                 st.session_state.companies = companies
                 st.session_state.last_sheet_refresh = now
+                st.session_state.data_version = get_data_version(companies)
                 
                 # Export to JSON whenever we refresh from Google Sheets
                 try:
@@ -332,6 +344,13 @@ def render_company_editor(company, idx, materials, price_data, all_professions_l
         # Prepare goods dataframe
         goods_df = prepare_goods_dataframe(company["goods"])
         
+        # Filter out empty rows from existing data
+        goods_df = goods_df[
+            goods_df['Produced Goods'].notna() & 
+            (goods_df['Produced Goods'].str.strip() != '') &
+            (goods_df['Produced Goods'].str.strip() != 'nan')
+        ].reset_index(drop=True)
+        
         # Filter goods by search term if provided
         if search_goods:
             goods_df = goods_df[goods_df['Produced Goods'].str.contains(search_goods, case=False, na=False)]
@@ -365,8 +384,58 @@ def render_company_editor(company, idx, materials, price_data, all_professions_l
             handle_goods_changes(company, edited_goods, price_data)
 
 
+@st.fragment(run_every=5)  # Refresh every 5 seconds
+def render_companies_fragment(filtered_companies, materials, price_data, professions_list, search_goods):
+    """Auto-refreshing fragment that renders company editors and checks for changes."""
+    # Reload data to check for changes
+    from core.data_manager import load_data
+    latest_companies = load_data()
+    
+    if latest_companies:
+        latest_version = get_data_version(latest_companies)
+        
+        # Check if data was modified by another user
+        if st.session_state.data_version and latest_version != st.session_state.data_version:
+            st.warning("⚠️ Data was updated by another user or process. Showing latest version.")
+            st.session_state.companies = latest_companies
+            st.session_state.data_version = latest_version
+            
+            # Update filtered companies with latest data
+            from business.filters import apply_all_filters
+            # Re-apply filters to get fresh filtered list - read from widget session state
+            filtered_companies = apply_all_filters(
+                latest_companies,
+                st.session_state.get('professions_filter', []),
+                st.session_state.get('search_company', ''),
+                st.session_state.get('search_goods', '')
+            )
+    
+    # Render company editors
+    for idx, company in enumerate(filtered_companies):
+        render_company_editor(company, idx, materials, price_data, professions_list, search_goods)
+
+
 def handle_goods_changes(company, edited_goods, price_data):
     """Handle changes to company goods data."""
+    # Filter out rows with empty "Produced Goods"
+    edited_goods = edited_goods[
+        edited_goods['Produced Goods'].notna() & 
+        (edited_goods['Produced Goods'].str.strip() != '') &
+        (edited_goods['Produced Goods'].str.strip() != 'nan')
+    ].copy()
+    
+    # If all rows were removed, keep empty list
+    if len(edited_goods) == 0:
+        for c in st.session_state.companies:
+            if c["name"] == company["name"]:
+                c["goods"] = []
+                save_data(st.session_state.companies)
+                st.session_state.data_version = get_data_version(st.session_state.companies)
+                export_json_if_needed()
+                st.rerun()
+                break
+        return
+    
     # Validate goods
     temp_company = company.copy()
     temp_company['goods'] = edited_goods.to_dict('records')
@@ -390,6 +459,7 @@ def handle_goods_changes(company, edited_goods, price_data):
         if c["name"] == company["name"]:
             c["goods"] = edited_goods.to_dict('records')
             save_data(st.session_state.companies)
+            st.session_state.data_version = get_data_version(st.session_state.companies)
             export_json_if_needed()
             st.rerun()
             break
@@ -474,9 +544,10 @@ def main():
         st.session_state.initial_refresh_done = False
     
     if not st.session_state.initial_refresh_done:
-        # Force Google Sheets refresh on startup
-        st.session_state.last_sheet_refresh = None
-        refresh_from_google_sheets()
+        with st.spinner("Loading guild data from Google Sheets..."):
+            # Force Google Sheets refresh on startup
+            st.session_state.last_sheet_refresh = None
+            refresh_from_google_sheets()
         st.session_state.initial_refresh_done = True
     
     # Push to GitHub on app startup (once per session)
@@ -491,7 +562,8 @@ def main():
         st.session_state.initial_push_done = True
     
     # Fetch live prices (cached for 10 minutes, but will be fresh on startup)
-    price_data, last_update = fetch_material_prices()
+    with st.spinner("Fetching live market prices..."):
+        price_data, last_update = fetch_material_prices()
     
     # Collect all professions from companies
     all_professions = set(PROFESSIONS)  # Start with the base list
@@ -551,9 +623,12 @@ def main():
     
     st.divider()
     
-    # Render company editors
-    for idx, company in enumerate(filtered_companies):
-        render_company_editor(company, idx, materials, price_data, professions_list, search_goods)
+    # Store current data version before rendering
+    if st.session_state.data_version is None:
+        st.session_state.data_version = get_data_version(st.session_state.companies)
+    
+    # Render companies with auto-refresh fragment
+    render_companies_fragment(filtered_companies, materials, price_data, professions_list, search_goods)
     
     # Footer
     st.info("💾 All changes are saved automatically")

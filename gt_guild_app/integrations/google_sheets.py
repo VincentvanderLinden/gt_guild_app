@@ -154,6 +154,10 @@ def import_from_google_sheet(sheet_url: str) -> Optional[list]:
                 continue
             
             good_name = str(good_name).strip()
+            
+            # Skip placeholder text for goods
+            if good_name.lower() in ['select good', 'select goods', 'select product', '']:
+                continue
             planet_produced = df.iloc[idx, 13] if len(df.iloc[idx]) > 13 else ""  # Column N (0-indexed: 13)
             
             # Parse planet produced, filter out placeholder
