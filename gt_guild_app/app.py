@@ -863,7 +863,11 @@ def render_recurring_contracts_tab(price_data, all_companies):
                         
                         # Column configuration for contract lines
                         lines_column_config = {
-                            'Company': st.column_config.TextColumn('Company'),
+                            'Company': st.column_config.SelectboxColumn(
+                                'Company',
+                                options=sorted(available_company_names),
+                                required=False
+                            ),
                             'Delivery Location': st.column_config.SelectboxColumn(
                                 'Delivery Location',
                                 options=planets,
