@@ -36,25 +36,13 @@
     }
   },
   "Drunkenduo's Ruthless Divident": {
-    "Chickens": {
-      "daily_amount": 100000,
-      "lines": [
-        {
-          "Company": "Skunk",
-          "Delivery Location": "Kentaurus 2",
-          "Fulfilled Amount": 80000
-        }
-      ]
+    "Steel": {
+      "daily_amount": 0,
+      "lines": []
     },
-    "Cows": {
-      "daily_amount": 100000,
-      "lines": [
-        {
-          "Company": "Flip Co",
-          "Delivery Location": "Exchange Station",
-          "Fulfilled Amount": 100000
-        }
-      ]
+    "Welding Kits": {
+      "daily_amount": 0,
+      "lines": []
     }
   },
   "Romero Enterprises": {
