@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-05T20:01:47.495861",
+  "last_updated": "2026-02-05T20:02:40.647074",
   "goods_count": 103,
   "data": [
     {
@@ -522,7 +522,7 @@
     },
     {
       "good": "Battery",
-      "cheapest_price": 409.0,
+      "cheapest_price": 413.0,
       "cheapest_company": "MB Industries",
       "cheapest_planet": "Aetheria 8",
       "listings_count": 1,
@@ -531,11 +531,11 @@
           "company": "MB Industries",
           "good": "Battery",
           "planet_produced": "Aetheria 8",
-          "guildees_pay": 409.0,
+          "guildees_pay": 413.0,
           "live_exc_price": 550,
           "live_avg_price": 432,
-          "guild_max": 409,
-          "guild_min": 347,
+          "guild_max": 413,
+          "guild_min": 351,
           "discount_percent": 15,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
