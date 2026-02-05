@@ -109,9 +109,38 @@ def load_data() -> Optional[List[Dict[str, Any]]]:
 
 
 def save_data(companies: List[Dict[str, Any]]) -> None:
-    """Save company data to feather file."""
+    """Save company data to feather file and commit to git."""
+    import subprocess
+    from pathlib import Path
+    
     df = companies_to_feather(companies)
     df.to_feather(DATA_FILE)
+    
+    # Auto-commit to git to persist changes
+    try:
+        repo_root = Path(__file__).parent.parent.parent
+        subprocess.run(
+            ["git", "add", "gt_guild_app/assets/data/guild_data.feather"],
+            cwd=repo_root,
+            capture_output=True,
+            timeout=5
+        )
+        subprocess.run(
+            ["git", "commit", "-m", "Auto-save guild data changes"],
+            cwd=repo_root,
+            capture_output=True,
+            timeout=5
+        )
+        # Push asynchronously to avoid blocking
+        subprocess.Popen(
+            ["git", "push"],
+            cwd=repo_root,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
+    except Exception as e:
+        # Silently fail - local save still worked
+        pass
 
 
 def load_google_sheets_data() -> Optional[List[Dict[str, Any]]]:

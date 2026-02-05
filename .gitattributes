@@ -1,3 +1,8 @@
 # Auto-generated API export files - always keep remote version on merge conflicts
 api_exports/all_companies.json merge=theirs
 api_exports/all_goods.json merge=theirs
+
+# User-modified data files - always keep local version on merge conflicts
+gt_guild_app/assets/data/contracts.json merge=ours
+gt_guild_app/assets/data/company_config.json merge=ours
+gt_guild_app/assets/data/guild_data.feather merge=ours
