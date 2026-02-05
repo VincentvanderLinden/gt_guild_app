@@ -179,6 +179,27 @@ def push_to_github_now(force=False):
         return False, f"Error: {str(e)[:100]}"
 
 
+def pull_from_github():
+    """Pull latest changes from GitHub before loading data."""
+    import subprocess
+    from pathlib import Path
+    
+    try:
+        repo_root = Path(__file__).parent.parent
+        result = subprocess.run(
+            ["git", "pull", "--rebase"],
+            cwd=repo_root,
+            capture_output=True,
+            timeout=10,
+            text=True
+        )
+        # Silently succeed/fail - app will use whatever data is available
+        return result.returncode == 0
+    except Exception as e:
+        # Silently fail - local data will be used
+        return False
+
+
 def initialize_page():
     """Configure Streamlit page settings."""
     st.set_page_config(
@@ -498,6 +519,11 @@ def handle_goods_changes(company, edited_goods, price_data):
 
 def main():
     """Main application logic."""
+    # Pull latest data from GitHub first (once per session)
+    if 'github_pull_done' not in st.session_state:
+        pull_from_github()
+        st.session_state.github_pull_done = True
+    
     # Setup
     initialize_page()
     initialize_session_state()
