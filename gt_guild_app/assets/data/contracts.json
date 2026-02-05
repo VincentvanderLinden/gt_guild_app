@@ -37,7 +37,7 @@
   },
   "Drunkenduo's Ruthless Divident": {
     "Steel": {
-      "daily_amount": 0,
+      "daily_amount": 4000,
       "lines": []
     },
     "Welding Kits": {
@@ -70,5 +70,29 @@
       "daily_amount": 1900,
       "lines": []
     }
-  }
+  },
+  "Pear Inc": {},
+  "Taycon Industries": {},
+  "Foooooooooooood": {},
+  "Blackmoore Investment": {},
+  "VEB Chemiewerke Magdeburg": {},
+  "B0dega": {},
+  "Cracklor Ltd": {},
+  "Piecorp": {},
+  "Technically Federated Reserves": {},
+  "ZorkCorp": {},
+  "Potatoes": {},
+  "Metal Heart": {},
+  "The Boring Company": {},
+  "Skunk Industries": {},
+  "Kombinat Fertigungswerke Ost": {},
+  "VEB Hochbau Walter Ulbricht": {},
+  "VEB Speis & Schacht Sta\u00dffurt": {},
+  "Bane Inc.": {},
+  "Karsian Industries": {},
+  "Sirius Corp": {},
+  "DeLey": {},
+  "Caboose Inc.": {},
+  "Astro Construction Enterprise": {},
+  "Stellara": {}
 }
