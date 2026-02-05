@@ -862,16 +862,19 @@ def render_recurring_contracts_tab(price_data, all_companies):
                         st.divider()
                         
                         # Column configuration for contract lines
+                        # Convert to list for selectbox options
+                        company_options = sorted(list(available_company_names))
+                        
                         lines_column_config = {
                             'Company': st.column_config.SelectboxColumn(
                                 'Company',
-                                options=sorted(available_company_names),
+                                options=company_options,
                                 required=False
                             ),
                             'Delivery Location': st.column_config.SelectboxColumn(
                                 'Delivery Location',
                                 options=planets,
-                                required=True
+                                required=False
                             ),
                             'Fulfilled Amount': st.column_config.NumberColumn(
                                 'Fulfilled Amount',
