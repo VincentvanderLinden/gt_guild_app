@@ -42,7 +42,13 @@
     },
     "Welding Kits": {
       "daily_amount": 4000,
-      "lines": []
+      "lines": [
+        {
+          "Company": "B0dega",
+          "Delivery Location": "",
+          "Fulfilled Amount": 0
+        }
+      ]
     }
   },
   "Romero Enterprises": {
