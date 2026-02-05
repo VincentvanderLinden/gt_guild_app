@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-05T06:52:57.302160",
+  "last_updated": "2026-02-05T07:01:35.173033",
   "goods_count": 97,
   "data": [
     {
@@ -108,13 +108,13 @@
           "company": "DeLey",
           "good": "Advanced Research Data",
           "planet_produced": "Zicigawa 2",
-          "guildees_pay": 5600.0,
+          "guildees_pay": 5400.0,
           "live_exc_price": 5600,
           "live_avg_price": 5699,
           "guild_max": 0,
           "guild_min": 0,
           "discount_percent": 0,
-          "discount_fixed": 0,
+          "discount_fixed": 200,
           "timezone": "UTC +01:00",
           "professions": [
             "Science"
