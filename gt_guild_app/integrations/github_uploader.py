@@ -44,9 +44,23 @@ def push_to_github(
             content = base64.b64encode(f.read()).decode('utf-8')
         
         # Get relative path for GitHub (e.g., "api_exports/all_goods.json")
-        file_path_obj = Path(file_path)
-        # Assuming we're in the repo root
-        relative_path = str(file_path_obj.relative_to(Path.cwd()))
+        file_path_obj = Path(file_path).resolve()
+        
+        # Find repo root by looking for .git directory
+        repo_root = file_path_obj.parent
+        while repo_root.parent != repo_root:
+            if (repo_root / '.git').exists():
+                break
+            repo_root = repo_root.parent
+        
+        # Get relative path from repo root
+        try:
+            relative_path = str(file_path_obj.relative_to(repo_root))
+        except ValueError:
+            # Fallback: assume file_path already contains the right structure
+            relative_path = str(file_path_obj.name)
+            if 'api_exports' in str(file_path_obj):
+                relative_path = f"api_exports/{file_path_obj.name}"
         
         # GitHub API URL
         api_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{relative_path}"
