@@ -193,12 +193,41 @@ def load_contracts() -> Optional[Dict[str, Any]]:
 
 
 def save_contracts(contracts: Dict[str, Any]) -> None:
-    """Save contracts data to JSON file."""
+    """Save contracts data to JSON file and commit to git."""
     import json
+    import subprocess
+    from pathlib import Path
+    
     # Change to JSON for nested dict structure
     contracts_json = CONTRACTS_FILE.with_suffix('.json')
     with open(contracts_json, 'w') as f:
         json.dump(contracts, f, indent=2)
+    
+    # Auto-commit to git to persist changes
+    try:
+        repo_root = Path(__file__).parent.parent.parent
+        subprocess.run(
+            ["git", "add", "gt_guild_app/assets/data/contracts.json"],
+            cwd=repo_root,
+            capture_output=True,
+            timeout=5
+        )
+        subprocess.run(
+            ["git", "commit", "-m", "Auto-save contract changes"],
+            cwd=repo_root,
+            capture_output=True,
+            timeout=5
+        )
+        # Push asynchronously to avoid blocking
+        subprocess.Popen(
+            ["git", "push"],
+            cwd=repo_root,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
+    except Exception as e:
+        # Silently fail - local save still worked
+        pass
 
 
 def load_company_config() -> Dict[str, Any]:
@@ -214,6 +243,35 @@ def load_company_config() -> Dict[str, Any]:
 
 
 def save_company_config(config: Dict[str, Any]) -> None:
-    """Save company configuration to JSON file."""
+    """Save company configuration to JSON file and commit to git."""
+    import subprocess
+    from pathlib import Path
+    
     with open(COMPANY_CONFIG_FILE, 'w') as f:
         json.dump(config, f, indent=2)
+    
+    # Auto-commit to git to persist changes
+    try:
+        repo_root = Path(__file__).parent.parent.parent
+        subprocess.run(
+            ["git", "add", "gt_guild_app/assets/data/company_config.json"],
+            cwd=repo_root,
+            capture_output=True,
+            timeout=5
+        )
+        subprocess.run(
+            ["git", "commit", "-m", "Auto-save company configuration"],
+            cwd=repo_root,
+            capture_output=True,
+            timeout=5
+        )
+        # Push asynchronously to avoid blocking
+        subprocess.Popen(
+            ["git", "push"],
+            cwd=repo_root,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
+    except Exception as e:
+        # Silently fail - local save still worked
+        pass
