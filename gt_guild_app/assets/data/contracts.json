@@ -56,5 +56,31 @@
         }
       ]
     }
+  },
+  "Romero Enterprises": {
+    "Oxygen": {
+      "daily_amount": 5500,
+      "lines": []
+    },
+    "Flux": {
+      "daily_amount": 1900,
+      "lines": []
+    },
+    "Carbon": {
+      "daily_amount": 605,
+      "lines": []
+    },
+    "Water": {
+      "daily_amount": 11000,
+      "lines": []
+    },
+    "Aluminium Ore": {
+      "daily_amount": 3000,
+      "lines": []
+    },
+    "Copper": {
+      "daily_amount": 1900,
+      "lines": []
+    }
   }
 }
