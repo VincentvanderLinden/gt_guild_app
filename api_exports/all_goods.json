@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-10T14:55:59.219761",
+  "last_updated": "2026-02-10T15:00:54.014332",
   "goods_count": 118,
   "data": [
     {
@@ -637,7 +637,7 @@
     },
     {
       "good": "Bio-Nutrient Blend",
-      "cheapest_price": 119.0,
+      "cheapest_price": 120.0,
       "cheapest_company": "MB Industries",
       "cheapest_planet": "Aetheria 8",
       "listings_count": 1,
@@ -646,11 +646,11 @@
           "company": "MB Industries",
           "good": "Bio-Nutrient Blend",
           "planet_produced": "Aetheria 8",
-          "guildees_pay": 119.0,
+          "guildees_pay": 120.0,
           "live_exc_price": 140,
           "live_avg_price": 127,
-          "guild_max": 119,
-          "guild_min": 101,
+          "guild_max": 124,
+          "guild_min": 105,
           "discount_percent": 15,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
