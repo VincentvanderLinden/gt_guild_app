@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-10T16:25:59.242670",
+  "last_updated": "2026-02-10T16:30:58.857442",
   "goods_count": 118,
   "data": [
     {
@@ -329,7 +329,7 @@
     },
     {
       "good": "Aerogel",
-      "cheapest_price": 109.0,
+      "cheapest_price": 114.0,
       "cheapest_company": "MB Industries",
       "cheapest_planet": "Tidal 1",
       "listings_count": 1,
@@ -338,11 +338,11 @@
           "company": "MB Industries",
           "good": "Aerogel",
           "planet_produced": "Tidal 1",
-          "guildees_pay": 109.0,
+          "guildees_pay": 114.0,
           "live_exc_price": 145,
           "live_avg_price": 118,
-          "guild_max": 109,
-          "guild_min": 98,
+          "guild_max": 114,
+          "guild_min": 103,
           "discount_percent": 10,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
