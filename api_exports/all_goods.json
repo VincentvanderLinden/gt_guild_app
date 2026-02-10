@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-10T12:30:59.363141",
+  "last_updated": "2026-02-10T12:35:59.121310",
   "goods_count": 118,
   "data": [
     {
@@ -623,8 +623,8 @@
           "guildees_pay": 390.0,
           "live_exc_price": 455,
           "live_avg_price": 437,
-          "guild_max": 413,
-          "guild_min": 351,
+          "guild_max": 418,
+          "guild_min": 355,
           "discount_percent": 15,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
@@ -3637,7 +3637,7 @@
     },
     {
       "good": "Rejuvaline",
-      "cheapest_price": 789.0,
+      "cheapest_price": 798.0,
       "cheapest_company": "MB Industries",
       "cheapest_planet": "Aetheria 8",
       "listings_count": 2,
@@ -3646,11 +3646,11 @@
           "company": "MB Industries",
           "good": "Rejuvaline",
           "planet_produced": "Aetheria 8",
-          "guildees_pay": 789.0,
+          "guildees_pay": 798.0,
           "live_exc_price": 950,
           "live_avg_price": 834,
-          "guild_max": 789,
-          "guild_min": 670,
+          "guild_max": 798,
+          "guild_min": 678,
           "discount_percent": 15,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
