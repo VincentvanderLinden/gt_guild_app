@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-10T20:35:53.929649",
+  "last_updated": "2026-02-10T20:40:54.471899",
   "goods_count": 118,
   "data": [
     {
@@ -3087,7 +3087,7 @@
     },
     {
       "good": "Neoplast",
-      "cheapest_price": 52.0,
+      "cheapest_price": 53.0,
       "cheapest_company": "MB Industries",
       "cheapest_planet": "Tidal 1",
       "listings_count": 1,
@@ -3096,11 +3096,11 @@
           "company": "MB Industries",
           "good": "Neoplast",
           "planet_produced": "Tidal 1",
-          "guildees_pay": 52.0,
+          "guildees_pay": 53.0,
           "live_exc_price": 62,
           "live_avg_price": 55,
-          "guild_max": 52,
-          "guild_min": 47,
+          "guild_max": 53,
+          "guild_min": 48,
           "discount_percent": 10,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
