@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-10T15:40:59.120094",
+  "last_updated": "2026-02-10T15:45:53.898951",
   "goods_count": 118,
   "data": [
     {
@@ -2153,7 +2153,7 @@
     },
     {
       "good": "Graphene",
-      "cheapest_price": 303.0,
+      "cheapest_price": 300.0,
       "cheapest_company": "MB Industries",
       "cheapest_planet": "Tidal 5",
       "listings_count": 3,
@@ -2162,11 +2162,11 @@
           "company": "MB Industries",
           "good": "Graphene",
           "planet_produced": "Tidal 5",
-          "guildees_pay": 303.0,
+          "guildees_pay": 300.0,
           "live_exc_price": 345,
           "live_avg_price": 372,
-          "guild_max": 356,
-          "guild_min": 303,
+          "guild_max": 352,
+          "guild_min": 299,
           "discount_percent": 15,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
