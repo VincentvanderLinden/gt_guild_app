@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-10T18:10:58.910966",
+  "last_updated": "2026-02-10T18:15:58.986975",
   "goods_count": 118,
   "data": [
     {
@@ -3594,7 +3594,7 @@
     },
     {
       "good": "Reinforced Glass",
-      "cheapest_price": 247.0,
+      "cheapest_price": 252.0,
       "cheapest_company": "MB Industries",
       "cheapest_planet": "Tidal 1",
       "listings_count": 2,
@@ -3603,11 +3603,11 @@
           "company": "MB Industries",
           "good": "Reinforced Glass",
           "planet_produced": "Tidal 1",
-          "guildees_pay": 247.0,
+          "guildees_pay": 252.0,
           "live_exc_price": 285,
           "live_avg_price": 262,
-          "guild_max": 247,
-          "guild_min": 222,
+          "guild_max": 252,
+          "guild_min": 227,
           "discount_percent": 10,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
