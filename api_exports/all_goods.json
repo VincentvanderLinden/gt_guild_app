@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "last_updated": "2026-02-10T08:15:59.160703",
+  "last_updated": "2026-02-10T08:20:58.997796",
   "goods_count": 118,
   "data": [
     {
@@ -3473,7 +3473,7 @@
     },
     {
       "good": "Quadranium",
-      "cheapest_price": 3078.0,
+      "cheapest_price": 3050.0,
       "cheapest_company": "MB Industries",
       "cheapest_planet": "Light 7",
       "listings_count": 1,
@@ -3482,11 +3482,11 @@
           "company": "MB Industries",
           "good": "Quadranium",
           "planet_produced": "Light 7",
-          "guildees_pay": 3078.0,
+          "guildees_pay": 3050.0,
           "live_exc_price": 3350,
           "live_avg_price": 3568,
-          "guild_max": 3420,
-          "guild_min": 3078,
+          "guild_max": 3373,
+          "guild_min": 3035,
           "discount_percent": 10,
           "discount_fixed": 0,
           "timezone": "UTC +01:00",
